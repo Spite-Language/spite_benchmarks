@@ -1,0 +1,39 @@
+var clock = Clock()
+var console = Console()
+var particles = List<Particle>()
+
+func AnItemWrittenBackToItsOwnSlotIsNotWritten() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = make_and_move()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func make_and_move(): Integer {
+    var index = 0
+    while index < 200000 {
+        var made = Particle(index % 7 + 1)
+        particles.append(made)
+        index = index + 1
+    }
+    var tick = 0
+    while tick < 200 {
+        step()
+        tick = tick + 1
+    }
+    return particles.sum_left()
+}
+
+func step() {
+    var index = 0
+    while index < particles.count() {
+        var particle = particles[index]
+        particle.left = particle.left + particle.speed
+        particles[index] = particle
+        index = index + 1
+    }
+}

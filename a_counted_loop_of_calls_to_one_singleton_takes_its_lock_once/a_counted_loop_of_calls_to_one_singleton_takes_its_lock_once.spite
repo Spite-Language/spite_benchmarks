@@ -1,0 +1,37 @@
+var clock = Clock()
+var console = Console()
+var tally = Tally()
+var counted = 0
+var total: Long = 0
+var calls = 0
+var largest = 0
+
+func ACountedLoopOfCallsToOneSingletonTakesItsLockOnce() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    count_and_read()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("counted", counted, "calls", calls, "total", total, "largest", largest)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func count_and_read() {
+    counted = count_on_four(5000000)
+    total = tally.sum()
+    calls = tally.call_count()
+    largest = tally.largest_amount()
+}
+
+func count_on_four(rounds: Integer): Integer {
+    var first = Counter(rounds)
+    var first_run = Parallel(first.count_up)
+    var second = Counter(rounds)
+    var second_run = Parallel(second.count_up)
+    var third = Counter(rounds)
+    var third_run = Parallel(third.count_up)
+    var fourth = Counter(rounds)
+    var fourth_run = Parallel(fourth.count_up)
+    return first_run + second_run + third_run + fourth_run
+}

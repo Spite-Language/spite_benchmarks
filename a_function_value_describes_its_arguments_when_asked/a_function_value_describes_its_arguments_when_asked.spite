@@ -1,0 +1,39 @@
+var clock = Clock()
+var console = Console()
+var scorer: Scorer? = null
+
+func AFunctionValueDescribesItsArgumentsWhenAsked() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = make_and_apply()
+    var finished = clock.elapsed_nanoseconds()
+    var applied = answer
+    crash scorer
+    var scoring = scorer.score
+    var argument_count = scoring.arguments.count()
+    console.print("applied", applied, "arguments", argument_count)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func make_and_apply(): Long {
+    var made = Scorer()
+    scorer = made
+    return apply_all(made, 2000000)
+}
+
+func apply_all(scorer: Scorer, count: Integer): Long {
+    var applied: Long = 0
+    var index = 0
+    while index < count {
+        var scored = apply(scorer.score, index % 100)
+        applied = applied + scored
+        index = index + 1
+    }
+    return applied
+}
+
+func apply(change: Spite.Function<Integer, Integer>, value: Integer): Integer {
+    return change(value)
+}

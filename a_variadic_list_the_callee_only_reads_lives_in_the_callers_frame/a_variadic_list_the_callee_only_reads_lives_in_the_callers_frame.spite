@@ -1,0 +1,40 @@
+var clock = Clock()
+var console = Console()
+
+func AVariadicListTheCalleeOnlyReadsLivesInTheCallersFrame() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = every_round()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func every_round(): Long {
+    return all_rounds(2000000)
+}
+
+func all_rounds(rounds: Integer): Long {
+    var total: Long = 0
+    var round = 0
+    while round < rounds {
+        var biggest = largest(round % 10, round % 7, round % 13, round % 3)
+        total = total + biggest
+        round = round + 1
+    }
+    return total
+}
+
+func largest(...values: List<Integer>): Integer {
+    var biggest = 0
+    var index = 0
+    while index < values.count() {
+        if values[index] > biggest {
+            biggest = values[index]
+        }
+        index = index + 1
+    }
+    return biggest
+}

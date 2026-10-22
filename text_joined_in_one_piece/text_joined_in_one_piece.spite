@@ -1,0 +1,41 @@
+var clock = Clock()
+var console = Console()
+
+func TextJoinedInOnePiece() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = all_meetings()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("characters", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func all_meetings(): Long {
+    var names = List<String>()
+    var index = 0
+    while index < 1000 {
+        var name = "traveller number {index}"
+        names.append(name)
+        index = index + 1
+    }
+    var total: Long = 0
+    var round = 0
+    while round < 1000 {
+        total = total + meetings(names)
+        round = round + 1
+    }
+    return total
+}
+
+func meetings(names: List<String>): Integer {
+    var total = 0
+    var index = 0
+    while index + 1 < names.count() {
+        var line = "{names[index]} meets {names[index + 1]} at the gate."
+        total = total + line.length()
+        index = index + 1
+    }
+    return total
+}

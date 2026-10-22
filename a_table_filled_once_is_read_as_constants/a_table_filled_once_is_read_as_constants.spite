@@ -1,0 +1,26 @@
+var clock = Clock()
+var console = Console()
+
+func ATableFilledOnceIsReadAsConstants() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = price_all()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func price_all(): Long {
+    var checkout = Checkout()
+    var total: Long = 0
+    var index = 0
+    while index < 10000000 {
+        var amount = 1000 + index % 1000
+        var priced = checkout.price(amount)
+        total = total + priced
+        index = index + 1
+    }
+    return total
+}

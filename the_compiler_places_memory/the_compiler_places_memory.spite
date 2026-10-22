@@ -1,0 +1,45 @@
+var clock = Clock()
+var console = Console()
+
+func TheCompilerPlacesMemory() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = all_rounds()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func all_rounds(): Long {
+    return sum_rounds(1000000)
+}
+
+func sum_rounds(rounds: Integer): Long {
+    var total: Long = 0
+    var round = 0
+    while round < rounds {
+        var squares = sum_of_squares(32, round % 1000)
+        total = total + squares
+        round = round + 1
+    }
+    return total
+}
+
+func sum_of_squares(count: Integer, offset: Integer): Long {
+    var squares = List<Long>()
+    var index = 0
+    while index < count {
+        var value: Long = index + offset
+        squares.append(value * value)
+        index = index + 1
+    }
+    var total: Long = 0
+    index = 0
+    while index < squares.count() {
+        total = total + squares[index]
+        index = index + 1
+    }
+    return total
+}

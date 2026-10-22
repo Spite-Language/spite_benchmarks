@@ -1,0 +1,32 @@
+type Voice {
+    render()
+}
+
+var clock = Clock()
+var console = Console()
+var sine = Sine()
+var square = Square()
+var saw = Saw()
+var voices = List<Voice>()
+
+func ALoopOverAListOfDifferentClassesRunsThemAtOnce() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    add_voices()
+    var started = clock.elapsed_nanoseconds()
+    render_all()
+    var finished = clock.elapsed_nanoseconds()
+    console.print(sine.level, square.level, saw.level)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func add_voices() {
+    voices.append(sine)
+    voices.append(square)
+    voices.append(saw)
+}
+
+func render_all() {
+    voices.each_render()
+}

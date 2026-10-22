@@ -1,0 +1,61 @@
+var clock = Clock()
+var console = Console()
+var by_name = Dictionary<String, Integer>()
+
+func ADictionaryHashesAKeyOnceCheaply() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = index_and_look_up()
+    var finished = clock.elapsed_nanoseconds()
+    var entries = by_name.count()
+    console.print("total", answer, "entries", entries)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func index_and_look_up(): Long {
+    var names = make_names(5000)
+    by_name = index_names(names)
+    return look_up(names, by_name)
+}
+
+func make_names(count: Integer): List<String> {
+    var names = List<String>()
+    var index = 0
+    while index < count {
+        names.append("entity_{index}")
+        index = index + 1
+    }
+    return names
+}
+
+func index_names(names: List<String>): Dictionary<String, Integer> {
+    var by_name = Dictionary<String, Integer>()
+    var index = 0
+    while index < names.count() {
+        var name = names[index]
+        by_name[name] = index * 3
+        index = index + 1
+    }
+    return by_name
+}
+
+func look_up(names: List<String>, by_name: Dictionary<String, Integer>): Long {
+    var total: Long = 0
+    var round = 0
+    while round < 20 {
+        var index = 0
+        while index < 100000 {
+            var position = (index * 7 + round) % 5000
+            crash names[position]
+            var name = names[position]
+            if by_name[name] {
+                total = total + by_name[name]
+            }
+            index = index + 1
+        }
+        round = round + 1
+    }
+    return total
+}

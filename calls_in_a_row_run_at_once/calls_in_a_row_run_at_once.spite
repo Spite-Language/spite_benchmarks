@@ -1,0 +1,20 @@
+var clock = Clock()
+var console = Console()
+var evens = Evens()
+var odds = Odds()
+
+func CallsInARowRunAtOnce() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    count_both()
+    var finished = clock.elapsed_nanoseconds()
+    console.print(evens.total, odds.total)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func count_both() {
+    evens.count()
+    odds.count()
+}

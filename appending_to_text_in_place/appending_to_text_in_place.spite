@@ -1,0 +1,35 @@
+var clock = Clock()
+var console = Console()
+
+func AppendingToTextInPlace() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = all_words()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("characters", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func all_words(): Integer {
+    var total = 0
+    var round = 0
+    while round < 8 {
+        var text = words(10000)
+        total = total + text.length()
+        round = round + 1
+    }
+    return total
+}
+
+func words(count: Integer): String {
+    var text = ""
+    var piece = "word "
+    var index = 0
+    while index < count {
+        text = text + piece
+        index = index + 1
+    }
+    return text
+}

@@ -1,0 +1,41 @@
+var clock = Clock()
+var console = Console()
+
+func DefaultsTheConstructorReplacesAreNeverMade() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = every_round()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func every_round(): Long {
+    return all_rounds(10)
+}
+
+func all_rounds(rounds: Integer): Long {
+    var total: Long = 0
+    var round = 0
+    while round < rounds {
+        var sum = one_round(round)
+        total = total + sum
+        round = round + 1
+    }
+    return total
+}
+
+func one_round(round: Integer): Integer {
+    var items = List<Item>()
+    var index = 0
+    while index < 50000 {
+        var owner = Owner((index + round) % 90)
+        var item = Item(index % 1000, owner)
+        items.append(item)
+        index = index + 1
+    }
+    var ages = items.map_owners().sum_age()
+    return items.sum_price() + ages
+}

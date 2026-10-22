@@ -1,0 +1,33 @@
+var clock = Clock()
+var console = Console()
+var built_length = 0
+var joined_length = 0
+
+func TextBuilding() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    build_texts()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("built", built_length, "joined", joined_length)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func build_texts() {
+    var built = ""
+    var index = 0
+    while index < 3000000 {
+        built = "{built}item {index},"
+        index = index + 1
+    }
+    var words = List<String>()
+    index = 0
+    while index < 1000000 {
+        words.append("word{index}")
+        index = index + 1
+    }
+    var joined = words.join(", ")
+    built_length = built.length()
+    joined_length = joined.length()
+}

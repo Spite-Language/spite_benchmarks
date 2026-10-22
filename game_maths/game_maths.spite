@@ -1,0 +1,68 @@
+var clock = Clock()
+var console = Console()
+var ended_at = Vector3<Float>(0.0, 0.0, 0.0)
+var combined = 0.0
+var transformed = 0.0
+
+func GameMaths() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    all_passes()
+    var finished = clock.elapsed_nanoseconds()
+    var ended_x: Long = ended_at.x * 1000.0
+    var ended_y: Long = ended_at.y * 1000.0
+    var ended_z: Long = ended_at.z * 1000.0
+    var diagonal: Long = combined * 1000000.0
+    var total: Long = transformed
+    console.print("ended at", ended_x, ended_y, ended_z, "diagonal", diagonal, "total", total)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func all_passes() {
+    ended_at = vector_pass()
+    combined = matrix_pass()
+    transformed = transform_pass()
+}
+
+func vector_pass(): Vector3<Float> {
+    var position = Vector3(0.0, 0.0, 0.0)
+    var velocity = Vector3(1.0, 0.5, 0.25)
+    var step = 0
+    while step < 1000000 {
+        var moved = velocity.scaled(0.001)
+        position = position + moved
+        step = step + 1
+    }
+    return position
+}
+
+func matrix_pass(): Float {
+    var turn = Quaternion<Float>()
+    var axis = Vector3(0.0, 1.0, 0.0)
+    turn.set_axis_angle(axis, 0.001)
+    var step_matrix = turn.to_matrix()
+    var accumulated = Matrix4<Float>()
+    var step = 0
+    while step < 200000 {
+        accumulated = accumulated * step_matrix
+        step = step + 1
+    }
+    return accumulated.column_0_row_0 + accumulated.column_1_row_1 + accumulated.column_2_row_2
+}
+
+func transform_pass(): Float {
+    var model = Matrix4<Float>()
+    var place = Vector3(1.0, 2.0, 3.0)
+    model.translation = place
+    var point = Vector3(0.5, 0.5, 0.5)
+    var total = 0.0
+    var step = 0
+    while step < 1000000 {
+        var moved = model.transform_point(point)
+        total = total + moved.x
+        step = step + 1
+    }
+    return total
+}

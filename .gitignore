@@ -1,0 +1,4 @@
+.spite/
+__pycache__/
+*.exe
+*.crashes

@@ -1,0 +1,56 @@
+var clock = Clock()
+var console = Console()
+var writer = BinaryWriter<Reading>()
+var reader = BinaryReader<Reading>()
+
+func ABinarySchemaIsAConstant() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = accepted_headers()
+    var finished = clock.elapsed_nanoseconds()
+    var sensor = sent_and_read_back(7)
+    console.print("accepted", answer, "sensor", sensor)
+    var schema = writer.schema()
+    console.print("schema", schema)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func accepted_headers(): Integer {
+    var headers = received_headers(200000)
+    var accepted = 0
+    var round = 0
+    while round < 10 {
+        accepted = accepted + headers.count(is_current)
+        round = round + 1
+    }
+    return accepted
+}
+
+func received_headers(count: Integer): List<Long> {
+    var headers = List<Long>()
+    var index = 0
+    while index < count {
+        var header = writer.schema()
+        if index % 10 == 0 {
+            header = index
+        }
+        headers.append(header)
+        index = index + 1
+    }
+    return headers
+}
+
+func is_current(header: Long): Boolean {
+    return header == reader.schema()
+}
+
+func sent_and_read_back(sensor: Integer): Integer {
+    var reading = Reading()
+    reading.sensor = sensor
+    var bytes = writer.write(reading)
+    var read = reader.read(bytes)
+    crash read
+    return read.sensor
+}

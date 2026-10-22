@@ -1,0 +1,42 @@
+var clock = Clock()
+var console = Console()
+var total: Long = 0
+var numbers = 0
+
+func AListsTemplatesReadItsElementsWithoutCountingThem() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    fill_and_simulate()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", total, "labels", numbers)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func fill_and_simulate() {
+    var bodies = List<Body>()
+    var labels = List<Label>()
+    var index = 0
+    while index < 200000 {
+        var body = Body(index % 5 + 1)
+        bodies.append(body)
+        var label = Label(index % 10)
+        labels.append(label)
+        index = index + 1
+    }
+    total = simulate(bodies)
+    numbers = labels.sum_number()
+}
+
+func simulate(bodies: List<Body>): Long {
+    var total: Long = 0
+    var round = 0
+    while round < 100 {
+        bodies.each_advance()
+        var positions = bodies.sum_position()
+        total = total + positions
+        round = round + 1
+    }
+    return total
+}

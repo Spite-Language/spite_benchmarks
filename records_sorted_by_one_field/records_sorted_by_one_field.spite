@@ -1,0 +1,50 @@
+var clock = Clock()
+var console = Console()
+var environment = Environment()
+var running: Long = 0
+var audits: Long = 0
+var first_id = 0
+var last_id = 0
+
+func RecordsSortedByOneField() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    sort_and_total()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("running", running, "audits", audits, "first", first_id, "last", last_id)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func sort_and_total() {
+    var orders = List<Order>()
+    var seed: Long = 3
+    var index = 0
+    while index < environment.orders {
+        seed = seed * 48271 % 2147483647
+        var order = Order(index, seed)
+        orders.append(order)
+        index = index + 1
+    }
+    var by_time = orders.sort_by_placed_at()
+    running = running_total(by_time)
+    audits = by_time.sum_audit()
+    var first = by_time.first()
+    var last = by_time.last()
+    crash first
+    crash last
+    first_id = first.id
+    last_id = last.id
+}
+
+func running_total(orders: List<Order>): Long {
+    var running: Long = 0
+    var index = 0
+    while index < orders.count() {
+        var order = orders[index]
+        running = (running * 31 + order.quantity * order.price) % 1000000007
+        index = index + 1
+    }
+    return running
+}

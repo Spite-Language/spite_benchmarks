@@ -1,0 +1,48 @@
+var clock = Clock()
+var console = Console()
+var sum: Long = 0
+var squares: Long = 0
+
+func DecidingConditionsAtCompileTime() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    measure_rounds()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("sum", sum, "squares", squares)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func measure_rounds() {
+    var values = make_values(1000000)
+    var plain = Meter<false>()
+    var squared = Meter<true>()
+    var round = 0
+    while round < 20 {
+        measure(values, plain, squared)
+        round = round + 1
+    }
+    sum = plain.total
+    squares = squared.total
+}
+
+func make_values(count: Integer): List<Integer> {
+    var values = List<Integer>()
+    var index = 0
+    while index < count {
+        values.append(index % 1000)
+        index = index + 1
+    }
+    return values
+}
+
+func measure(values: List<Integer>, plain: Meter<false>, squared: Meter<true>) {
+    var index = 0
+    while index < values.count() {
+        var value = values[index]
+        plain.add(value)
+        squared.add(value)
+        index = index + 1
+    }
+}

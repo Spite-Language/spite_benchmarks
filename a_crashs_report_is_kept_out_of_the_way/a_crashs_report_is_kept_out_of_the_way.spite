@@ -1,0 +1,51 @@
+var clock = Clock()
+var console = Console()
+
+func ACrashsReportIsKeptOutOfTheWay() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = fill_and_pick()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func fill_and_pick(): Long {
+    var values = List<Integer>()
+    var index = 0
+    while index < 1300 {
+        values.append(index * 7 % 1000)
+        index = index + 1
+    }
+    var picks = List<Integer>()
+    index = 0
+    while index < 100000 {
+        picks.append(index * 13 % 1000)
+        index = index + 1
+    }
+    return picked_total(values, picks)
+}
+
+func picked_total(values: List<Integer>, picks: List<Integer>): Long {
+    var total: Long = 0
+    var round = 0
+    while round < 300 {
+        total = total + round_total(values, picks, round)
+        round = round + 1
+    }
+    return total
+}
+
+func round_total(values: List<Integer>, picks: List<Integer>, round: Integer): Long {
+    var total: Long = 0
+    var index = 0
+    while index < picks.count() {
+        var pick = picks[index] + round
+        crash values[pick]
+        total = total + values[pick]
+        index = index + 1
+    }
+    return total
+}

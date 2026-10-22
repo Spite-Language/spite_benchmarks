@@ -1,0 +1,51 @@
+var clock = Clock()
+var console = Console()
+var points = List<Point>()
+var notes = List<Note>()
+var total: Long = 0
+var noted = 0
+
+func ObjectsOfOneClassSitTogether() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    make_and_sum()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", total, "notes", noted)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func make_and_sum() {
+    make_both(300000)
+    total = sum_points()
+    noted = notes.count()
+}
+
+func make_both(count: Integer) {
+    var index = 0
+    while index < count {
+        var point = Point(index % 1000, index % 30)
+        points.append(point)
+        var note = Note("made")
+        notes.append(note)
+        index = index + 1
+    }
+}
+
+func sum_points(): Long {
+    var total: Long = 0
+    var round = 0
+    while round < 30 {
+        var position = 0
+        while position < points.count() {
+            var point = points[position]
+            if point.down >= round {
+                total = total + point.across + point.down
+            }
+            position = position + 1
+        }
+        round = round + 1
+    }
+    return total
+}

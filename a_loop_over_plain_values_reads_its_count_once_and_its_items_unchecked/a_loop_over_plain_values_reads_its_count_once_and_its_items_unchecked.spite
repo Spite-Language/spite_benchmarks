@@ -1,0 +1,63 @@
+var clock = Clock()
+var console = Console()
+var from = List<Float>()
+var into = List<Float>()
+
+func ALoopOverPlainValuesReadsItsCountOnceAndItsItemsUnchecked() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    fill(100000)
+    var started = clock.elapsed_nanoseconds()
+    var answer = all_rounds()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total in quarters", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func fill(count: Integer) {
+    var index = 0
+    while index < count {
+        var value: Float = index % 7
+        from.append(value)
+        into.append(0.0)
+        index = index + 1
+    }
+}
+
+func all_rounds(): Long {
+    return rounds(from, into)
+}
+
+func rounds(from: List<Float>, into: List<Float>): Long {
+    var total: Long = 0
+    var round = 0
+    while round < 2000 {
+        var offset: Float = round % 4
+        offset = offset * 0.25
+        scale_list(from, into, offset)
+        var sum = add_up(into)
+        var quarters: Long = sum * 4.0
+        total = total + quarters
+        round = round + 1
+    }
+    return total
+}
+
+func scale_list(from: List<Float>, into: List<Float>, offset: Float) {
+    var index = 0
+    while index < from.count() {
+        into[index] = from[index] * 1.5 + offset
+        index = index + 1
+    }
+}
+
+func add_up(values: List<Float>): Float {
+    var total = 0.0
+    var index = 0
+    while index < values.count() {
+        total = total + values[index]
+        index = index + 1
+    }
+    return total
+}

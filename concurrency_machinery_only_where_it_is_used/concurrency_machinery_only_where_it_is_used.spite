@@ -1,0 +1,34 @@
+var clock = Clock()
+var console = Console()
+var characters_read = 0
+var removed = false
+
+func ConcurrencyMachineryOnlyWhereItIsUsed() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    write_read_and_remove()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("characters", characters_read, "removed", removed)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func write_read_and_remove() {
+    var notes = File(".spite/concurrency_machinery_notes.txt")
+    characters_read = write_and_read(notes, 50)
+    removed = notes.remove()
+}
+
+func write_and_read(notes: File, rounds: Integer): Integer {
+    var characters = 0
+    var round = 0
+    while round < rounds {
+        notes.write("round {round} of the notes")
+        var read = notes.read()
+        crash read
+        characters = characters + read.length()
+        round = round + 1
+    }
+    return characters
+}

@@ -1,0 +1,45 @@
+var clock = Clock()
+var console = Console()
+
+func AnItemsStorageIsChosenWhileCompiling() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = fill_and_tick()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func fill_and_tick(): Long {
+    var velocities = Column<Velocity>()
+    var trails = Column<Trail>()
+    fill(velocities, trails, 100000)
+    return ticks(velocities, trails)
+}
+
+func fill(velocities: Column<Velocity>, trails: Column<Trail>, count: Integer) {
+    var index = 0
+    while index < count {
+        var velocity = Velocity(index % 100, index % 7)
+        velocities.add(velocity)
+        var trail = Trail(index % 50, index % 5)
+        trails.add(trail)
+        index = index + 1
+    }
+}
+
+func ticks(velocities: Column<Velocity>, trails: Column<Trail>): Long {
+    var total: Long = 0
+    var tick = 0
+    while tick < 100 {
+        velocities.items.each_integrate()
+        trails.items.each_integrate()
+        var moved = velocities.items.sum_across()
+        var trailed = trails.items.sum_across()
+        total = total + moved + trailed
+        tick = tick + 1
+    }
+    return total
+}

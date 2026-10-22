@@ -1,0 +1,62 @@
+var clock = Clock()
+var console = Console()
+var environment = Environment()
+var recalculated_total: Long = 0
+var last_value: Long = 0
+var placements: Long = 0
+
+func SpreadsheetRecalculation() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    recalculate_all()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", recalculated_total, "last", last_value, "placements", placements)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func recalculate_all() {
+    var cells = List<Cell>()
+    var seed: Long = 5
+    var index = 0
+    while index < environment.cells {
+        seed = seed * 48271 % 2147483647
+        var cell = Cell(index, seed)
+        cells.append(cell)
+        index = index + 1
+    }
+    var total: Long = 0
+    var round = 0
+    while round < 20 {
+        edit(cells, round)
+        recalculate(cells)
+        var values = cells.sum_value()
+        total = total + values
+        round = round + 1
+    }
+    placements = cells.sum_placement()
+    var last = cells.last()
+    crash last
+    recalculated_total = total
+    last_value = last.value
+}
+
+func edit(cells: List<Cell>, round: Integer) {
+    var edited = round * 7919 % cells.count() / 10 * 10
+    crash cells[edited]
+    cells[edited].constant = round + 1
+}
+
+func recalculate(cells: List<Cell>) {
+    var index = 0
+    while index < cells.count() {
+        var cell = cells[index]
+        crash cells[cell.first]
+        crash cells[cell.second]
+        var left = cells[cell.first].value
+        var right = cells[cell.second].value
+        cell.value = cell.computed(left, right)
+        index = index + 1
+    }
+}

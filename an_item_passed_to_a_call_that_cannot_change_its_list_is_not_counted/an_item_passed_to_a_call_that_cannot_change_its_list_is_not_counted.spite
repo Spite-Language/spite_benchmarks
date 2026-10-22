@@ -1,0 +1,19 @@
+var clock = Clock()
+var console = Console()
+var playlist: Playlist = null
+
+func AnItemPassedToACallThatCannotChangeItsListIsNotCounted() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    playlist = Playlist()
+    var started = clock.elapsed_nanoseconds()
+    var answer = listen_to_all()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func listen_to_all(): Integer {
+    return playlist.listen(10000000)
+}

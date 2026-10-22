@@ -1,0 +1,44 @@
+var clock = Clock()
+var console = Console()
+
+func ALocalListOfKnownSizeLivesInTheFrame() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = every_round()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func every_round(): Long {
+    return all_rounds(10000000)
+}
+
+func all_rounds(rounds: Integer): Long {
+    var total: Long = 0
+    var round = 0
+    while round < rounds {
+        var biggest = largest_remainder(round)
+        total = total + biggest
+        round = round + 1
+    }
+    return total
+}
+
+func largest_remainder(round: Integer): Integer {
+    var remainders = [round % 10, round % 7, round % 13, round % 3]
+    var weights = [4, 3, 2, 1]
+    var biggest = 0
+    var index = 0
+    while index < remainders.count() {
+        crash weights[index]
+        var weighted = remainders[index] * weights[index]
+        if weighted > biggest {
+            biggest = weighted
+        }
+        index = index + 1
+    }
+    return biggest
+}

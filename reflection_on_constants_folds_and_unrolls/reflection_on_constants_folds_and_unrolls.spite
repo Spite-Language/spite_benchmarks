@@ -1,0 +1,60 @@
+var clock = Clock()
+var console = Console()
+var running = 0
+
+func ReflectionOnConstantsFoldsAndUnrolls() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = all_rounds()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func all_rounds(): Long {
+    var party = make_party(200000)
+    var total: Long = 0
+    var round = 0
+    while round < 40 {
+        total = total + party_total(party)
+        round = round + 1
+    }
+    return total
+}
+
+func make_party(count: Integer): List<Stats> {
+    var party = List<Stats>()
+    var index = 0
+    while index < count {
+        var stats = Stats(index)
+        party.append(stats)
+        index = index + 1
+    }
+    return party
+}
+
+func party_total(party: List<Stats>): Long {
+    var total: Long = 0
+    var index = 0
+    while index < party.count() {
+        var stats = party[index]
+        var points = total_of(stats)
+        total = total + points
+        index = index + 1
+    }
+    return total
+}
+
+func total_of(stats: Stats): Integer {
+    running = 0
+    stats.attributes.each(add_attribute)
+    return running
+}
+
+func add_attribute(attribute: Spite.Attribute) {
+    if attribute.class == Integer {
+        running = running + attribute.value
+    }
+}

@@ -1,0 +1,56 @@
+var clock = Clock()
+var console = Console()
+
+func ADeepCopyIsWrittenPerClassWithATableOnlyWhereAGraphNeedsOne() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = make_and_copy()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func make_and_copy(): Long {
+    var orders = make_orders(5000)
+    return copy_rounds(orders)
+}
+
+func make_orders(count: Integer): List<Order> {
+    var orders = List<Order>()
+    var index = 0
+    while index < count {
+        var customer = Customer("customer {index % 300}", index % 5)
+        var order = Order(index, customer)
+        add_lines(order, index)
+        orders.append(order)
+        index = index + 1
+    }
+    return orders
+}
+
+func add_lines(order: Order, index: Integer) {
+    var line_index = 0
+    while line_index < 4 {
+        var line = Line(line_index + 1, index % 97 + line_index)
+        order.lines.append(line)
+        line_index = line_index + 1
+    }
+}
+
+func copy_rounds(orders: List<Order>): Long {
+    var total: Long = 0
+    var round = 0
+    while round < 40 {
+        var copies = orders.deep_copy()
+        var first = copies[0]
+        if first {
+            first.id = first.id + 3
+        }
+        var value = copies.sum_value()
+        total = total + value
+        round = round + 1
+    }
+    return total
+}

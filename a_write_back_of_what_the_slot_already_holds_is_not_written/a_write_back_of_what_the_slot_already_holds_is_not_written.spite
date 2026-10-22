@@ -1,0 +1,31 @@
+var clock = Clock()
+var console = Console()
+var desk = Desk()
+var total = 0
+
+func AWriteBackOfWhatTheSlotAlreadyHoldsIsNotWritten() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    desk.stock(100000)
+    var started = clock.elapsed_nanoseconds()
+    edit_every_page()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("words", total)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func edit_every_page() {
+    var round = 0
+    while round < 100 {
+        var index = 0
+        while index < 100000 {
+            desk.take(index)
+            desk.open.words = desk.open.words + 1
+            desk.put_back()
+            index = index + 1
+        }
+        round = round + 1
+    }
+    total = desk.total()
+}

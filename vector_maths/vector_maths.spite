@@ -1,0 +1,34 @@
+var clock = Clock()
+var console = Console()
+var checksum: Long = 0
+var ended: Long = 0
+
+func VectorMaths() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    steps()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("checksum", checksum, "ended at", ended)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func steps() {
+    var position = Vector3<Float>(0.0, 0.0, 0.0)
+    var velocity = Vector3<Float>(1.0, 0.5, 0.25)
+    var axis = Vector3<Float>(0.0, 1.0, 0.0)
+    var total = 0.0
+    var step = 0
+    while step < 5000000 {
+        var moved = velocity.scaled(0.001)
+        position = position + moved
+        var turned = velocity.cross(axis)
+        var nudged = velocity + turned.scaled(0.0001)
+        velocity = nudged.normalized()
+        total = total + position.dot(velocity)
+        step = step + 1
+    }
+    checksum = total
+    ended = position.length() * 1000.0
+}

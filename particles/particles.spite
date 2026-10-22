@@ -1,0 +1,41 @@
+var clock = Clock()
+var console = Console()
+var height_checksum: Long = 0
+var spread_checksum: Long = 0
+
+func Particles() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    simulate()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("height", height_checksum, "spread", spread_checksum)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func simulate() {
+    var particles = Vector<Particle>()
+    var index = 0
+    while index < 100000 {
+        var particle = Particle(index)
+        particles.append(particle)
+        index = index + 1
+    }
+    var tick = 0
+    while tick < 300 {
+        particles.each_step()
+        tick = tick + 1
+    }
+    var height = 0.0
+    var spread = 0.0
+    index = 0
+    while index < particles.count() {
+        var particle = particles[index]
+        height = height + particle.position_y
+        spread = spread + particle.position_x + particle.position_z
+        index = index + 1
+    }
+    height_checksum = height
+    spread_checksum = spread
+}

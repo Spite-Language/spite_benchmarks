@@ -1,0 +1,53 @@
+var clock = Clock()
+var console = Console()
+var by_number = Dictionary<Integer, Integer>()
+
+func ADictionaryKeyedByNumbersHashesTheNumbers() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = make_and_look_up()
+    var finished = clock.elapsed_nanoseconds()
+    var entries = by_number.count()
+    console.print("total", answer, "entries", entries)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func make_and_look_up(): Long {
+    by_number = make_table(100000)
+    return look_up(by_number, 100000)
+}
+
+func key_of(index: Integer): Integer {
+    return index * 7919 % 1000003
+}
+
+func make_table(count: Integer): Dictionary<Integer, Integer> {
+    var by_number = Dictionary<Integer, Integer>()
+    var index = 0
+    while index < count {
+        var key = key_of(index)
+        by_number[key] = index * 2
+        index = index + 1
+    }
+    return by_number
+}
+
+func look_up(by_number: Dictionary<Integer, Integer>, count: Integer): Long {
+    var total: Long = 0
+    var round = 0
+    while round < 40 {
+        var index = 0
+        while index < count {
+            var key = key_of(index + round)
+            var found = by_number[key]
+            if found {
+                total = total + found
+            }
+            index = index + 1
+        }
+        round = round + 1
+    }
+    return total
+}

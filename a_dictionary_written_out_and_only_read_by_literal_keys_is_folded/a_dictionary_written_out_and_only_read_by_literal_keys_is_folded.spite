@@ -1,0 +1,48 @@
+var clock = Clock()
+var console = Console()
+
+func ADictionaryWrittenOutAndOnlyReadByLiteralKeysIsFolded() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = fill_and_total()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("points", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func fill_and_total(): Long {
+    var results = List<Result>()
+    var index = 0
+    while index < 200000 {
+        var result = Result(index % 4, index % 7, index % 11)
+        results.append(result)
+        index = index + 1
+    }
+    return totals(results)
+}
+
+func totals(results: List<Result>): Long {
+    var total: Long = 0
+    var round = 0
+    while round < 40 {
+        var index = 0
+        while index < results.count() {
+            var result = results[index]
+            var points = points_for(result)
+            total = total + points
+            index = index + 1
+        }
+        round = round + 1
+    }
+    return total
+}
+
+func points_for(result: Result): Integer {
+    var points = {"gold": 50, "silver": 20, "bronze": 5}
+    crash points["gold"]
+    crash points["silver"]
+    crash points["bronze"]
+    return result.golds * points["gold"] + result.silvers * points["silver"] + result.bronzes * points["bronze"]
+}

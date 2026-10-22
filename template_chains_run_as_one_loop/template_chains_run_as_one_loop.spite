@@ -1,0 +1,37 @@
+var clock = Clock()
+var console = Console()
+
+func TemplateChainsRunAsOneLoop() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = build_and_total()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func build_and_total(): Long {
+    var items = List<Item>()
+    var index = 0
+    while index < 100000 {
+        var owner = Owner(index % 90)
+        var item = Item(index % 1000, index % 3 != 0, owner)
+        items.append(item)
+        index = index + 1
+    }
+    return totals(items)
+}
+
+func totals(items: List<Item>): Long {
+    var total: Long = 0
+    var round = 0
+    while round < 100 {
+        var prices = items.filter_is_active().sum_price()
+        var ages = items.filter_is_active().map_owners().filter_is_adult().sum_age()
+        total = total + prices + ages
+        round = round + 1
+    }
+    return total
+}

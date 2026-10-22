@@ -1,0 +1,45 @@
+var clock = Clock()
+var console = Console()
+var entries = List<Entry>()
+var found = 0
+var keys = 0
+
+func AListItemReadOnlyToTestItIsNotCounted() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    fill_and_probe()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("found", found, "keys", keys)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func fill_and_probe() {
+    var index = 0
+    while index < 200000 {
+        var made = Entry(index % 1000)
+        entries.append(made)
+        index = index + 1
+    }
+    found = probe(20000000)
+    keys = entries.sum_key()
+}
+
+func probe(probes: Integer): Integer {
+    var found = 0
+    var missing = 0
+    var at = 0
+    var index = 0
+    while index < probes {
+        at = (at + 7919) % 400000
+        if entries[at] {
+            found = found + 1
+        } else {
+            missing = missing + 1
+        }
+        index = index + 1
+    }
+    crash found + missing == probes
+    return found
+}

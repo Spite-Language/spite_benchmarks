@@ -1,0 +1,47 @@
+var clock = Clock()
+var console = Console()
+var mover = Mover()
+
+func ReadingThroughATypeWithoutCounting() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = move_all()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func move_all(): Long {
+    var positions = Vector<Position>()
+    var velocities = Vector<Velocity>()
+    fill(positions, velocities, 100000)
+    ticks(positions, velocities)
+    return positions.sum_place()
+}
+
+func fill(positions: Vector<Position>, velocities: Vector<Velocity>, count: Integer) {
+    var index = 0
+    while index < count {
+        var position = Position()
+        positions.append(position)
+        var velocity = Velocity(index % 13 - 6, index % 7 - 3)
+        velocities.append(velocity)
+        index = index + 1
+    }
+}
+
+func ticks(positions: Vector<Position>, velocities: Vector<Velocity>) {
+    var tick = 0
+    while tick < 200 {
+        var index = 0
+        while index < positions.count() {
+            crash velocities[index]
+            var moving = {position: positions[index], velocity: velocities[index]}
+            mover.advance(moving, tick % 3)
+            index = index + 1
+        }
+        tick = tick + 1
+    }
+}

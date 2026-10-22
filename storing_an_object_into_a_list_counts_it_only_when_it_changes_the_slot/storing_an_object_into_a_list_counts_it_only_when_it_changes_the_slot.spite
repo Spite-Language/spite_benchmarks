@@ -1,0 +1,21 @@
+var clock = Clock()
+var console = Console()
+var rack = Rack()
+var changed = 0
+var total = 0
+
+func StoringAnObjectIntoAListCountsItOnlyWhenItChangesTheSlot() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    restock_and_total()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("changed", changed, "total", total)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func restock_and_total() {
+    changed = rack.restock(10000000)
+    total = rack.total()
+}

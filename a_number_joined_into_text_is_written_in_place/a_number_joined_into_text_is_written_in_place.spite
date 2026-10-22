@@ -1,0 +1,34 @@
+var clock = Clock()
+var console = Console()
+
+func ANumberJoinedIntoTextIsWrittenInPlace() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = all_lines()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("characters", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func all_lines(): Long {
+    var total: Long = 0
+    var round = 0
+    while round < 20 {
+        total = total + lines(100000, round)
+        round = round + 1
+    }
+    return total
+}
+
+func lines(count: Integer, round: Integer): Integer {
+    var total = 0
+    var index = 0
+    while index < count {
+        var line = "line {index} of {round};"
+        total = total + line.length()
+        index = index + 1
+    }
+    return total
+}

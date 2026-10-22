@@ -1,0 +1,22 @@
+var clock = Clock()
+var console = Console()
+
+func AnArgumentItsCallerHoldsIsPassedWithoutCounting() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = stream_all()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func stream_all(): Integer {
+    return stream_on_the_pool(3000000)
+}
+
+func stream_on_the_pool(entity_count: Integer): Integer {
+    var stream = Stream(entity_count)
+    return Parallel(stream.run)
+}

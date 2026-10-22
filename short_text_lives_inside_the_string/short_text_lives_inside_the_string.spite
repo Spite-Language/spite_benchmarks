@@ -1,0 +1,51 @@
+var clock = Clock()
+var console = Console()
+
+func ShortTextLivesInsideTheString() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = all_rounds()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func all_rounds(): Long {
+    return rounds(20)
+}
+
+func rounds(count: Integer): Long {
+    var total: Long = 0
+    var round = 0
+    while round < count {
+        var labels = make_labels(100000, round)
+        var sum = checksum(labels)
+        total = total + sum
+        round = round + 1
+    }
+    return total
+}
+
+func make_labels(count: Integer, round: Integer): List<String> {
+    var labels = List<String>()
+    var index = 0
+    while index < count {
+        labels.append("r{round} n{index}")
+        index = index + 1
+    }
+    return labels
+}
+
+func checksum(labels: List<String>): Integer {
+    var total = 0
+    var index = 0
+    while index < labels.count() {
+        var label = labels[index]
+        var last = label.length() - 1
+        total = total + label.length() + label.code_at(last)
+        index = index + 1
+    }
+    return total
+}

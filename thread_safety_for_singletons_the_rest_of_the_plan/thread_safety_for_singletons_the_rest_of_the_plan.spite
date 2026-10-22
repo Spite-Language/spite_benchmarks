@@ -1,0 +1,33 @@
+var clock = Clock()
+var console = Console()
+var log = EventLog()
+var logged = 0
+var count = 0
+
+func ThreadSafetyForSingletonsTheRestOfThePlan() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    log_and_count()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("logged", logged, "entries", count)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func log_and_count() {
+    logged = log_on_four(250000)
+    count = log.count()
+}
+
+func log_on_four(rounds: Integer): Integer {
+    var first = Logger(rounds, 1)
+    var first_run = Parallel(first.log_all)
+    var second = Logger(rounds, 2)
+    var second_run = Parallel(second.log_all)
+    var third = Logger(rounds, 3)
+    var third_run = Parallel(third.log_all)
+    var fourth = Logger(rounds, 4)
+    var fourth_run = Parallel(fourth.log_all)
+    return first_run + second_run + third_run + fourth_run
+}

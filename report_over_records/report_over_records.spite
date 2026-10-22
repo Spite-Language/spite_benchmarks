@@ -1,0 +1,65 @@
+var clock = Clock()
+var console = Console()
+var environment = Environment()
+var units: Long = 0
+var by_cell: Long = 0
+var fingerprints: Long = 0
+var first_customer = 0
+
+func ReportOverRecords() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    report()
+    var finished = clock.elapsed_nanoseconds()
+    console.print(
+        "units",
+        units,
+        "by region and quarter",
+        by_cell,
+        "fingerprints",
+        fingerprints,
+        "first",
+        first_customer,
+    )
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func report() {
+    var sales = List<Sale>()
+    var seed: Long = 42
+    var index = 0
+    while index < environment.records {
+        seed = seed * 48271 % 2147483647
+        var sale = Sale(seed)
+        sales.append(sale)
+        index = index + 1
+    }
+    units = sales.sum_quantity()
+    var cell = 0
+    while cell < 64 {
+        var region = cell / 4
+        var quarter = cell % 4
+        var profit = profit_of(sales, region, quarter)
+        by_cell = by_cell + profit * (cell + 1)
+        cell = cell + 1
+    }
+    fingerprints = sales.sum_fingerprint()
+    crash sales[0]
+    var first = sales[0]
+    first_customer = first.customer
+}
+
+func profit_of(sales: List<Sale>, region: Integer, quarter: Integer): Long {
+    var profit: Long = 0
+    var index = 0
+    while index < sales.count() {
+        var sale = sales[index]
+        if sale.region == region and sale.day / 92 == quarter {
+            profit = profit + sale.quantity * (sale.price - sale.cost)
+        }
+        index = index + 1
+    }
+    return profit
+}

@@ -1,0 +1,25 @@
+var clock = Clock()
+var console = Console()
+
+func TheThreadPoolOnlyWhereAParallelIsMade() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = sum_all()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func sum_all(): Long {
+    return sum_on_two(20000000)
+}
+
+func sum_on_two(limit: Integer): Long {
+    var evens = Summer(limit, 0)
+    var even_sum = Parallel(evens.total)
+    var odds = Summer(limit, 1)
+    var odd_sum = odds.total()
+    return even_sum + odd_sum
+}

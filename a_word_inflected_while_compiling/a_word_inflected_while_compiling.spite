@@ -1,0 +1,36 @@
+var clock = Clock()
+var console = Console()
+
+func AWordInflectedWhileCompiling() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = all_characters()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("characters", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func all_characters(): Long {
+    return characters(1000000)
+}
+
+func characters(count: Integer): Long {
+    var total: Long = 0
+    var index = 0
+    while index < count {
+        var shown = label(index % 50)
+        total = total + shown.length()
+        index = index + 1
+    }
+    return total
+}
+
+func label(count: Integer): String {
+    if count == 1 {
+        return "1 cactus"
+    }
+    var plural = "cactus".pluralize()
+    return "{count} {plural}"
+}

@@ -1,0 +1,63 @@
+var clock = Clock()
+var console = Console()
+var mover = Mover()
+var healer = Healer()
+var positions = Vector<Position>()
+var velocities = Vector<Velocity>()
+var healths = Vector<Health>()
+var regenerations = Vector<Regeneration>()
+var places: Long = 0
+var amounts = 0
+
+func ARowOfBorrowedItemsLivesInTheFrame() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    spawn_and_tick()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("places", places, "health", amounts)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func spawn_and_tick() {
+    spawn_all(100000)
+    run_ticks(100)
+    places = positions.sum_place()
+    amounts = healths.sum_amount()
+}
+
+func spawn_all(count: Integer) {
+    var entity = 0
+    while entity < count {
+        var position = Position()
+        positions.append(position)
+        var velocity = Velocity(entity % 13 - 6, entity % 7 - 3)
+        velocities.append(velocity)
+        var health = Health()
+        healths.append(health)
+        var regeneration = Regeneration(entity % 4)
+        regenerations.append(regeneration)
+        entity = entity + 1
+    }
+}
+
+func run_ticks(count: Integer) {
+    var tick = 0
+    while tick < count {
+        tick_once()
+        tick = tick + 1
+    }
+}
+
+func tick_once() {
+    var entity = 0
+    while entity < positions.count() {
+        crash velocities[entity] and healths[entity] and regenerations[entity]
+        var moving = {position: positions[entity], velocity: velocities[entity]}
+        mover.update_each(moving)
+        var mending = {health: healths[entity], regeneration: regenerations[entity]}
+        healer.update_each(mending)
+        entity = entity + 1
+    }
+}

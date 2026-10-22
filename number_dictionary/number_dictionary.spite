@@ -1,0 +1,43 @@
+var clock = Clock()
+var console = Console()
+var entries = 0
+var found_keys = 0
+var found_total: Long = 0
+
+func NumberDictionary() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    fill_and_look_up()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("entries", entries, "found", found_keys, "total", found_total)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func fill_and_look_up() {
+    var scores = Dictionary<Integer, Integer>()
+    var index = 0
+    while index < 500000 {
+        scores[index * 7] = index
+        index = index + 1
+    }
+    var total: Long = 0
+    var found = 0
+    var round = 0
+    while round < 10 {
+        index = 0
+        while index < 500000 {
+            var key = index * 3
+            if scores[key] {
+                total = total + scores[key]
+                found = found + 1
+            }
+            index = index + 1
+        }
+        round = round + 1
+    }
+    entries = scores.count()
+    found_keys = found
+    found_total = total
+}

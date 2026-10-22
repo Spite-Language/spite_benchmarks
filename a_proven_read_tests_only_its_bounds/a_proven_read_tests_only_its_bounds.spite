@@ -1,0 +1,67 @@
+var clock = Clock()
+var console = Console()
+var values = List<Integer>()
+
+func AProvenReadTestsOnlyItsBounds() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    fill(100000)
+    var started = clock.elapsed_nanoseconds()
+    var answer = all_rounds()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func fill(count: Integer) {
+    var index = 0
+    while index < count {
+        values.append(index * 37 % 101)
+        index = index + 1
+    }
+}
+
+func all_rounds(): Long {
+    return rounds(values)
+}
+
+func rounds(values: List<Integer>): Long {
+    var total: Long = 0
+    var round = 0
+    while round < 300 {
+        var weight = round % 3 + 1
+        var windows = window_total(values, weight)
+        var threshold = round % 50
+        var rises = rise_count(values, threshold)
+        total = total + windows + rises
+        round = round + 1
+    }
+    return total
+}
+
+func window_total(values: List<Integer>, weight: Integer): Integer {
+    var total = 0
+    var at = 0
+    while at + 2 < values.count() {
+        total = total + values[at] * weight + values[at + 1] + values[at + 2]
+        at = at + 1
+    }
+    return total
+}
+
+func rise_count(values: List<Integer>, threshold: Integer): Integer {
+    var count = values.count()
+    var rises = 0
+    var previous = 0
+    var index = 0
+    while index < count {
+        var value = values[index]
+        if value - previous > threshold {
+            rises = rises + 1
+        }
+        previous = value
+        index = index + 1
+    }
+    return rises
+}

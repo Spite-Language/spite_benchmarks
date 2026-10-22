@@ -1,0 +1,38 @@
+var clock = Clock()
+var console = Console()
+var tally = Tally()
+var first = 0
+var reached = 0
+var total: Long = 0
+var calls = 0
+
+func WhileNoTaskRunsASingletonsLockIsSkipped() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    add_all()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("first", first, "reached", reached, "calls", calls, "total", total)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func add_all() {
+    first = add_on_the_pool()
+    reached = add_many(10000000)
+    total = tally.sum()
+    calls = tally.call_count()
+}
+
+func add_on_the_pool(): Integer {
+    var worker = Worker()
+    return Parallel(worker.run)
+}
+
+func add_many(count: Integer): Integer {
+    var index = 0
+    while index < count {
+        index = tally.add(index)
+    }
+    return index
+}

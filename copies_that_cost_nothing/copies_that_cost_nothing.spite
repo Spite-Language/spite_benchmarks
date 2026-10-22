@@ -1,0 +1,31 @@
+var clock = Clock()
+var console = Console()
+var origin = Point(0, 0)
+
+func CopiesThatCostNothing() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    var started = clock.elapsed_nanoseconds()
+    var answer = every_trial()
+    var finished = clock.elapsed_nanoseconds()
+    console.print("total", answer, "origin", origin.x, origin.y)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func every_trial(): Long {
+    origin = Point(3, -4)
+    return all_trials(origin, 20000000)
+}
+
+func all_trials(origin: Point, trials: Integer): Long {
+    var total: Long = 0
+    var trial = 0
+    while trial < trials {
+        var moved = origin.copy()
+        moved.move_by(trial % 7 - 3, trial % 5 - 2)
+        total = total + moved.distance_from_origin()
+        trial = trial + 1
+    }
+    return total
+}

@@ -1,0 +1,32 @@
+type Track {
+    render()
+}
+
+var clock = Clock()
+var console = Console()
+var drum = Drum()
+var bass = Bass()
+var tracks = List<Track>()
+
+func ObjectsMadeForTheirOwnerAreToldApart() {
+    load "../../SpiteCompiler/.spite/library/common"
+    load "../../SpiteCompiler/.spite/library/windows"
+    add_tracks()
+    var started = clock.elapsed_nanoseconds()
+    render_all()
+    var finished = clock.elapsed_nanoseconds()
+    var drum_loud = drum.meter.loud.count()
+    var bass_loud = bass.meter.loud.count()
+    console.print(drum.meter.total, drum.meter.peak, drum_loud, bass.meter.total, bass.meter.peak, bass_loud)
+    var microseconds = (finished - started) / 1000
+    console.error("microseconds {microseconds}")
+}
+
+func add_tracks() {
+    tracks.append(drum)
+    tracks.append(bass)
+}
+
+func render_all() {
+    tracks.each_render()
+}

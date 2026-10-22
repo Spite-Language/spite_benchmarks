@@ -42,8 +42,8 @@ static Vector3 normalized(Vector3 vector) {
     if (squared == 0.0) {
         return vector3(0.0, 0.0, 0.0);
     }
-    float inverse_length = 1.0 / sqrtf(squared);
-    return vector3(vector.x * inverse_length, vector.y * inverse_length, vector.z * inverse_length);
+    float size = sqrtf(squared);
+    return vector3(vector.x / size, vector.y / size, vector.z / size);
 }
 
 int main(void) {
@@ -61,7 +61,7 @@ int main(void) {
         total = total + dot(position, velocity);
     }
     int64_t checksum = (int64_t)total;
-    int64_t ended = (int64_t)(length(position) * 1000.0);
+    int64_t ended = (int64_t)(length(position) * 1000.0f);
     int64_t microseconds = microseconds_since(start);
     printf("checksum %lld ended at %lld\n", (long long)checksum, (long long)ended);
     print_microseconds(microseconds);

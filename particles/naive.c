@@ -16,13 +16,13 @@ typedef struct Particle {
 } Particle;
 
 static void step(Particle* particle) {
-    particle->velocity_y = particle->velocity_y - 9.8 * 0.016;
-    particle->position_x = particle->position_x + particle->velocity_x * 0.016;
-    particle->position_y = particle->position_y + particle->velocity_y * 0.016;
-    particle->position_z = particle->position_z + particle->velocity_z * 0.016;
-    if (particle->position_y < 0.0) {
+    particle->velocity_y = particle->velocity_y - (float)(9.8 * 0.016);
+    particle->position_x = particle->position_x + particle->velocity_x * 0.016f;
+    particle->position_y = particle->position_y + particle->velocity_y * 0.016f;
+    particle->position_z = particle->position_z + particle->velocity_z * 0.016f;
+    if (particle->position_y < 0.0f) {
         particle->position_y = -particle->position_y;
-        particle->velocity_y = -particle->velocity_y * 0.8;
+        particle->velocity_y = -particle->velocity_y * 0.8f;
     }
 }
 

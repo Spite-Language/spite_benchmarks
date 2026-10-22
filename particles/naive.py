@@ -20,14 +20,19 @@ class Particle:
         self.velocity_z = 0.0
 
 
+FALL = f32(9.8 * 0.016)
+TICK = f32(0.016)
+BOUNCE = f32(0.8)
+
+
 def step(particle):
-    particle.velocity_y = f32(particle.velocity_y - 9.8 * 0.016)
-    particle.position_x = f32(particle.position_x + particle.velocity_x * 0.016)
-    particle.position_y = f32(particle.position_y + particle.velocity_y * 0.016)
-    particle.position_z = f32(particle.position_z + particle.velocity_z * 0.016)
+    particle.velocity_y = f32(particle.velocity_y - FALL)
+    particle.position_x = f32(particle.position_x + f32(particle.velocity_x * TICK))
+    particle.position_y = f32(particle.position_y + f32(particle.velocity_y * TICK))
+    particle.position_z = f32(particle.position_z + f32(particle.velocity_z * TICK))
     if particle.position_y < 0.0:
         particle.position_y = -particle.position_y
-        particle.velocity_y = f32(-particle.velocity_y * 0.8)
+        particle.velocity_y = f32(-particle.velocity_y * BOUNCE)
 
 
 def main():

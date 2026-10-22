@@ -25,15 +25,15 @@ int main(void) {
             velocity_y = 0.0f;
             velocity_z = 0.0f;
         } else {
-            float inverse_length = 1.0 / sqrtf(squared);
-            velocity_x = nudged_x * inverse_length;
-            velocity_y = nudged_y * inverse_length;
-            velocity_z = nudged_z * inverse_length;
+            float size = sqrtf(squared);
+            velocity_x = nudged_x / size;
+            velocity_y = nudged_y / size;
+            velocity_z = nudged_z / size;
         }
         total = total + (position_x * velocity_x + position_y * velocity_y + position_z * velocity_z);
     }
     int64_t checksum = (int64_t)total;
-    int64_t ended = (int64_t)(sqrtf(position_x * position_x + position_y * position_y + position_z * position_z) * 1000.0);
+    int64_t ended = (int64_t)(sqrtf(position_x * position_x + position_y * position_y + position_z * position_z) * 1000.0f);
     int64_t microseconds = microseconds_since(start);
     printf("checksum %lld ended at %lld\n", (long long)checksum, (long long)ended);
     print_microseconds(microseconds);

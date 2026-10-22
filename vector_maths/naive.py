@@ -49,8 +49,8 @@ def normalized(vector):
     squared = squared_length(vector)
     if squared == 0.0:
         return Vector3(0.0, 0.0, 0.0)
-    inverse_length = f32(1.0 / f32(math.sqrt(squared)))
-    return Vector3(vector.x * inverse_length, vector.y * inverse_length, vector.z * inverse_length)
+    size = f32(math.sqrt(squared))
+    return Vector3(vector.x / size, vector.y / size, vector.z / size)
 
 
 def main():
@@ -67,7 +67,7 @@ def main():
         velocity = normalized(nudged)
         total = f32(total + dot(position, velocity))
     checksum = int(total)
-    ended = int(length(position) * 1000.0)
+    ended = int(f32(length(position) * f32(1000.0)))
     microseconds = (time.perf_counter_ns() - start) // 1000
     print(f"checksum {checksum} ended at {ended}")
     print(f"microseconds {microseconds}", file=sys.stderr)

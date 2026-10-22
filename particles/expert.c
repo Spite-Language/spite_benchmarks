@@ -11,12 +11,12 @@
 static void tick_all(float* restrict position_x, float* restrict position_y, float* restrict position_z,
                      const float* restrict velocity_x, float* restrict velocity_y, const float* restrict velocity_z) {
     for (int32_t index = 0; index < COUNT; index++) {
-        float fallen = velocity_y[index] - 9.8 * 0.016;
-        float y = position_y[index] + fallen * 0.016;
-        position_x[index] = position_x[index] + velocity_x[index] * 0.016;
-        position_z[index] = position_z[index] + velocity_z[index] * 0.016;
-        int bounced = y < 0.0;
-        float bounced_velocity = -fallen * 0.8;
+        float fallen = velocity_y[index] - (float)(9.8 * 0.016);
+        float y = position_y[index] + fallen * 0.016f;
+        position_x[index] = position_x[index] + velocity_x[index] * 0.016f;
+        position_z[index] = position_z[index] + velocity_z[index] * 0.016f;
+        int bounced = y < 0.0f;
+        float bounced_velocity = -fallen * 0.8f;
         position_y[index] = bounced ? -y : y;
         velocity_y[index] = bounced ? bounced_velocity : fallen;
     }

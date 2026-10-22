@@ -6,7 +6,6 @@ var recorded = 0
 var total: Long = 0
 
 func SingletonsAParallelReachesTakeALock() {
-    load "../../SpiteCompiler/.spite/library/common"
     load "../../SpiteCompiler/.spite/library/windows"
     var started = clock.elapsed_nanoseconds()
     record_and_count()

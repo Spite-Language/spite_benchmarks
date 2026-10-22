@@ -3,7 +3,6 @@ var console = Console()
 var records = Buffer(0)
 
 func ANumberReadFromBytesIsOneLoad() {
-    load "../../SpiteCompiler/.spite/library/common"
     load "../../SpiteCompiler/.spite/library/windows"
     fill(100000)
     var started = clock.elapsed_nanoseconds()

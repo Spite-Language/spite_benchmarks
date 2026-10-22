@@ -4,7 +4,6 @@ var first_file = File(".spite/reads_in_a_row_first.txt")
 var second_file = File(".spite/reads_in_a_row_second.txt")
 
 func ReadsInARowOverlap() {
-    load "../../SpiteCompiler/.spite/library/common"
     load "../../SpiteCompiler/.spite/library/windows"
     make_files()
     var started = clock.elapsed_nanoseconds()

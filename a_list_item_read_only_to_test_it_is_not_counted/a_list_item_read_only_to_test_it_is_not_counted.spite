@@ -5,7 +5,6 @@ var found = 0
 var keys = 0
 
 func AListItemReadOnlyToTestItIsNotCounted() {
-    load "../../SpiteCompiler/.spite/library/common"
     load "../../SpiteCompiler/.spite/library/windows"
     var started = clock.elapsed_nanoseconds()
     fill_and_probe()

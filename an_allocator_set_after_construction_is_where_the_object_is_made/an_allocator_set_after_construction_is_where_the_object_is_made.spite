@@ -2,7 +2,6 @@ var clock = Clock()
 var console = Console()
 
 func AnAllocatorSetAfterConstructionIsWhereTheObjectIsMade() {
-    load "../../SpiteCompiler/.spite/library/common"
     load "../../SpiteCompiler/.spite/library/windows"
     var started = clock.elapsed_nanoseconds()
     var answer = every_round()

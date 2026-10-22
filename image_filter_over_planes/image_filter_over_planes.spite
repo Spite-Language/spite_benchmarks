@@ -6,7 +6,6 @@ var bright = 0
 var weights: Long = 0
 
 func ImageFilterOverPlanes() {
-    load "../../SpiteCompiler/.spite/library/common"
     load "../../SpiteCompiler/.spite/library/windows"
     var started = clock.elapsed_nanoseconds()
     filter_image()

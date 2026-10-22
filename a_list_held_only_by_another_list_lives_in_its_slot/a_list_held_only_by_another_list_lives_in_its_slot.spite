@@ -6,7 +6,6 @@ var total: Long = 0
 var seed: Long = 12345
 
 func AListHeldOnlyByAnotherListLivesInItsSlot() {
-    load "../../SpiteCompiler/.spite/library/common"
     load "../../SpiteCompiler/.spite/library/windows"
     make_orders(400000)
     var started = clock.elapsed_nanoseconds()

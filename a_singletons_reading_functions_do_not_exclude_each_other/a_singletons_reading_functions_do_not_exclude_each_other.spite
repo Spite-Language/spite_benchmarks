@@ -4,7 +4,6 @@ var transforms = Transforms()
 var row_total = 15000
 
 func ASingletonsReadingFunctionsDoNotExcludeEachOther() {
-    load "../../SpiteCompiler/.spite/library/common"
     load "../../SpiteCompiler/.spite/library/windows"
     var start = clock.elapsed_nanoseconds()
     var row = 0

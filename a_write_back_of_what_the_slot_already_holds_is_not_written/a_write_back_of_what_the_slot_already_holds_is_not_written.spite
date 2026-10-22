@@ -4,7 +4,6 @@ var desk = Desk()
 var total = 0
 
 func AWriteBackOfWhatTheSlotAlreadyHoldsIsNotWritten() {
-    load "../../SpiteCompiler/.spite/library/common"
     load "../../SpiteCompiler/.spite/library/windows"
     desk.stock(100000)
     var started = clock.elapsed_nanoseconds()

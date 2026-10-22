@@ -2,7 +2,6 @@ var clock = Clock()
 var console = Console()
 
 func TheCompilerPlacesMemory() {
-    load "../../SpiteCompiler/.spite/library/common"
     load "../../SpiteCompiler/.spite/library/windows"
     var started = clock.elapsed_nanoseconds()
     var answer = all_rounds()

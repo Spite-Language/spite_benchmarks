@@ -5,7 +5,6 @@ var journal = Journal()
 var settings = Settings()
 
 func ThreadSafetyForSingletonsTheCheapestSafeForm() {
-    load "../../SpiteCompiler/.spite/library/common"
     load "../../SpiteCompiler/.spite/library/windows"
     var start = clock.elapsed_nanoseconds()
     journal.note("starting")

@@ -3,7 +3,6 @@ var clock = Clock()
 var shelf = Shelf()
 
 func ASingletonsAttributeThatNeverChangesIsReadInPlace() {
-    load "../../SpiteCompiler/.spite/library/common"
     load "../../SpiteCompiler/.spite/library/windows"
     var start = clock.elapsed_nanoseconds()
     fill_shelf(1000000)

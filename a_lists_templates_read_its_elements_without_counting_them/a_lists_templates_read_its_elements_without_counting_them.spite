@@ -4,7 +4,6 @@ var total: Long = 0
 var numbers = 0
 
 func AListsTemplatesReadItsElementsWithoutCountingThem() {
-    load "../../SpiteCompiler/.spite/library/common"
     load "../../SpiteCompiler/.spite/library/windows"
     var started = clock.elapsed_nanoseconds()
     fill_and_simulate()

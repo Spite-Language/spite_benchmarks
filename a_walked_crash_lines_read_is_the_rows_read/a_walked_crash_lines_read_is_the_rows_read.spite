@@ -7,7 +7,6 @@ var velocities = Column<Velocity>()
 var entity_count = 100000
 
 func AWalkedCrashLinesReadIsTheRowsRead() {
-    load "../../SpiteCompiler/.spite/library/common"
     load "../../SpiteCompiler/.spite/library/windows"
     var started = clock.elapsed_nanoseconds()
     var answer = spawn_and_move()

@@ -1,847 +1,850 @@
 {
  "a_binary_schema_is_a_constant": {
   "best": {
-   "expert": 842,
-   "naive": 372775,
-   "python": 11063599,
-   "spite": 5320
+   "expert": 588,
+   "naive": 346793,
+   "python": 10207178,
+   "spite": 5981
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_counted_loop_of_calls_to_one_singleton_takes_its_lock_once": {
   "best": {
-   "expert": 3057,
-   "naive": 401319,
-   "python": 4889187,
-   "spite": 43789
+   "expert": 2984,
+   "naive": 300360,
+   "python": 4627269,
+   "spite": 56524
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_crashs_report_is_kept_out_of_the_way": {
   "best": {
-   "expert": 10253,
-   "naive": 13689,
-   "python": 2722551,
-   "spite": 62955
+   "expert": 9789,
+   "naive": 13107,
+   "python": 2522471,
+   "spite": 40445
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_decimal_literal_beside_a_float_is_a_float": {
   "best": {
-   "expert": 16484,
-   "naive": 526267,
-   "python": 49841481,
-   "spite": 878222
+   "expert": 15934,
+   "naive": 507122,
+   "python": 47084404,
+   "spite": 846866
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_deep_copy_is_written_per_class_with_a_table_only_where_a_graph_needs_one": {
   "best": {
-   "expert": 1051,
-   "naive": 82228,
-   "python": 399543,
-   "spite": 48118
+   "expert": 996,
+   "naive": 72352,
+   "python": 358367,
+   "spite": 39170
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_dictionary_hashes_a_key_once_cheaply": {
   "best": {
-   "expert": 26485,
-   "naive": 87143,
-   "python": 249112,
-   "spite": 97088
+   "expert": 25375,
+   "naive": 82121,
+   "python": 243828,
+   "spite": 84625
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_dictionary_keyed_by_numbers_hashes_the_numbers": {
   "best": {
-   "expert": 14060,
-   "naive": 15822,
-   "python": 488714,
-   "spite": 41312
+   "expert": 12636,
+   "naive": 14728,
+   "python": 473024,
+   "spite": 39404
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_dictionary_written_out_and_only_read_by_literal_keys_is_folded": {
   "best": {
-   "expert": 5842,
-   "naive": 404116,
-   "python": 1434668,
-   "spite": 40260
+   "expert": 5606,
+   "naive": 345335,
+   "python": 1362028,
+   "spite": 29459
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_function_taking_a_type_is_compiled_per_class": {
   "best": {
-   "expert": 52772,
-   "naive": 52727,
-   "python": 14314030,
-   "spite": 1043744
+   "expert": 51006,
+   "naive": 50884,
+   "python": 13638219,
+   "spite": 1003801
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_function_value_describes_its_arguments_when_asked": {
   "best": {
-   "expert": 1246,
-   "naive": 1238,
-   "python": 861162,
-   "spite": 21664
+   "expert": 1202,
+   "naive": 1213,
+   "python": 821986,
+   "spite": 19849
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_list_held_only_by_another_list_lives_in_its_slot": {
   "best": {
-   "expert": 37689,
-   "naive": 328130,
-   "python": 9608239,
-   "spite": 844443
+   "expert": 34960,
+   "naive": 230876,
+   "python": 6149966,
+   "spite": 479358
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_list_item_read_only_to_test_it_is_not_counted": {
   "best": {
-   "expert": 11561,
-   "naive": 64416,
-   "python": 3151371,
-   "spite": 92475
+   "expert": 11229,
+   "naive": 62177,
+   "python": 2661220,
+   "spite": 57376
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_list_of_lists_filled_again_keeps_each_lists_room": {
   "best": {
-   "expert": 6462,
-   "naive": 355465,
-   "python": 1465493,
-   "spite": 617983
+   "expert": 6339,
+   "naive": 294512,
+   "python": 1133396,
+   "spite": 296478
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_lists_templates_read_its_elements_without_counting_them": {
   "best": {
-   "expert": 2352,
-   "naive": 30462,
-   "python": 1629947,
-   "spite": 80543
+   "expert": 2096,
+   "naive": 28890,
+   "python": 1521409,
+   "spite": 69371
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_local_list_of_known_size_lives_in_the_frame": {
   "best": {
-   "expert": 23011,
-   "naive": 23768,
-   "python": 3864133,
-   "spite": 1247281
+   "expert": 22389,
+   "naive": 23097,
+   "python": 3795090,
+   "spite": 978362
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_loop_over_a_list_of_different_classes_runs_them_at_once": {
   "best": {
-   "expert": 93733,
-   "naive": 273305,
-   "python": 7734116,
-   "spite": 396459
+   "expert": 91912,
+   "naive": 266957,
+   "python": 7576505,
+   "spite": 387324
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_loop_over_plain_values_reads_its_count_once_and_its_items_unchecked": {
   "best": {
-   "expert": 16275,
-   "naive": 148299,
-   "python": 13699686,
-   "spite": 844811
+   "expert": 15873,
+   "naive": 142875,
+   "python": 13311136,
+   "spite": 819187
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_loop_whose_passes_write_only_their_own_item_runs_in_bands": {
   "best": {
-   "expert": 41576,
-   "naive": 793610,
-   "python": 273098390,
-   "spite": 2469039
+   "expert": 30338,
+   "naive": 762617,
+   "python": 251366972,
+   "spite": 2383387
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_number_joined_into_text_is_written_in_place": {
   "best": {
-   "expert": 15966,
-   "naive": 329356,
-   "python": 415005,
-   "spite": 89822
+   "expert": 15207,
+   "naive": 319207,
+   "python": 396299,
+   "spite": 85610
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_number_read_from_bytes_is_one_load": {
   "best": {
-   "expert": 33225,
-   "naive": 53830,
-   "python": 28817853,
-   "spite": 384439
+   "expert": 31160,
+   "naive": 52055,
+   "python": 25951305,
+   "spite": 329195
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_numbers_bits_are_read_in_place": {
   "best": {
-   "expert": 24393,
-   "naive": 93291,
-   "python": 40692880,
-   "spite": 397878
+   "expert": 22611,
+   "naive": 87665,
+   "python": 27824863,
+   "spite": 383415
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_proven_divisor_is_not_checked": {
   "best": {
-   "expert": 28182,
-   "naive": 31294,
-   "python": 1225370,
-   "spite": 61966
+   "expert": 26022,
+   "naive": 28848,
+   "python": 1135574,
+   "spite": 56613
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_proven_read_tests_only_its_bounds": {
   "best": {
-   "expert": 7018,
-   "naive": 7263,
-   "python": 9628598,
-   "spite": 99379
+   "expert": 6456,
+   "naive": 6617,
+   "python": 7243121,
+   "spite": 92522
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_row_of_borrowed_items_lives_in_the_frame": {
   "best": {
-   "expert": 3285,
-   "naive": 7349,
-   "python": 6633088,
-   "spite": 657039
+   "expert": 2758,
+   "naive": 6678,
+   "python": 4962617,
+   "spite": 90654
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_singleton_no_other_thread_reaches_takes_no_lock": {
   "best": {
-   "expert": 3301,
-   "naive": 5176,
-   "python": 1517121,
-   "spite": 25456
+   "expert": 3143,
+   "naive": 4736,
+   "python": 1402726,
+   "spite": 32698
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_singletons_attribute_that_never_changes_is_read_in_place": {
   "best": {
-   "expert": 3354,
-   "naive": 183594,
-   "python": 2107292,
-   "spite": 71801
+   "expert": 3181,
+   "naive": 124755,
+   "python": 1923221,
+   "spite": 51096
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_singletons_reading_functions_do_not_exclude_each_other": {
   "best": {
-   "expert": 5289,
-   "naive": 117751,
-   "python": 608013,
-   "spite": 107806
+   "expert": 4426,
+   "naive": 87925,
+   "python": 578245,
+   "spite": 101605
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_table_filled_once_is_read_as_constants": {
   "best": {
-   "expert": 20600,
-   "naive": 21374,
-   "python": 3861402,
-   "spite": 177211
+   "expert": 19677,
+   "naive": 20427,
+   "python": 3363029,
+   "spite": 149334
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_test_against_a_value_a_list_never_holds_is_decided_while_compiling": {
   "best": {
-   "expert": 20535,
-   "naive": 39583,
-   "python": 3850344,
-   "spite": 178019
+   "expert": 19545,
+   "naive": 38028,
+   "python": 3368167,
+   "spite": 147929
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_variadic_list_the_callee_only_reads_lives_in_the_callers_frame": {
   "best": {
-   "expert": 4200,
-   "naive": 4181,
-   "python": 447308,
-   "spite": 129587
+   "expert": 3907,
+   "naive": 3921,
+   "python": 431469,
+   "spite": 99053
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_wait_in_a_frame_does_not_hold_the_frame": {
   "best": {
-   "expert": 924643,
-   "naive": 1176714,
-   "python": 316595,
-   "spite": 86416
+   "expert": 922617,
+   "naive": 1185394,
+   "python": 316128,
+   "spite": 89781
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_walked_crash_lines_read_is_the_rows_read": {
   "best": {
-   "expert": 4709,
-   "naive": 18349,
-   "python": 8318833,
-   "spite": 526034
+   "expert": 4526,
+   "naive": 17666,
+   "python": 5948053,
+   "spite": 404693
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_word_inflected_while_compiling": {
   "best": {
-   "expert": 3416,
-   "naive": 277539,
-   "python": 917200,
-   "spite": 5096692
+   "expert": 3245,
+   "naive": 265834,
+   "python": 881199,
+   "spite": 73032
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "a_write_back_of_what_the_slot_already_holds_is_not_written": {
   "best": {
-   "expert": 602,
-   "naive": 5370,
-   "python": 2011343,
-   "spite": 82573
+   "expert": 531,
+   "naive": 4951,
+   "python": 1940213,
+   "spite": 40422
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "allocation_is_the_c_librarys_counted_only_where_read": {
-  "best": {},
+  "best": {
+   "expert": 2748,
+   "naive": 59690,
+   "python": 377749,
+   "spite": 19102
+  },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
-  "problems": {
-   "build": "does not compile: allocation_is_the_c_librarys_counted_only_where_read/allocation_is_the_c_librarys_counted_only_where_read.spite:45: error: this value may be null (it is a Node?), so 'value' cannot be read from it yet..."
-  }
+  "problems": {}
  },
  "an_allocator_set_after_construction_is_where_the_object_is_made": {
   "best": {
-   "expert": 2059,
-   "naive": 77464,
-   "python": 476698,
-   "spite": 40159
+   "expert": 1980,
+   "naive": 74806,
+   "python": 458419,
+   "spite": 43274
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "an_argument_its_caller_holds_is_passed_without_counting": {
   "best": {
-   "expert": 693,
-   "naive": 35082,
-   "python": 1452985,
-   "spite": 58463
+   "expert": 654,
+   "naive": 34666,
+   "python": 1399180,
+   "spite": 41039
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "an_attribute_a_call_cannot_assign_is_passed_without_counting": {
   "best": {
-   "expert": 2647,
-   "naive": 4418,
-   "python": 1517508,
-   "spite": 31613
+   "expert": 2544,
+   "naive": 4257,
+   "python": 1448090,
+   "spite": 21103
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "an_item_a_name_holds_from_its_list_is_not_counted": {
   "best": {
-   "expert": 1961,
-   "naive": 15566,
-   "python": 1359617,
-   "spite": 68881
+   "expert": 1636,
+   "naive": 14825,
+   "python": 1298790,
+   "spite": 37626
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "an_item_passed_to_a_call_that_cannot_change_its_list_is_not_counted": {
   "best": {
-   "expert": 2203,
-   "naive": 16660,
-   "python": 2242327,
-   "spite": 57491
+   "expert": 2118,
+   "naive": 15599,
+   "python": 2151185,
+   "spite": 28542
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "an_item_written_back_to_its_own_slot_is_not_written": {
   "best": {
-   "expert": 3971,
-   "naive": 46238,
-   "python": 2369588,
-   "spite": 188919
+   "expert": 3573,
+   "naive": 43351,
+   "python": 2149359,
+   "spite": 104409
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "an_items_storage_is_chosen_while_compiling": {
   "best": {
-   "expert": 2332,
-   "naive": 32070,
-   "python": 1733465,
-   "spite": 99600
+   "expert": 1995,
+   "naive": 29347,
+   "python": 1564127,
+   "spite": 74285
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "appending_to_text_in_place": {
   "best": {
-   "expert": 195,
-   "naive": 63078,
-   "python": 5824,
-   "spite": 1022
+   "expert": 184,
+   "naive": 59636,
+   "python": 5578,
+   "spite": 922
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "arithmetic_is_checked_in_every_build": {
   "best": {
-   "expert": 2664,
-   "naive": 3026,
-   "python": 1758313,
-   "spite": 36745
+   "expert": 2595,
+   "naive": 2946,
+   "python": 1691962,
+   "spite": 36219
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "atomic_reference_counts_only_with_threads": {
   "best": {
-   "expert": 2219,
-   "naive": 19957,
-   "python": 275202,
-   "spite": 37419
+   "expert": 2139,
+   "naive": 18083,
+   "python": 261486,
+   "spite": 28189
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "boxing_only_where_a_value_travels_as_a_shape": {
   "best": {
-   "expert": 12157,
-   "naive": 96039,
-   "python": 164235,
-   "spite": 71299
+   "expert": 12162,
+   "naive": 83020,
+   "python": 157265,
+   "spite": 71791
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "calls_in_a_row_run_at_once": {
   "best": {
-   "expert": 23460,
-   "naive": 43410,
-   "python": 4272706,
-   "spite": 101644
+   "expert": 22770,
+   "naive": 41889,
+   "python": 4234866,
+   "spite": 97317
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "concurrency_machinery_only_where_it_is_used": {
   "best": {
-   "expert": 1504,
-   "naive": 11903,
-   "python": 15018,
-   "spite": 11872
+   "expert": 1462,
+   "naive": 10711,
+   "python": 13040,
+   "spite": 10783
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "copies_that_cost_nothing": {
   "best": {
-   "expert": 16617,
-   "naive": 22863,
-   "python": 6318051,
-   "spite": 71278
+   "expert": 16033,
+   "naive": 22263,
+   "python": 6022464,
+   "spite": 64934
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "counts_stay_plain_for_what_one_of_the_calls_run_at_once_counts": {
   "best": {
-   "expert": 5370,
-   "naive": 10987,
-   "python": 499001,
-   "spite": 40053
+   "expert": 5209,
+   "naive": 10666,
+   "python": 479770,
+   "spite": 30594
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "deciding_conditions_at_compile_time": {
   "best": {
-   "expert": 7637,
-   "naive": 8849,
-   "python": 2769607,
-   "spite": 42887
+   "expert": 7493,
+   "naive": 8422,
+   "python": 2721746,
+   "spite": 46020
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "defaults_the_constructor_replaces_are_never_made": {
   "best": {
-   "expert": 341,
-   "naive": 44101,
-   "python": 323036,
-   "spite": 18924
+   "expert": 328,
+   "naive": 41024,
+   "python": 305433,
+   "spite": 12562
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "game_maths": {
   "best": {
-   "expert": 1733,
-   "naive": 2234,
-   "python": 7047091,
-   "spite": 31410
+   "expert": 1673,
+   "naive": 2180,
+   "python": 6767272,
+   "spite": 30262
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "image_filter_over_planes": {
   "best": {
-   "expert": 22691,
-   "naive": 251465,
-   "python": 9364459,
-   "spite": 343059
+   "expert": 21791,
+   "naive": 234055,
+   "python": 7459920,
+   "spite": 283440
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "maths_on_constants_is_worked_out_while_compiling": {
   "best": {
-   "expert": 2891,
-   "naive": 13221,
-   "python": 27922943,
-   "spite": 91190
+   "expert": 2676,
+   "naive": 13031,
+   "python": 26478326,
+   "spite": 93212
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "number_dictionary": {
   "best": {
-   "expert": 11946,
-   "naive": 22213,
-   "python": 418174,
-   "spite": 121494
+   "expert": 11246,
+   "naive": 17888,
+   "python": 340869,
+   "spite": 80946
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "objects_made_for_their_owner_are_told_apart": {
   "best": {
-   "expert": 59932,
-   "naive": 118222,
-   "python": 5609719,
-   "spite": 180234
+   "expert": 57828,
+   "naive": 113985,
+   "python": 5388051,
+   "spite": 177421
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "objects_of_one_class_sit_together": {
   "best": {
-   "expert": 2421,
-   "naive": 24154,
-   "python": 560385,
-   "spite": 129852
+   "expert": 2325,
+   "naive": 22051,
+   "python": 530663,
+   "spite": 87716
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "objects_that_never_leave_their_function_live_in_the_frame": {
   "best": {
-   "expert": 14623,
-   "naive": 1021568,
-   "python": 45860880,
-   "spite": 301731
+   "expert": 14158,
+   "naive": 1004904,
+   "python": 43225809,
+   "spite": 293409
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "particles": {
   "best": {
-   "expert": 10525,
-   "naive": 28652,
-   "python": 26631544,
-   "spite": 168816
+   "expert": 10397,
+   "naive": 27833,
+   "python": 25220258,
+   "spite": 160089
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "plain_reference_counts_where_no_thread_reaches_a_class": {
   "best": {
-   "expert": 10993,
-   "naive": 28150,
-   "python": 1038683,
-   "spite": 41637
+   "expert": 10779,
+   "naive": 25065,
+   "python": 998484,
+   "spite": 42276
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "reading_an_address_is_one_machine_operation": {
   "best": {
-   "expert": 4065,
-   "naive": 5605,
-   "python": 2468143,
-   "spite": 206769
+   "expert": 3951,
+   "naive": 5475,
+   "python": 2431852,
+   "spite": 195692
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "reading_through_a_type_without_counting": {
   "best": {
-   "expert": 5344,
-   "naive": 9764,
-   "python": 5565374,
-   "spite": 551854
+   "expert": 5213,
+   "naive": 9482,
+   "python": 5257571,
+   "spite": 103538
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "reads_in_a_row_overlap": {
   "best": {
-   "expert": 5508,
-   "naive": 6661,
-   "python": 8318,
-   "spite": 6993
+   "expert": 4826,
+   "naive": 6207,
+   "python": 7699,
+   "spite": 6551
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "records_sorted_by_one_field": {
   "best": {
-   "expert": 95151,
-   "naive": 721097,
-   "python": 5064617,
-   "spite": 1924198
+   "expert": 85165,
+   "naive": 633474,
+   "python": 4584667,
+   "spite": 1641944
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "reflection_on_constants_folds_and_unrolls": {
   "best": {
-   "expert": 2617,
-   "naive": 12916,
-   "python": 8437728,
-   "spite": 72305
+   "expert": 2432,
+   "naive": 11937,
+   "python": 7990451,
+   "spite": 110658
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "removing_many_at_once": {
   "best": {
-   "expert": 21277,
-   "naive": 24894,
-   "python": 5872768,
-   "spite": 309961
+   "expert": 20410,
+   "naive": 23812,
+   "python": 5407463,
+   "spite": 280513
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "report_over_records": {
   "best": {
-   "expert": 23063,
-   "naive": 651527,
-   "python": 6505349,
-   "spite": 1027415
+   "expert": 22289,
+   "naive": 567829,
+   "python": 6125845,
+   "spite": 841494
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "short_text_lives_inside_the_string": {
   "best": {
-   "expert": 17489,
-   "naive": 267808,
-   "python": 540951,
-   "spite": 129600
+   "expert": 16850,
+   "naive": 246092,
+   "python": 511747,
+   "spite": 97211
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "singletons_a_parallel_reaches_take_a_lock": {
   "best": {
-   "expert": 518,
-   "naive": 20020,
-   "python": 252020,
-   "spite": 22245
+   "expert": 502,
+   "naive": 19132,
+   "python": 253119,
+   "spite": 20152
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "singletons_made_on_first_use_never_counted": {
   "best": {
-   "expert": 5694,
-   "naive": 218443,
-   "python": 7060024,
-   "spite": 543250
+   "expert": 5577,
+   "naive": 210042,
+   "python": 6816545,
+   "spite": 15518
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "smaller_ones": {
   "best": {
-   "expert": 9082,
-   "naive": 10235,
-   "python": 3421632,
-   "spite": 108470
+   "expert": 8635,
+   "naive": 9861,
+   "python": 3129900,
+   "spite": 104986
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "sorting": {
   "best": {
-   "expert": 20772,
-   "naive": 123977,
-   "python": 1148388,
-   "spite": 251480
+   "expert": 17789,
+   "naive": 118764,
+   "python": 1053477,
+   "spite": 240532
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "spreadsheet_recalculation": {
   "best": {
-   "expert": 116660,
-   "naive": 732194,
-   "python": 14223400,
-   "spite": 1916696
+   "expert": 102243,
+   "naive": 600869,
+   "python": 11158798,
+   "spite": 987038
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "storing_an_object_into_a_list_counts_it_only_when_it_changes_the_slot": {
   "best": {
-   "expert": 4747,
-   "naive": 7111,
-   "python": 1310600,
-   "spite": 63676
+   "expert": 4286,
+   "naive": 6457,
+   "python": 1197088,
+   "spite": 39981
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "template_chains_run_as_one_loop": {
   "best": {
-   "expert": 1882,
-   "naive": 92920,
-   "python": 2003781,
-   "spite": 451278
+   "expert": 1630,
+   "naive": 78563,
+   "python": 1632850,
+   "spite": 36341
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "text_building": {
   "best": {
-   "expert": 10153,
-   "naive": 91669,
-   "python": 653353,
-   "spite": 258495
+   "expert": 9477,
+   "naive": 82824,
+   "python": 592832,
+   "spite": 232211
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "text_joined_in_one_piece": {
   "best": {
-   "expert": 3576,
-   "naive": 102920,
-   "python": 147638,
-   "spite": 47455
+   "expert": 3307,
+   "naive": 94245,
+   "python": 134646,
+   "spite": 42687
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "the_compiler_places_memory": {
   "best": {
-   "expert": 9331,
-   "naive": 34741,
-   "python": 2542750,
-   "spite": 185289
+   "expert": 8532,
+   "naive": 32726,
+   "python": 2338023,
+   "spite": 162613
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "the_thread_pool_only_where_a_parallel_is_made": {
   "best": {
-   "expert": 7620,
-   "naive": 7618,
-   "python": 784437,
-   "spite": 10349
+   "expert": 7174,
+   "naive": 7215,
+   "python": 689111,
+   "spite": 8627
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "thread_safety_for_singletons_the_cheapest_safe_form": {
   "best": {
-   "expert": 495,
-   "naive": 462522,
-   "python": 1544275,
-   "spite": 77398
+   "expert": 383,
+   "naive": 158977,
+   "python": 1380503,
+   "spite": 143992
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "thread_safety_for_singletons_the_rest_of_the_plan": {
   "best": {
-   "expert": 2283,
-   "naive": 34315,
-   "python": 274130,
-   "spite": 24354
+   "expert": 1853,
+   "naive": 19042,
+   "python": 248378,
+   "spite": 19690
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "tokens_as_columns": {
   "best": {
-   "expert": 75660,
-   "naive": 136569,
-   "python": 2579567,
-   "spite": 232415
+   "expert": 72084,
+   "naive": 128538,
+   "python": 2417733,
+   "spite": 216942
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "vector_maths": {
   "best": {
-   "expert": 48999,
-   "naive": 63634,
-   "python": 45727764,
-   "spite": 285001
+   "expert": 46991,
+   "naive": 60948,
+   "python": 27605985,
+   "spite": 275986
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}
  },
  "while_no_task_runs_a_singletons_lock_is_skipped": {
   "best": {
-   "expert": 2373,
-   "naive": 53137,
-   "python": 2232710,
-   "spite": 34654
+   "expert": 2239,
+   "naive": 50501,
+   "python": 2128893,
+   "spite": 32933
   },
   "compiler": "D:\\Projects\\SpiteCompiler\\.spite\\spite.exe",
   "problems": {}

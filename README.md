@@ -63,91 +63,91 @@ units of the C (`a_release_build_is_o3_with_link_time_optimisation`, `a_release_
 <!-- results -->
 | case | Spite µs | naive C µs | expert C µs | Python µs | Spite / expert C | Spite / Python | problem |
 |---|---|---|---|---|---|---|---|
-| [thread_safety_for_singletons_the_cheapest_safe_form](thread_safety_for_singletons_the_cheapest_safe_form/) | 143 992 | 158 977 | 383 | 1 380 503 | 375.96 | 0.10 |  |
-| [a_walked_crash_lines_read_is_the_rows_read](a_walked_crash_lines_read_is_the_rows_read/) | 404 693 | 17 666 | 4 526 | 5 948 053 | 89.42 | 0.07 |  |
-| [a_loop_whose_passes_write_only_their_own_item_runs_in_bands](a_loop_whose_passes_write_only_their_own_item_runs_in_bands/) | 2 383 387 | 762 617 | 30 338 | 251 366 972 | 78.56 | 0.01 |  |
-| [a_write_back_of_what_the_slot_already_holds_is_not_written](a_write_back_of_what_the_slot_already_holds_is_not_written/) | 40 422 | 4 951 | 531 | 1 940 213 | 76.12 | 0.02 |  |
-| [an_argument_its_caller_holds_is_passed_without_counting](an_argument_its_caller_holds_is_passed_without_counting/) | 41 039 | 34 666 | 654 | 1 399 180 | 62.75 | 0.03 |  |
-| [a_decimal_literal_beside_a_float_is_a_float](a_decimal_literal_beside_a_float_is_a_float/) | 846 866 | 507 122 | 15 934 | 47 084 404 | 53.15 | 0.02 |  |
-| [a_loop_over_plain_values_reads_its_count_once_and_its_items_unchecked](a_loop_over_plain_values_reads_its_count_once_and_its_items_unchecked/) | 819 187 | 142 875 | 15 873 | 13 311 136 | 51.61 | 0.06 |  |
-| [reading_an_address_is_one_machine_operation](reading_an_address_is_one_machine_operation/) | 195 692 | 5 475 | 3 951 | 2 431 852 | 49.53 | 0.08 |  |
-| [a_list_of_lists_filled_again_keeps_each_lists_room](a_list_of_lists_filled_again_keeps_each_lists_room/) | 296 478 | 294 512 | 6 339 | 1 133 396 | 46.77 | 0.26 |  |
-| [reflection_on_constants_folds_and_unrolls](reflection_on_constants_folds_and_unrolls/) | 110 658 | 11 937 | 2 432 | 7 990 451 | 45.50 | 0.01 |  |
-| [a_local_list_of_known_size_lives_in_the_frame](a_local_list_of_known_size_lives_in_the_frame/) | 978 362 | 23 097 | 22 389 | 3 795 090 | 43.70 | 0.26 |  |
-| [singletons_a_parallel_reaches_take_a_lock](singletons_a_parallel_reaches_take_a_lock/) | 20 152 | 19 132 | 502 | 253 119 | 40.14 | 0.08 |  |
-| [a_deep_copy_is_written_per_class_with_a_table_only_where_a_graph_needs_one](a_deep_copy_is_written_per_class_with_a_table_only_where_a_graph_needs_one/) | 39 170 | 72 352 | 996 | 358 367 | 39.33 | 0.11 |  |
-| [defaults_the_constructor_replaces_are_never_made](defaults_the_constructor_replaces_are_never_made/) | 12 562 | 41 024 | 328 | 305 433 | 38.30 | 0.04 |  |
-| [report_over_records](report_over_records/) | 841 494 | 567 829 | 22 289 | 6 125 845 | 37.75 | 0.14 |  |
-| [objects_of_one_class_sit_together](objects_of_one_class_sit_together/) | 87 716 | 22 051 | 2 325 | 530 663 | 37.73 | 0.17 |  |
-| [an_items_storage_is_chosen_while_compiling](an_items_storage_is_chosen_while_compiling/) | 74 285 | 29 347 | 1 995 | 1 564 127 | 37.24 | 0.05 |  |
-| [maths_on_constants_is_worked_out_while_compiling](maths_on_constants_is_worked_out_while_compiling/) | 93 212 | 13 031 | 2 676 | 26 478 326 | 34.83 | 0.00 |  |
-| [a_lists_templates_read_its_elements_without_counting_them](a_lists_templates_read_its_elements_without_counting_them/) | 69 371 | 28 890 | 2 096 | 1 521 409 | 33.10 | 0.05 |  |
-| [a_row_of_borrowed_items_lives_in_the_frame](a_row_of_borrowed_items_lives_in_the_frame/) | 90 654 | 6 678 | 2 758 | 4 962 617 | 32.87 | 0.02 |  |
-| [an_item_written_back_to_its_own_slot_is_not_written](an_item_written_back_to_its_own_slot_is_not_written/) | 104 409 | 43 351 | 3 573 | 2 149 359 | 29.22 | 0.05 |  |
-| [a_variadic_list_the_callee_only_reads_lives_in_the_callers_frame](a_variadic_list_the_callee_only_reads_lives_in_the_callers_frame/) | 99 053 | 3 921 | 3 907 | 431 469 | 25.35 | 0.23 |  |
-| [text_building](text_building/) | 232 211 | 82 824 | 9 477 | 592 832 | 24.50 | 0.39 |  |
-| [an_item_a_name_holds_from_its_list_is_not_counted](an_item_a_name_holds_from_its_list_is_not_counted/) | 37 626 | 14 825 | 1 636 | 1 298 790 | 23.00 | 0.03 |  |
-| [a_singletons_reading_functions_do_not_exclude_each_other](a_singletons_reading_functions_do_not_exclude_each_other/) | 101 605 | 87 925 | 4 426 | 578 245 | 22.96 | 0.18 |  |
-| [a_word_inflected_while_compiling](a_word_inflected_while_compiling/) | 73 032 | 265 834 | 3 245 | 881 199 | 22.51 | 0.08 |  |
-| [template_chains_run_as_one_loop](template_chains_run_as_one_loop/) | 36 341 | 78 563 | 1 630 | 1 632 850 | 22.30 | 0.02 |  |
-| [an_allocator_set_after_construction_is_where_the_object_is_made](an_allocator_set_after_construction_is_where_the_object_is_made/) | 43 274 | 74 806 | 1 980 | 458 419 | 21.86 | 0.09 |  |
-| [objects_that_never_leave_their_function_live_in_the_frame](objects_that_never_leave_their_function_live_in_the_frame/) | 293 409 | 1 004 904 | 14 158 | 43 225 809 | 20.72 | 0.01 |  |
-| [reading_through_a_type_without_counting](reading_through_a_type_without_counting/) | 103 538 | 9 482 | 5 213 | 5 257 571 | 19.86 | 0.02 |  |
-| [a_function_taking_a_type_is_compiled_per_class](a_function_taking_a_type_is_compiled_per_class/) | 1 003 801 | 50 884 | 51 006 | 13 638 219 | 19.68 | 0.07 |  |
-| [records_sorted_by_one_field](records_sorted_by_one_field/) | 1 641 944 | 633 474 | 85 165 | 4 584 667 | 19.28 | 0.36 |  |
-| [the_compiler_places_memory](the_compiler_places_memory/) | 162 613 | 32 726 | 8 532 | 2 338 023 | 19.06 | 0.07 |  |
-| [a_counted_loop_of_calls_to_one_singleton_takes_its_lock_once](a_counted_loop_of_calls_to_one_singleton_takes_its_lock_once/) | 56 524 | 300 360 | 2 984 | 4 627 269 | 18.94 | 0.01 |  |
-| [game_maths](game_maths/) | 30 262 | 2 180 | 1 673 | 6 767 272 | 18.09 | 0.00 |  |
-| [a_numbers_bits_are_read_in_place](a_numbers_bits_are_read_in_place/) | 383 415 | 87 665 | 22 611 | 27 824 863 | 16.96 | 0.01 |  |
-| [a_function_value_describes_its_arguments_when_asked](a_function_value_describes_its_arguments_when_asked/) | 19 849 | 1 213 | 1 202 | 821 986 | 16.51 | 0.02 |  |
-| [a_singletons_attribute_that_never_changes_is_read_in_place](a_singletons_attribute_that_never_changes_is_read_in_place/) | 51 096 | 124 755 | 3 181 | 1 923 221 | 16.06 | 0.03 |  |
-| [particles](particles/) | 160 089 | 27 833 | 10 397 | 25 220 258 | 15.40 | 0.01 |  |
-| [while_no_task_runs_a_singletons_lock_is_skipped](while_no_task_runs_a_singletons_lock_is_skipped/) | 32 933 | 50 501 | 2 239 | 2 128 893 | 14.71 | 0.02 |  |
-| [a_proven_read_tests_only_its_bounds](a_proven_read_tests_only_its_bounds/) | 92 522 | 6 617 | 6 456 | 7 243 121 | 14.33 | 0.01 |  |
-| [arithmetic_is_checked_in_every_build](arithmetic_is_checked_in_every_build/) | 36 219 | 2 946 | 2 595 | 1 691 962 | 13.96 | 0.02 |  |
-| [removing_many_at_once](removing_many_at_once/) | 280 513 | 23 812 | 20 410 | 5 407 463 | 13.74 | 0.05 |  |
-| [a_list_held_only_by_another_list_lives_in_its_slot](a_list_held_only_by_another_list_lives_in_its_slot/) | 479 358 | 230 876 | 34 960 | 6 149 966 | 13.71 | 0.08 |  |
-| [sorting](sorting/) | 240 532 | 118 764 | 17 789 | 1 053 477 | 13.52 | 0.23 |  |
-| [an_item_passed_to_a_call_that_cannot_change_its_list_is_not_counted](an_item_passed_to_a_call_that_cannot_change_its_list_is_not_counted/) | 28 542 | 15 599 | 2 118 | 2 151 185 | 13.48 | 0.01 |  |
-| [atomic_reference_counts_only_with_threads](atomic_reference_counts_only_with_threads/) | 28 189 | 18 083 | 2 139 | 261 486 | 13.18 | 0.11 |  |
-| [image_filter_over_planes](image_filter_over_planes/) | 283 440 | 234 055 | 21 791 | 7 459 920 | 13.01 | 0.04 |  |
-| [text_joined_in_one_piece](text_joined_in_one_piece/) | 42 687 | 94 245 | 3 307 | 134 646 | 12.91 | 0.32 |  |
-| [smaller_ones](smaller_ones/) | 104 986 | 9 861 | 8 635 | 3 129 900 | 12.16 | 0.03 |  |
-| [thread_safety_for_singletons_the_rest_of_the_plan](thread_safety_for_singletons_the_rest_of_the_plan/) | 19 690 | 19 042 | 1 853 | 248 378 | 10.63 | 0.08 |  |
-| [a_number_read_from_bytes_is_one_load](a_number_read_from_bytes_is_one_load/) | 329 195 | 52 055 | 31 160 | 25 951 305 | 10.56 | 0.01 |  |
-| [a_singleton_no_other_thread_reaches_takes_no_lock](a_singleton_no_other_thread_reaches_takes_no_lock/) | 32 698 | 4 736 | 3 143 | 1 402 726 | 10.40 | 0.02 |  |
-| [a_binary_schema_is_a_constant](a_binary_schema_is_a_constant/) | 5 981 | 346 793 | 588 | 10 207 178 | 10.17 | 0.00 |  |
-| [spreadsheet_recalculation](spreadsheet_recalculation/) | 987 038 | 600 869 | 102 243 | 11 158 798 | 9.65 | 0.09 |  |
-| [storing_an_object_into_a_list_counts_it_only_when_it_changes_the_slot](storing_an_object_into_a_list_counts_it_only_when_it_changes_the_slot/) | 39 981 | 6 457 | 4 286 | 1 197 088 | 9.33 | 0.03 |  |
-| [an_attribute_a_call_cannot_assign_is_passed_without_counting](an_attribute_a_call_cannot_assign_is_passed_without_counting/) | 21 103 | 4 257 | 2 544 | 1 448 090 | 8.30 | 0.01 |  |
-| [a_table_filled_once_is_read_as_constants](a_table_filled_once_is_read_as_constants/) | 149 334 | 20 427 | 19 677 | 3 363 029 | 7.59 | 0.04 |  |
-| [a_test_against_a_value_a_list_never_holds_is_decided_while_compiling](a_test_against_a_value_a_list_never_holds_is_decided_while_compiling/) | 147 929 | 38 028 | 19 545 | 3 368 167 | 7.57 | 0.04 |  |
-| [concurrency_machinery_only_where_it_is_used](concurrency_machinery_only_where_it_is_used/) | 10 783 | 10 711 | 1 462 | 13 040 | 7.38 | 0.83 |  |
-| [number_dictionary](number_dictionary/) | 80 946 | 17 888 | 11 246 | 340 869 | 7.20 | 0.24 |  |
-| [allocation_is_the_c_librarys_counted_only_where_read](allocation_is_the_c_librarys_counted_only_where_read/) | 19 102 | 59 690 | 2 748 | 377 749 | 6.95 | 0.05 |  |
-| [deciding_conditions_at_compile_time](deciding_conditions_at_compile_time/) | 46 020 | 8 422 | 7 493 | 2 721 746 | 6.14 | 0.02 |  |
-| [boxing_only_where_a_value_travels_as_a_shape](boxing_only_where_a_value_travels_as_a_shape/) | 71 791 | 83 020 | 12 162 | 157 265 | 5.90 | 0.46 |  |
-| [counts_stay_plain_for_what_one_of_the_calls_run_at_once_counts](counts_stay_plain_for_what_one_of_the_calls_run_at_once_counts/) | 30 594 | 10 666 | 5 209 | 479 770 | 5.87 | 0.06 |  |
-| [vector_maths](vector_maths/) | 275 986 | 60 948 | 46 991 | 27 605 985 | 5.87 | 0.01 |  |
-| [short_text_lives_inside_the_string](short_text_lives_inside_the_string/) | 97 211 | 246 092 | 16 850 | 511 747 | 5.77 | 0.19 |  |
-| [a_number_joined_into_text_is_written_in_place](a_number_joined_into_text_is_written_in_place/) | 85 610 | 319 207 | 15 207 | 396 299 | 5.63 | 0.22 |  |
-| [a_dictionary_written_out_and_only_read_by_literal_keys_is_folded](a_dictionary_written_out_and_only_read_by_literal_keys_is_folded/) | 29 459 | 345 335 | 5 606 | 1 362 028 | 5.25 | 0.02 |  |
-| [a_list_item_read_only_to_test_it_is_not_counted](a_list_item_read_only_to_test_it_is_not_counted/) | 57 376 | 62 177 | 11 229 | 2 661 220 | 5.11 | 0.02 |  |
-| [appending_to_text_in_place](appending_to_text_in_place/) | 922 | 59 636 | 184 | 5 578 | 5.01 | 0.17 |  |
-| [calls_in_a_row_run_at_once](calls_in_a_row_run_at_once/) | 97 317 | 41 889 | 22 770 | 4 234 866 | 4.27 | 0.02 |  |
-| [a_loop_over_a_list_of_different_classes_runs_them_at_once](a_loop_over_a_list_of_different_classes_runs_them_at_once/) | 387 324 | 266 957 | 91 912 | 7 576 505 | 4.21 | 0.05 |  |
-| [a_crashs_report_is_kept_out_of_the_way](a_crashs_report_is_kept_out_of_the_way/) | 40 445 | 13 107 | 9 789 | 2 522 471 | 4.13 | 0.02 |  |
-| [copies_that_cost_nothing](copies_that_cost_nothing/) | 64 934 | 22 263 | 16 033 | 6 022 464 | 4.05 | 0.01 |  |
-| [plain_reference_counts_where_no_thread_reaches_a_class](plain_reference_counts_where_no_thread_reaches_a_class/) | 42 276 | 25 065 | 10 779 | 998 484 | 3.92 | 0.04 |  |
-| [a_dictionary_hashes_a_key_once_cheaply](a_dictionary_hashes_a_key_once_cheaply/) | 84 625 | 82 121 | 25 375 | 243 828 | 3.33 | 0.35 |  |
-| [a_dictionary_keyed_by_numbers_hashes_the_numbers](a_dictionary_keyed_by_numbers_hashes_the_numbers/) | 39 404 | 14 728 | 12 636 | 473 024 | 3.12 | 0.08 |  |
-| [objects_made_for_their_owner_are_told_apart](objects_made_for_their_owner_are_told_apart/) | 177 421 | 113 985 | 57 828 | 5 388 051 | 3.07 | 0.03 |  |
-| [tokens_as_columns](tokens_as_columns/) | 216 942 | 128 538 | 72 084 | 2 417 733 | 3.01 | 0.09 |  |
-| [singletons_made_on_first_use_never_counted](singletons_made_on_first_use_never_counted/) | 15 518 | 210 042 | 5 577 | 6 816 545 | 2.78 | 0.00 |  |
-| [a_proven_divisor_is_not_checked](a_proven_divisor_is_not_checked/) | 56 613 | 28 848 | 26 022 | 1 135 574 | 2.18 | 0.05 |  |
-| [reads_in_a_row_overlap](reads_in_a_row_overlap/) | 6 551 | 6 207 | 4 826 | 7 699 | 1.36 | 0.85 |  |
-| [the_thread_pool_only_where_a_parallel_is_made](the_thread_pool_only_where_a_parallel_is_made/) | 8 627 | 7 215 | 7 174 | 689 111 | 1.20 | 0.01 |  |
-| [a_wait_in_a_frame_does_not_hold_the_frame](a_wait_in_a_frame_does_not_hold_the_frame/) | 89 781 | 1 185 394 | 922 617 | 316 128 | 0.10 | 0.28 |  |
+| [a_write_back_of_what_the_slot_already_holds_is_not_written](a_write_back_of_what_the_slot_already_holds_is_not_written/) | 38 744 | 5 031 | 537 | 1 950 628 | 72.15 | 0.02 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_walked_crash_lines_read_is_the_rows_read](a_walked_crash_lines_read_is_the_rows_read/) | 306 961 | 17 738 | 4 569 | 5 979 401 | 67.18 | 0.05 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_list_of_lists_filled_again_keeps_each_lists_room](a_list_of_lists_filled_again_keeps_each_lists_room/) | 321 294 | 296 325 | 6 481 | 1 159 793 | 49.57 | 0.28 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [objects_of_one_class_sit_together](objects_of_one_class_sit_together/) | 96 891 | 21 662 | 2 358 | 525 533 | 41.09 | 0.18 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [an_argument_its_caller_holds_is_passed_without_counting](an_argument_its_caller_holds_is_passed_without_counting/) | 26 445 | 34 219 | 675 | 1 400 050 | 39.18 | 0.02 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [report_over_records](report_over_records/) | 847 638 | 579 832 | 22 371 | 6 183 288 | 37.89 | 0.14 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_deep_copy_is_written_per_class_with_a_table_only_where_a_graph_needs_one](a_deep_copy_is_written_per_class_with_a_table_only_where_a_graph_needs_one/) | 37 024 | 73 730 | 1 015 | 352 293 | 36.48 | 0.11 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [singletons_a_parallel_reaches_take_a_lock](singletons_a_parallel_reaches_take_a_lock/) | 17 671 | 19 477 | 502 | 252 979 | 35.20 | 0.07 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [defaults_the_constructor_replaces_are_never_made](defaults_the_constructor_replaces_are_never_made/) | 11 167 | 41 459 | 334 | 305 878 | 33.43 | 0.04 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_local_list_of_known_size_lives_in_the_frame](a_local_list_of_known_size_lives_in_the_frame/) | 694 654 | 23 408 | 22 887 | 3 767 340 | 30.35 | 0.18 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [reading_an_address_is_one_machine_operation](reading_an_address_is_one_machine_operation/) | 115 565 | 5 683 | 3 999 | 2 437 298 | 28.90 | 0.05 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [an_item_written_back_to_its_own_slot_is_not_written](an_item_written_back_to_its_own_slot_is_not_written/) | 101 148 | 43 180 | 3 505 | 2 261 173 | 28.86 | 0.04 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_lists_templates_read_its_elements_without_counting_them](a_lists_templates_read_its_elements_without_counting_them/) | 60 608 | 29 292 | 2 133 | 1 539 020 | 28.41 | 0.04 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_singletons_reading_functions_do_not_exclude_each_other](a_singletons_reading_functions_do_not_exclude_each_other/) | 125 401 | 88 897 | 4 678 | 589 535 | 26.81 | 0.21 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [maths_on_constants_is_worked_out_while_compiling](maths_on_constants_is_worked_out_while_compiling/) | 65 077 | 13 573 | 2 819 | 26 343 051 | 23.09 | 0.00 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [text_building](text_building/) | 217 441 | 83 878 | 9 580 | 592 978 | 22.70 | 0.37 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_word_inflected_while_compiling](a_word_inflected_while_compiling/) | 72 825 | 268 394 | 3 320 | 881 979 | 21.94 | 0.08 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_variadic_list_the_callee_only_reads_lives_in_the_callers_frame](a_variadic_list_the_callee_only_reads_lives_in_the_callers_frame/) | 83 472 | 3 860 | 3 929 | 425 045 | 21.25 | 0.20 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_row_of_borrowed_items_lives_in_the_frame](a_row_of_borrowed_items_lives_in_the_frame/) | 56 706 | 6 684 | 2 838 | 4 933 505 | 19.98 | 0.01 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [template_chains_run_as_one_loop](template_chains_run_as_one_loop/) | 30 270 | 80 924 | 1 551 | 1 633 653 | 19.52 | 0.02 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_loop_over_plain_values_reads_its_count_once_and_its_items_unchecked](a_loop_over_plain_values_reads_its_count_once_and_its_items_unchecked/) | 309 155 | 143 423 | 16 034 | 13 698 872 | 19.28 | 0.02 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [an_allocator_set_after_construction_is_where_the_object_is_made](an_allocator_set_after_construction_is_where_the_object_is_made/) | 37 501 | 75 317 | 2 014 | 459 794 | 18.62 | 0.08 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [records_sorted_by_one_field](records_sorted_by_one_field/) | 1 528 388 | 642 087 | 88 003 | 4 633 597 | 17.37 | 0.33 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [an_items_storage_is_chosen_while_compiling](an_items_storage_is_chosen_while_compiling/) | 34 725 | 29 760 | 2 085 | 1 609 147 | 16.65 | 0.02 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_function_value_describes_its_arguments_when_asked](a_function_value_describes_its_arguments_when_asked/) | 20 116 | 1 233 | 1 217 | 828 493 | 16.53 | 0.02 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_decimal_literal_beside_a_float_is_a_float](a_decimal_literal_beside_a_float_is_a_float/) | 257 979 | 515 300 | 16 106 | 47 413 130 | 16.02 | 0.01 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [while_no_task_runs_a_singletons_lock_is_skipped](while_no_task_runs_a_singletons_lock_is_skipped/) | 34 976 | 50 816 | 2 266 | 2 145 097 | 15.44 | 0.02 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_singletons_attribute_that_never_changes_is_read_in_place](a_singletons_attribute_that_never_changes_is_read_in_place/) | 47 989 | 141 432 | 3 148 | 1 943 221 | 15.24 | 0.02 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [particles](particles/) | 141 774 | 28 186 | 9 935 | 25 296 757 | 14.27 | 0.01 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_numbers_bits_are_read_in_place](a_numbers_bits_are_read_in_place/) | 316 398 | 87 749 | 22 793 | 28 263 394 | 13.88 | 0.01 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [arithmetic_is_checked_in_every_build](arithmetic_is_checked_in_every_build/) | 35 238 | 2 970 | 2 595 | 1 668 529 | 13.58 | 0.02 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [the_compiler_places_memory](the_compiler_places_memory/) | 113 418 | 32 696 | 8 618 | 2 292 126 | 13.16 | 0.05 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [removing_many_at_once](removing_many_at_once/) | 270 224 | 24 074 | 20 884 | 5 449 486 | 12.94 | 0.05 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [game_maths](game_maths/) | 21 452 | 2 186 | 1 699 | 6 783 769 | 12.63 | 0.00 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [an_item_passed_to_a_call_that_cannot_change_its_list_is_not_counted](an_item_passed_to_a_call_that_cannot_change_its_list_is_not_counted/) | 26 908 | 15 948 | 2 134 | 2 158 666 | 12.61 | 0.01 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [text_joined_in_one_piece](text_joined_in_one_piece/) | 41 589 | 94 097 | 3 361 | 134 040 | 12.37 | 0.31 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [reading_through_a_type_without_counting](reading_through_a_type_without_counting/) | 67 800 | 9 548 | 5 516 | 5 207 925 | 12.29 | 0.01 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [atomic_reference_counts_only_with_threads](atomic_reference_counts_only_with_threads/) | 25 848 | 18 331 | 2 134 | 266 571 | 12.11 | 0.10 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [sorting](sorting/) | 237 081 | 121 089 | 19 745 | 1 081 366 | 12.01 | 0.22 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_list_held_only_by_another_list_lives_in_its_slot](a_list_held_only_by_another_list_lives_in_its_slot/) | 424 884 | 237 948 | 35 471 | 6 445 513 | 11.98 | 0.07 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [smaller_ones](smaller_ones/) | 106 867 | 10 247 | 8 977 | 3 130 579 | 11.90 | 0.03 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [image_filter_over_planes](image_filter_over_planes/) | 247 402 | 235 283 | 21 596 | 7 506 924 | 11.46 | 0.03 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [an_item_a_name_holds_from_its_list_is_not_counted](an_item_a_name_holds_from_its_list_is_not_counted/) | 18 783 | 14 890 | 1 763 | 1 299 726 | 10.65 | 0.01 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [thread_safety_for_singletons_the_rest_of_the_plan](thread_safety_for_singletons_the_rest_of_the_plan/) | 18 312 | 19 206 | 1 894 | 252 038 | 9.67 | 0.07 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [reflection_on_constants_folds_and_unrolls](reflection_on_constants_folds_and_unrolls/) | 23 526 | 12 248 | 2 450 | 7 923 285 | 9.60 | 0.00 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [spreadsheet_recalculation](spreadsheet_recalculation/) | 987 302 | 614 947 | 104 572 | 11 146 690 | 9.44 | 0.09 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_proven_read_tests_only_its_bounds](a_proven_read_tests_only_its_bounds/) | 58 900 | 6 578 | 6 487 | 7 201 769 | 9.08 | 0.01 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [storing_an_object_into_a_list_counts_it_only_when_it_changes_the_slot](storing_an_object_into_a_list_counts_it_only_when_it_changes_the_slot/) | 38 163 | 6 514 | 4 341 | 1 204 113 | 8.79 | 0.03 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_number_read_from_bytes_is_one_load](a_number_read_from_bytes_is_one_load/) | 273 902 | 52 460 | 31 225 | 26 434 454 | 8.77 | 0.01 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_binary_schema_is_a_constant](a_binary_schema_is_a_constant/) | 4 650 | 350 629 | 566 | 10 184 790 | 8.22 | 0.00 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_function_taking_a_type_is_compiled_per_class](a_function_taking_a_type_is_compiled_per_class/) | 410 890 | 51 824 | 51 824 | 13 578 756 | 7.93 | 0.03 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [concurrency_machinery_only_where_it_is_used](concurrency_machinery_only_where_it_is_used/) | 10 776 | 10 452 | 1 503 | 13 021 | 7.17 | 0.83 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_singleton_no_other_thread_reaches_takes_no_lock](a_singleton_no_other_thread_reaches_takes_no_lock/) | 21 971 | 4 796 | 3 081 | 1 387 459 | 7.13 | 0.02 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [allocation_is_the_c_librarys_counted_only_where_read](allocation_is_the_c_librarys_counted_only_where_read/) | 17 745 | 59 323 | 2 800 | 375 597 | 6.34 | 0.05 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_number_joined_into_text_is_written_in_place](a_number_joined_into_text_is_written_in_place/) | 98 222 | 313 433 | 15 629 | 400 956 | 6.28 | 0.24 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_counted_loop_of_calls_to_one_singleton_takes_its_lock_once](a_counted_loop_of_calls_to_one_singleton_takes_its_lock_once/) | 18 152 | 307 710 | 2 974 | 4 598 218 | 6.10 | 0.00 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [objects_that_never_leave_their_function_live_in_the_frame](objects_that_never_leave_their_function_live_in_the_frame/) | 85 528 | 1 007 196 | 14 366 | 43 266 523 | 5.95 | 0.00 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_table_filled_once_is_read_as_constants](a_table_filled_once_is_read_as_constants/) | 112 368 | 20 660 | 19 576 | 3 370 382 | 5.74 | 0.03 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [boxing_only_where_a_value_travels_as_a_shape](boxing_only_where_a_value_travels_as_a_shape/) | 66 635 | 83 630 | 11 758 | 156 648 | 5.67 | 0.43 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [number_dictionary](number_dictionary/) | 64 966 | 18 715 | 11 542 | 351 776 | 5.63 | 0.18 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [short_text_lives_inside_the_string](short_text_lives_inside_the_string/) | 95 506 | 246 537 | 17 025 | 524 514 | 5.61 | 0.18 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_test_against_a_value_a_list_never_holds_is_decided_while_compiling](a_test_against_a_value_a_list_never_holds_is_decided_while_compiling/) | 107 250 | 38 739 | 19 829 | 3 376 092 | 5.41 | 0.03 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [appending_to_text_in_place](appending_to_text_in_place/) | 1 030 | 60 311 | 193 | 5 635 | 5.34 | 0.18 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_dictionary_written_out_and_only_read_by_literal_keys_is_folded](a_dictionary_written_out_and_only_read_by_literal_keys_is_folded/) | 28 725 | 355 156 | 5 661 | 1 371 877 | 5.07 | 0.02 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [counts_stay_plain_for_what_one_of_the_calls_run_at_once_counts](counts_stay_plain_for_what_one_of_the_calls_run_at_once_counts/) | 26 764 | 10 706 | 5 304 | 480 807 | 5.05 | 0.06 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_list_item_read_only_to_test_it_is_not_counted](a_list_item_read_only_to_test_it_is_not_counted/) | 56 208 | 63 261 | 11 365 | 2 653 851 | 4.95 | 0.02 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [thread_safety_for_singletons_the_cheapest_safe_form](thread_safety_for_singletons_the_cheapest_safe_form/) | 1 838 | 156 846 | 423 | 1 381 367 | 4.35 | 0.00 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [an_attribute_a_call_cannot_assign_is_passed_without_counting](an_attribute_a_call_cannot_assign_is_passed_without_counting/) | 10 839 | 4 305 | 2 597 | 1 462 246 | 4.17 | 0.01 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [plain_reference_counts_where_no_thread_reaches_a_class](plain_reference_counts_where_no_thread_reaches_a_class/) | 42 993 | 26 329 | 10 728 | 1 007 804 | 4.01 | 0.04 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_dictionary_hashes_a_key_once_cheaply](a_dictionary_hashes_a_key_once_cheaply/) | 92 593 | 82 894 | 25 258 | 241 255 | 3.67 | 0.38 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_loop_over_a_list_of_different_classes_runs_them_at_once](a_loop_over_a_list_of_different_classes_runs_them_at_once/) | 324 314 | 268 912 | 92 867 | 7 667 283 | 3.49 | 0.04 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [copies_that_cost_nothing](copies_that_cost_nothing/) | 52 906 | 22 388 | 16 233 | 5 989 436 | 3.26 | 0.01 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [calls_in_a_row_run_at_once](calls_in_a_row_run_at_once/) | 74 806 | 42 526 | 23 281 | 4 250 964 | 3.21 | 0.02 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_dictionary_keyed_by_numbers_hashes_the_numbers](a_dictionary_keyed_by_numbers_hashes_the_numbers/) | 40 405 | 15 834 | 13 189 | 474 155 | 3.06 | 0.09 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [objects_made_for_their_owner_are_told_apart](objects_made_for_their_owner_are_told_apart/) | 177 892 | 115 374 | 58 803 | 5 413 227 | 3.03 | 0.03 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_crashs_report_is_kept_out_of_the_way](a_crashs_report_is_kept_out_of_the_way/) | 26 689 | 13 299 | 9 829 | 2 545 821 | 2.72 | 0.01 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [vector_maths](vector_maths/) | 122 878 | 61 695 | 47 757 | 28 187 925 | 2.57 | 0.00 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [tokens_as_columns](tokens_as_columns/) | 180 573 | 130 580 | 73 392 | 2 437 097 | 2.46 | 0.07 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_proven_divisor_is_not_checked](a_proven_divisor_is_not_checked/) | 56 908 | 29 011 | 26 076 | 1 139 739 | 2.18 | 0.05 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [singletons_made_on_first_use_never_counted](singletons_made_on_first_use_never_counted/) | 11 539 | 212 660 | 5 614 | 6 827 632 | 2.06 | 0.00 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [deciding_conditions_at_compile_time](deciding_conditions_at_compile_time/) | 12 265 | 8 616 | 7 495 | 2 729 748 | 1.64 | 0.00 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [reads_in_a_row_overlap](reads_in_a_row_overlap/) | 6 785 | 6 298 | 4 838 | 7 831 | 1.40 | 0.87 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [the_thread_pool_only_where_a_parallel_is_made](the_thread_pool_only_where_a_parallel_is_made/) | 8 934 | 7 367 | 7 199 | 709 731 | 1.24 | 0.01 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_loop_whose_passes_write_only_their_own_item_runs_in_bands](a_loop_whose_passes_write_only_their_own_item_runs_in_bands/) | 34 079 | 769 792 | 31 971 | 252 139 263 | 1.07 | 0.00 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
+| [a_wait_in_a_frame_does_not_hold_the_frame](a_wait_in_a_frame_does_not_hold_the_frame/) | 88 990 | 1 176 799 | 924 587 | 315 887 | 0.10 | 0.28 | timed with D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe |
 
-Last measured 2026-10-23: best of 5 interleaved runs (a form stops repeating once its runs pass 30 s), on AMD Ryzen 9 5950X 16-Core Processor, 32 logical processors; C with clang version 19.1.5 -O2, Python 3.12.10, Spite with `D:\Projects\SpiteCompiler\.spite\spite.exe`.
+Last measured 2026-10-23: best of 5 interleaved runs (a form stops repeating once its runs pass 30 s), on AMD Ryzen 9 5950X 16-Core Processor, 32 logical processors; C with clang version 19.1.5 -O2, Python 3.12.10, Spite with `D:\Projects\worktrees\validate\SpiteCompiler\.spite\spite.exe`.
 <!-- /results -->

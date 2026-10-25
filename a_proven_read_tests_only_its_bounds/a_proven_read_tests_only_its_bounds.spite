@@ -3,7 +3,7 @@ var console = Console()
 var values = List<Integer>()
 
 func AProvenReadTestsOnlyItsBounds() {
-    load "../../SpiteCompiler/.spite/library/windows"
+    load "../../spite_standard_library/windows"
     fill(100000)
     var started = clock.elapsed_nanoseconds()
     var answer = all_rounds()

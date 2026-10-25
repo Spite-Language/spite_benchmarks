@@ -10,7 +10,7 @@ var number_total: Long = 0
 var checksums: Long = 0
 
 func TokensAsColumns() {
-    load "../../SpiteCompiler/.spite/library/windows"
+    load "../../spite_standard_library/windows"
     var started = clock.elapsed_nanoseconds()
     tokenize_and_count()
     var finished = clock.elapsed_nanoseconds()

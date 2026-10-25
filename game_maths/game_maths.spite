@@ -5,7 +5,7 @@ var combined = 0.0
 var transformed = 0.0
 
 func GameMaths() {
-    load "../../SpiteCompiler/.spite/library/windows"
+    load "../../spite_standard_library/windows"
     var started = clock.elapsed_nanoseconds()
     all_passes()
     var finished = clock.elapsed_nanoseconds()

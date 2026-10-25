@@ -6,7 +6,7 @@ var clock = Clock()
 var console = Console()
 
 func AFunctionTakingATypeIsCompiledPerClass() {
-    load "../../SpiteCompiler/.spite/library/windows"
+    load "../../spite_standard_library/windows"
     var started = clock.elapsed_nanoseconds()
     var answer = every_measure()
     var finished = clock.elapsed_nanoseconds()

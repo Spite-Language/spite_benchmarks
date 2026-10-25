@@ -5,7 +5,7 @@ var found_keys = 0
 var found_total: Long = 0
 
 func NumberDictionary() {
-    load "../../SpiteCompiler/.spite/library/windows"
+    load "../../spite_standard_library/windows"
     var started = clock.elapsed_nanoseconds()
     fill_and_look_up()
     var finished = clock.elapsed_nanoseconds()

@@ -28,7 +28,8 @@ python run.py --runs=7 --budget=30             the defaults
 ```
 
 For every case named (all of them when none is), `run.py` builds the Spite program with the compiler given (by
-default `D:/Projects/SpiteCompiler/.spite/spite.exe`) and both C programs with clang `-O2` (from `CC`, the `PATH`,
+default `../spite_compiler/.spite/spite.exe`, the compiler `bash scripts/bootstrap.sh --install` leaves in the
+repository beside this one) and both C programs with clang `-O2` (from `CC`, the `PATH`,
 Visual Studio's LLVM, or `zig cc`), runs the four forms interleaved in the case's folder, keeps the best of seven
 runs of each, checks that every form prints exactly what `naive.c` prints, and rewrites the rows of the cases it
 timed in the table below (the others are kept, from `results.json`). A form whose runs pass `--budget` seconds in

@@ -6,7 +6,7 @@ var velocities = Items<Velocity>()
 var entities = List<Integer>()
 
 func RemovingManyAtOnce() {
-    load "../../SpiteCompiler/.spite/library/windows"
+    load "../../spite_standard_library/windows"
     var started = clock.elapsed_nanoseconds()
     var answer = all_rounds()
     var finished = clock.elapsed_nanoseconds()

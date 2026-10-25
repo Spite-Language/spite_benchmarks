@@ -4,7 +4,7 @@
 
 Each case is a folder holding `<case>.spite` (with any other classes beside it), `naive.c`, `expert.c` and
 `naive.py`. The Spite program is built with the compiler given (by default the master compiler,
-D:/Projects/SpiteCompiler/.spite/spite.exe), both C programs with clang -O2, and the four forms are run interleaved,
+../spite_compiler/.spite/spite.exe beside this repository), both C programs with clang -O2, and the four forms are run interleaved,
 each in its case's folder, best of `--runs` runs. A form whose runs have taken more than `--budget` seconds in all
 stops after the run that crossed it, so a slow form is timed fewer times instead of for an hour. Every program times
 its own work and prints "microseconds <n>" on its error output; its standard output is its answer, and every form
@@ -24,7 +24,7 @@ here = os.path.dirname(os.path.abspath(__file__))
 readme = os.path.join(here, 'README.md')
 results_file = os.path.join(here, 'results.json')
 run_timeout = 300
-master_compiler = os.path.abspath('D:/Projects/SpiteCompiler/.spite/spite.exe')
+master_compiler = os.path.normpath(os.path.join(here, '..', 'spite_compiler', '.spite', 'spite.exe'))
 
 
 def find_c_compiler():

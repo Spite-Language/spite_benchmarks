@@ -3,7 +3,7 @@ var clock = Clock()
 var ledger = Ledger()
 
 func ASingletonNoOtherThreadReachesTakesNoLock() {
-    load "../../SpiteCompiler/.spite/library/windows"
+    load "../../spite_standard_library/windows"
     var start = clock.elapsed_nanoseconds()
     var counted = count_on_the_pool()
     var amounts = [4, 12, 30, 7]

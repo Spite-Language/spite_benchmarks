@@ -10,7 +10,7 @@ var places: Long = 0
 var amounts = 0
 
 func ARowOfBorrowedItemsLivesInTheFrame() {
-    load "../../SpiteCompiler/.spite/library/windows"
+    load "../../spite_standard_library/windows"
     var started = clock.elapsed_nanoseconds()
     spawn_and_tick()
     var finished = clock.elapsed_nanoseconds()

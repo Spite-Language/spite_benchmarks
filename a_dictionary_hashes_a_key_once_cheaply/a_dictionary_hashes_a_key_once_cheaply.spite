@@ -3,7 +3,7 @@ var console = Console()
 var by_name = Dictionary<String, Integer>()
 
 func ADictionaryHashesAKeyOnceCheaply() {
-    load "../../SpiteCompiler/.spite/library/windows"
+    load "../../spite_standard_library/windows"
     var started = clock.elapsed_nanoseconds()
     var answer = index_and_look_up()
     var finished = clock.elapsed_nanoseconds()

@@ -3,7 +3,7 @@ var console = Console()
 var origin = Point(0, 0)
 
 func CopiesThatCostNothing() {
-    load "../../SpiteCompiler/.spite/library/windows"
+    load "../../spite_standard_library/windows"
     var started = clock.elapsed_nanoseconds()
     var answer = every_trial()
     var finished = clock.elapsed_nanoseconds()

@@ -65,7 +65,7 @@ def build(case, compiler, c_compiler):
     spite_executable = os.path.join(build_folder, case + '.exe')
     if os.path.exists(spite_executable):
         os.remove(spite_executable)
-    built = subprocess.run([compiler, case], cwd=here, capture_output=True, text=True, errors='replace')
+    built = subprocess.run([compiler, case, "--build"], cwd=here, capture_output=True, text=True, errors='replace')
     if built.returncode != 0 or not os.path.exists(spite_executable):
         return None, 'does not compile: ' + one_line(built.stdout + built.stderr)
     forms = {'spite': [spite_executable]}

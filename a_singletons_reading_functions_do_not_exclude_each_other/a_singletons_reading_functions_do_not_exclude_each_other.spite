@@ -5,7 +5,7 @@ var row_total = 15000
 
 func ASingletonsReadingFunctionsDoNotExcludeEachOther() {
     load "../../spite_standard_library/windows"
-    var start = clock.elapsed_nanoseconds()
+    var start = clock.elapsed()
     var row = 0
     while row < row_total {
         var transform = Transform(row % 1000)
@@ -13,7 +13,8 @@ func ASingletonsReadingFunctionsDoNotExcludeEachOther() {
         row = row + 1
     }
     var total = ticks(20)
-    var microseconds = (clock.elapsed_nanoseconds() - start) / 1000
+    var taken = clock.elapsed() - start
+    var microseconds = taken.total('microseconds')
     console.print("total", total)
     console.error("microseconds {microseconds}")
 }

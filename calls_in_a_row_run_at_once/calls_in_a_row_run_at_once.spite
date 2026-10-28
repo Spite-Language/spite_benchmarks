@@ -5,11 +5,12 @@ var odds = Odds()
 
 func CallsInARowRunAtOnce() {
     load "../../spite_standard_library/windows"
-    var started = clock.elapsed_nanoseconds()
+    var started = clock.elapsed()
     count_both()
-    var finished = clock.elapsed_nanoseconds()
+    var finished = clock.elapsed()
     console.print(evens.total, odds.total)
-    var microseconds = (finished - started) / 1000
+    var taken = finished - started
+    var microseconds = taken.total('microseconds')
     console.error("microseconds {microseconds}")
 }
 

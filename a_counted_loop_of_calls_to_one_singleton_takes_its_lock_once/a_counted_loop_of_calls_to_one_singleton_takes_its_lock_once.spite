@@ -8,11 +8,12 @@ var largest = 0
 
 func ACountedLoopOfCallsToOneSingletonTakesItsLockOnce() {
     load "../../spite_standard_library/windows"
-    var started = clock.elapsed_nanoseconds()
+    var started = clock.elapsed()
     count_and_read()
-    var finished = clock.elapsed_nanoseconds()
+    var finished = clock.elapsed()
     console.print("counted", counted, "calls", calls, "total", total, "largest", largest)
-    var microseconds = (finished - started) / 1000
+    var taken = finished - started
+    var microseconds = taken.total('microseconds')
     console.error("microseconds {microseconds}")
 }
 

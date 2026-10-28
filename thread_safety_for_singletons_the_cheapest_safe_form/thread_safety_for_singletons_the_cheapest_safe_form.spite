@@ -6,14 +6,15 @@ var settings = Settings()
 
 func ThreadSafetyForSingletonsTheCheapestSafeForm() {
     load "../../spite_standard_library/windows"
-    var start = clock.elapsed_nanoseconds()
+    var start = clock.elapsed()
     journal.note("starting")
     var rounds = count_on_four(1000000)
     journal.note("finished")
     var name = settings.name()
     var total = counter.total()
     var written = journal.written()
-    var microseconds = (clock.elapsed_nanoseconds() - start) / 1000
+    var taken = clock.elapsed() - start
+    var microseconds = taken.total('microseconds')
     console.print(name, total, "after", rounds, "rounds, journal lines:", written)
     console.error("microseconds {microseconds}")
 }

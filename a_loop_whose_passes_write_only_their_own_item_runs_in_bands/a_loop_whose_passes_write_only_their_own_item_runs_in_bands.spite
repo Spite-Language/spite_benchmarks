@@ -5,12 +5,13 @@ var orbits = List<Orbit>()
 func ALoopWhosePassesWriteOnlyTheirOwnItemRunsInBands() {
     load "../../spite_standard_library/windows"
     make_orbits(100000)
-    var started = clock.elapsed_nanoseconds()
+    var started = clock.elapsed()
     advance_ticks()
-    var finished = clock.elapsed_nanoseconds()
+    var finished = clock.elapsed()
     var turns = orbits.sum_turns()
     console.print("turns", turns)
-    var microseconds = (finished - started) / 1000
+    var taken = finished - started
+    var microseconds = taken.total('microseconds')
     console.error("microseconds {microseconds}")
 }
 

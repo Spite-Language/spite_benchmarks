@@ -4,7 +4,7 @@ var ledger = Ledger()
 
 func ASingletonNoOtherThreadReachesTakesNoLock() {
     load "../../spite_standard_library/windows"
-    var start = clock.elapsed_nanoseconds()
+    var start = clock.elapsed()
     var counted = count_on_the_pool()
     var amounts = [4, 12, 30, 7]
     var large = amounts.filter(ledger.is_large)
@@ -13,7 +13,8 @@ func ASingletonNoOtherThreadReachesTakesNoLock() {
     var notes = ledger.note_count()
     var milestones = ledger.milestone_count()
     var large_count = large.count()
-    var microseconds = (clock.elapsed_nanoseconds() - start) / 1000
+    var taken = clock.elapsed() - start
+    var microseconds = taken.total('microseconds')
     console.print(
         "counted",
         counted,

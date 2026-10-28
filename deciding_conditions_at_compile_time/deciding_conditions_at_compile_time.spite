@@ -5,11 +5,12 @@ var squares: Long = 0
 
 func DecidingConditionsAtCompileTime() {
     load "../../spite_standard_library/windows"
-    var started = clock.elapsed_nanoseconds()
+    var started = clock.elapsed()
     measure_rounds()
-    var finished = clock.elapsed_nanoseconds()
+    var finished = clock.elapsed()
     console.print("sum", sum, "squares", squares)
-    var microseconds = (finished - started) / 1000
+    var taken = finished - started
+    var microseconds = taken.total('microseconds')
     console.error("microseconds {microseconds}")
 }
 

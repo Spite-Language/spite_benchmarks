@@ -5,14 +5,15 @@ var reader = BinaryReader<Reading>()
 
 func ABinarySchemaIsAConstant() {
     load "../../spite_standard_library/windows"
-    var started = clock.elapsed_nanoseconds()
+    var started = clock.elapsed()
     var answer = accepted_headers()
-    var finished = clock.elapsed_nanoseconds()
+    var finished = clock.elapsed()
     var sensor = sent_and_read_back(7)
     console.print("accepted", answer, "sensor", sensor)
     var schema = writer.schema()
     console.print("schema", schema)
-    var microseconds = (finished - started) / 1000
+    var taken = finished - started
+    var microseconds = taken.total('microseconds')
     console.error("microseconds {microseconds}")
 }
 

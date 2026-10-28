@@ -6,11 +6,12 @@ var into = List<Float>()
 func ALoopOverPlainValuesReadsItsCountOnceAndItsItemsUnchecked() {
     load "../../spite_standard_library/windows"
     fill(100000)
-    var started = clock.elapsed_nanoseconds()
+    var started = clock.elapsed()
     var answer = all_rounds()
-    var finished = clock.elapsed_nanoseconds()
+    var finished = clock.elapsed()
     console.print("total in quarters", answer)
-    var microseconds = (finished - started) / 1000
+    var taken = finished - started
+    var microseconds = taken.total('microseconds')
     console.error("microseconds {microseconds}")
 }
 

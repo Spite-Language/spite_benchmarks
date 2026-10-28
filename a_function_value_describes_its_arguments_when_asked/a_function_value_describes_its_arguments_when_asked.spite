@@ -4,15 +4,16 @@ var scorer: Scorer? = null
 
 func AFunctionValueDescribesItsArgumentsWhenAsked() {
     load "../../spite_standard_library/windows"
-    var started = clock.elapsed_nanoseconds()
+    var started = clock.elapsed()
     var answer = make_and_apply()
-    var finished = clock.elapsed_nanoseconds()
+    var finished = clock.elapsed()
     var applied = answer
     crash scorer
     var scoring = scorer.score
     var argument_count = scoring.arguments.count()
     console.print("applied", applied, "arguments", argument_count)
-    var microseconds = (finished - started) / 1000
+    var taken = finished - started
+    var microseconds = taken.total('microseconds')
     console.error("microseconds {microseconds}")
 }
 

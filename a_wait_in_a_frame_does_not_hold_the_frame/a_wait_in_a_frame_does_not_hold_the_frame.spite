@@ -7,25 +7,27 @@ var checksum: Long = 0
 
 func AWaitInAFrameDoesNotHoldTheFrame() {
     load "../../spite_standard_library/windows"
-    var started = clock.elapsed_nanoseconds()
+    var started = clock.elapsed()
     var answer = run_frames()
-    var finished = clock.elapsed_nanoseconds()
+    var finished = clock.elapsed()
     console.print("frames", frames, "parts saved", answer, "checksum", checksum)
-    var microseconds = (finished - started) / 1000
+    var taken = finished - started
+    var microseconds = taken.total('microseconds')
     console.error("microseconds {microseconds}")
 }
 
 func run_frames(): Integer {
+    var one_millisecond = Duration(1, 'milliseconds')
     while frames < 60 {
         frames = frames + 1
         draw()
         if frames <= 8 {
             saver.save_part()
         }
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
     while saver.saved < 8 {
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
     return saver.saved
 }

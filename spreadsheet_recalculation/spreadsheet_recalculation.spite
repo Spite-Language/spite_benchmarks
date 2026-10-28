@@ -7,11 +7,12 @@ var placements: Long = 0
 
 func SpreadsheetRecalculation() {
     load "../../spite_standard_library/windows"
-    var started = clock.elapsed_nanoseconds()
+    var started = clock.elapsed()
     recalculate_all()
-    var finished = clock.elapsed_nanoseconds()
+    var finished = clock.elapsed()
     console.print("total", recalculated_total, "last", last_value, "placements", placements)
-    var microseconds = (finished - started) / 1000
+    var taken = finished - started
+    var microseconds = taken.total('microseconds')
     console.error("microseconds {microseconds}")
 }
 

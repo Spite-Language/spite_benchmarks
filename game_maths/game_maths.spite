@@ -6,16 +6,17 @@ var transformed = 0.0
 
 func GameMaths() {
     load "../../spite_standard_library/windows"
-    var started = clock.elapsed_nanoseconds()
+    var started = clock.elapsed()
     all_passes()
-    var finished = clock.elapsed_nanoseconds()
+    var finished = clock.elapsed()
     var ended_x: Long = ended_at.x * 1000.0
     var ended_y: Long = ended_at.y * 1000.0
     var ended_z: Long = ended_at.z * 1000.0
     var diagonal: Long = combined * 1000000.0
     var total: Long = transformed
     console.print("ended at", ended_x, ended_y, ended_z, "diagonal", diagonal, "total", total)
-    var microseconds = (finished - started) / 1000
+    var taken = finished - started
+    var microseconds = taken.total('microseconds')
     console.error("microseconds {microseconds}")
 }
 

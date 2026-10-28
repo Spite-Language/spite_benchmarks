@@ -5,11 +5,12 @@ var numbers = 0
 
 func AListsTemplatesReadItsElementsWithoutCountingThem() {
     load "../../spite_standard_library/windows"
-    var started = clock.elapsed_nanoseconds()
+    var started = clock.elapsed()
     fill_and_simulate()
-    var finished = clock.elapsed_nanoseconds()
+    var finished = clock.elapsed()
     console.print("total", total, "labels", numbers)
-    var microseconds = (finished - started) / 1000
+    var taken = finished - started
+    var microseconds = taken.total('microseconds')
     console.error("microseconds {microseconds}")
 }
 

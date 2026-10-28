@@ -4,11 +4,12 @@ var origin = Point(0, 0)
 
 func CopiesThatCostNothing() {
     load "../../spite_standard_library/windows"
-    var started = clock.elapsed_nanoseconds()
+    var started = clock.elapsed()
     var answer = every_trial()
-    var finished = clock.elapsed_nanoseconds()
+    var finished = clock.elapsed()
     console.print("total", answer, "origin", origin.x, origin.y)
-    var microseconds = (finished - started) / 1000
+    var taken = finished - started
+    var microseconds = taken.total('microseconds')
     console.error("microseconds {microseconds}")
 }
 

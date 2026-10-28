@@ -3,13 +3,14 @@ var clock = Clock()
 
 func PlainReferenceCountsWhereNoThreadReachesAClass() {
     load "../../spite_standard_library/windows"
-    var start = clock.elapsed_nanoseconds()
+    var start = clock.elapsed()
     var summer = Summer(20000000)
     var sum = Parallel(summer.total)
     var points = make_points(200000)
     var near = count_near(points)
     var finished: Long = sum
-    var microseconds = (clock.elapsed_nanoseconds() - start) / 1000
+    var taken = clock.elapsed() - start
+    var microseconds = taken.total('microseconds')
     console.print("sum", finished, "near", near)
     console.error("microseconds {microseconds}")
 }

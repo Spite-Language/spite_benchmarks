@@ -4,10 +4,11 @@ var shelf = Shelf()
 
 func ASingletonsAttributeThatNeverChangesIsReadInPlace() {
     load "../../spite_standard_library/windows"
-    var start = clock.elapsed_nanoseconds()
+    var start = clock.elapsed()
     fill_shelf(1000000)
     var total = read_on_the_pool()
-    var microseconds = (clock.elapsed_nanoseconds() - start) / 1000
+    var taken = clock.elapsed() - start
+    var microseconds = taken.total('microseconds')
     console.print("total", total)
     console.error("microseconds {microseconds}")
 }

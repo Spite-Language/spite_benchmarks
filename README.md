@@ -13,7 +13,7 @@ program against what a person gets from C and from Python for the same work:
 Every form prints the same answer on its standard output and times its own work, printing `microseconds <n>` on its
 error output, so starting a process (and the Python interpreter) is not counted. The C programs read the clock
 through [clock.h](clock.h), the Python ones through `time.perf_counter_ns()`, the Spite ones through
-`clock.elapsed_nanoseconds()`.
+`clock.elapsed()`, a `Duration`, whose difference they print with `total('microseconds')`.
 
 **Only the result counts.** Any form is fair as long as it prints the same answer: if `expert.c` folds work away
 or computes the answer another way, that is the target, and the compiler must learn to reach it from the unchanged

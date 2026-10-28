@@ -11,11 +11,12 @@ var amounts = 0
 
 func ARowOfBorrowedItemsLivesInTheFrame() {
     load "../../spite_standard_library/windows"
-    var started = clock.elapsed_nanoseconds()
+    var started = clock.elapsed()
     spawn_and_tick()
-    var finished = clock.elapsed_nanoseconds()
+    var finished = clock.elapsed()
     console.print("places", places, "health", amounts)
-    var microseconds = (finished - started) / 1000
+    var taken = finished - started
+    var microseconds = taken.total('microseconds')
     console.error("microseconds {microseconds}")
 }
 

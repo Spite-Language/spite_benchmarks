@@ -7,12 +7,13 @@ var console = Console()
 
 func AFunctionTakingATypeIsCompiledPerClass() {
     load "../../spite_standard_library/windows"
-    var started = clock.elapsed_nanoseconds()
+    var started = clock.elapsed()
     var answer = every_measure()
-    var finished = clock.elapsed_nanoseconds()
+    var finished = clock.elapsed()
     var whole: Long = answer
     console.print("total", whole)
-    var microseconds = (finished - started) / 1000
+    var taken = finished - started
+    var microseconds = taken.total('microseconds')
     console.error("microseconds {microseconds}")
 }
 

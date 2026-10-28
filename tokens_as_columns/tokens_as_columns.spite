@@ -78,7 +78,7 @@ func tokenized(source: String): List<Token> {
     var line = 1
     var position = 0
     while position < length {
-        var code = source.code_at(position)
+        var code = source.byte_at(position)
         var first = position
         if code == 10 {
             line = line + 1
@@ -87,16 +87,16 @@ func tokenized(source: String): List<Token> {
             position = position + 1
         } else if code >= 97 and code <= 122 {
             var hash: Long = 0
-            while position < length and source.code_at(position) >= 97 and source.code_at(position) <= 122 {
-                hash = (hash * 31 + source.code_at(position)) % 1000000007
+            while position < length and source.byte_at(position) >= 97 and source.byte_at(position) <= 122 {
+                hash = (hash * 31 + source.byte_at(position)) % 1000000007
                 position = position + 1
             }
             var identifier = Token('identifier', first, position - first, line, hash)
             tokens.append(identifier)
         } else if code >= 48 and code <= 57 {
             var number: Long = 0
-            while position < length and source.code_at(position) >= 48 and source.code_at(position) <= 57 {
-                number = number * 10 + source.code_at(position) - 48
+            while position < length and source.byte_at(position) >= 48 and source.byte_at(position) <= 57 {
+                number = number * 10 + source.byte_at(position) - 48
                 position = position + 1
             }
             var digits = Token('number', first, position - first, line, number)

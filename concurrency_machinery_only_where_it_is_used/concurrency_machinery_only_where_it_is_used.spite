@@ -23,8 +23,8 @@ func write_and_read(notes: File, rounds: Integer): Integer {
     var characters = 0
     var round = 0
     while round < rounds {
-        notes.write("round {round} of the notes")
-        var read = notes.read()
+        notes.write_string("round {round} of the notes")
+        var read = notes.read_as_string()
         crash read
         characters = characters + read.length()
         round = round + 1

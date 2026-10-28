@@ -30,7 +30,7 @@ func encode_rounds(bytes: Buffer): Long {
         var changed: Byte = round
         bytes[round] = changed
         var encoded = base64.encode(bytes)
-        total = total + encoded.length() + encoded.code_at(round)
+        total = total + encoded.length() + encoded.byte_at(round)
         round = round + 1
     }
     return total

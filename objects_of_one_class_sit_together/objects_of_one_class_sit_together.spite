@@ -20,6 +20,9 @@ func make_and_sum() {
     make_both(300000)
     total = sum_points()
     noted = notes.count()
+    var first_note = notes.first()
+    crash first_note
+    crash first_note.text == "made"
 }
 
 func make_both(count: Integer) {

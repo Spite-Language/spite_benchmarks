@@ -6,10 +6,8 @@ ITEM_TOTAL = 200000
 
 
 class Velocity:
-    def __init__(self, entity, across, down, despawned):
+    def __init__(self, entity, despawned):
         self.entity = entity
-        self.across = across
-        self.down = down
         self.despawned = despawned
 
 
@@ -37,7 +35,7 @@ class World:
         self.entities = []
         for entity in range(ITEM_TOTAL):
             despawned_now = self.marked(entity)
-            self.velocities.append(Velocity(entity, 1.0 * entity, 1.0 * entity * 0.5, despawned_now))
+            self.velocities.append(Velocity(entity, despawned_now))
             self.entities.append(entity)
 
     def kept_sum(self):

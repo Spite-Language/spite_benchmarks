@@ -2,7 +2,7 @@ var clock = Clock()
 var console = Console()
 var despawns = Despawns()
 var item_total = 200000
-var velocities = Items<Velocity>()
+var velocities = List<Velocity>()
 var entities = List<Integer>()
 
 func RemovingManyAtOnce() {
@@ -39,7 +39,7 @@ func fill() {
     var entity = 0
     while entity < item_total {
         var despawned_now = despawns.marked(entity)
-        var velocity = Velocity(entity, 1.0 * entity, despawned_now)
+        var velocity = Velocity(entity, despawned_now)
         velocities.append(velocity)
         entities.append(entity)
         entity = entity + 1

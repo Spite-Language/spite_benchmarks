@@ -1,6 +1,6 @@
 generic $component_type
 
-var items = Items<$component_type>()
+var items = List<$component_type>()
 
 func add(component: $component_type) {
     items.append(component)

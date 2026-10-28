@@ -12,8 +12,6 @@
 
 typedef struct Velocity {
     int32_t entity;
-    float across;
-    float down;
     bool despawned;
 } Velocity;
 
@@ -84,7 +82,7 @@ static void fill(void) {
     entities.count = 0;
     for (int32_t entity = 0; entity < ITEM_TOTAL; entity++) {
         bool despawned_now = marked(entity);
-        Velocity velocity = {entity, 1.0f * (float)entity, 1.0f * (float)entity * 0.5f, despawned_now};
+        Velocity velocity = {entity, despawned_now};
         append_velocity(&velocities, velocity);
         append_integer(&entities, entity);
     }

@@ -14,7 +14,7 @@ func Particles() {
 }
 
 func simulate() {
-    var particles = Vector<Particle>()
+    var particles = List<Particle>()
     var index = 0
     while index < 100000 {
         var particle = Particle(index)

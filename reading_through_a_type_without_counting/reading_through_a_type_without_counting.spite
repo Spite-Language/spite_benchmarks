@@ -13,14 +13,14 @@ func ReadingThroughATypeWithoutCounting() {
 }
 
 func move_all(): Long {
-    var positions = Vector<Position>()
-    var velocities = Vector<Velocity>()
+    var positions = List<Position>()
+    var velocities = List<Velocity>()
     fill(positions, velocities, 100000)
     ticks(positions, velocities)
     return positions.sum_place()
 }
 
-func fill(positions: Vector<Position>, velocities: Vector<Velocity>, count: Integer) {
+func fill(positions: List<Position>, velocities: List<Velocity>, count: Integer) {
     var index = 0
     while index < count {
         var position = Position()
@@ -31,7 +31,7 @@ func fill(positions: Vector<Position>, velocities: Vector<Velocity>, count: Inte
     }
 }
 
-func ticks(positions: Vector<Position>, velocities: Vector<Velocity>) {
+func ticks(positions: List<Position>, velocities: List<Velocity>) {
     var tick = 0
     while tick < 200 {
         var index = 0

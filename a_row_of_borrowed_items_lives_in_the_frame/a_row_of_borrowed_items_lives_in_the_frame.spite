@@ -2,10 +2,10 @@ var clock = Clock()
 var console = Console()
 var mover = Mover()
 var healer = Healer()
-var positions = Vector<Position>()
-var velocities = Vector<Velocity>()
-var healths = Vector<Health>()
-var regenerations = Vector<Regeneration>()
+var positions = List<Position>()
+var velocities = List<Velocity>()
+var healths = List<Health>()
+var regenerations = List<Regeneration>()
 var places: Long = 0
 var amounts = 0
 

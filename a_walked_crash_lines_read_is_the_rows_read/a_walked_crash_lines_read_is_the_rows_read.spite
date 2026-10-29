@@ -1,7 +1,13 @@
+type Moving {
+    entity: Entity
+    position: Position
+    velocity: Velocity
+}
+
 var clock = Clock()
 var console = Console()
 var mover = Mover()
-var runner = Runner<Mover.Moving>()
+var runner = Runner<Moving>()
 var positions = Column<Position>()
 var velocities = Column<Velocity>()
 var entity_count = 100000

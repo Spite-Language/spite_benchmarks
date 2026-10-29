@@ -1,3 +1,7 @@
+type Printable {
+    to_string(): String
+}
+
 var clock = Clock()
 var console = Console()
 
@@ -17,8 +21,8 @@ func make_and_measure(): Long {
     return measure_rounds(values)
 }
 
-func make_values(count: Integer): List<Console.Printable> {
-    var values = List<Console.Printable>()
+func make_values(count: Integer): List<Printable> {
+    var values = List<Printable>()
     var index = 0
     while index < count {
         add_value(values, index)
@@ -27,7 +31,7 @@ func make_values(count: Integer): List<Console.Printable> {
     return values
 }
 
-func add_value(values: List<Console.Printable>, index: Integer) {
+func add_value(values: List<Printable>, index: Integer) {
     var kind = index % 3
     if kind == 0 {
         values.append(index)
@@ -38,7 +42,7 @@ func add_value(values: List<Console.Printable>, index: Integer) {
     }
 }
 
-func measure_rounds(values: List<Console.Printable>): Long {
+func measure_rounds(values: List<Printable>): Long {
     var total: Long = 0
     var round = 0
     while round < 20 {
@@ -49,7 +53,7 @@ func measure_rounds(values: List<Console.Printable>): Long {
     return total
 }
 
-func measure(values: List<Console.Printable>): Integer {
+func measure(values: List<Printable>): Integer {
     var total = 0
     var index = 0
     while index < values.count() {

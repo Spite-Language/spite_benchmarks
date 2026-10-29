@@ -31,9 +31,7 @@ func place(at: Integer, crate: Crate): Integer {
     crash crates[at]
     var before = crates[at].weight
     crates[at] = crate
-    if before == crate.weight {
-        return 0
-    }
+    fallback before != crate.weight
     return 1
 }
 

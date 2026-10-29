@@ -1,5 +1,9 @@
 singleton
 
+type Collection {
+    sort()
+}
+
 var archive = Archive()
 var gallery = Gallery()
 var collections = List<Collection>()

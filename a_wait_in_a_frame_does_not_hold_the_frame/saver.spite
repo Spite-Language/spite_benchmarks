@@ -8,6 +8,6 @@ func save_part() {
     next_part = next_part + 1
     program.sleep(twenty_milliseconds)
     var file = File(".spite/frame_save_{part}.txt")
-    file.write_string("part {part}")
+    crash file.write_string("part {part}")
     saved = saved + 1
 }

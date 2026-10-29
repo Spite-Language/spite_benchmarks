@@ -20,8 +20,8 @@ func ReadsInARowOverlap() {
 func make_files() {
     var first_text = make_text("first", 4000)
     var second_text = make_text("second", 4000)
-    first_file.write_string(first_text)
-    second_file.write_string(second_text)
+    crash first_file.write_string(first_text)
+    crash second_file.write_string(second_text)
 }
 
 func all_reads(): Long {

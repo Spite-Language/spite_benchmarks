@@ -52,7 +52,6 @@ func decode(records: Buffer): Long {
         var down = records.read_integer_big_endian_at(position + 8)
         var kind = records.read_short_big_endian_at(position + 12)
         var flags = records.read_short_big_endian_at(position + 14)
-        crash identity and across and down and kind and flags
         total = total + identity + across + down * kind + flags
         position = position + 16
     }

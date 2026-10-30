@@ -34,10 +34,12 @@ func refer(index: Integer, seed: Long) {
 }
 
 func formula_of(choice: Long): Formula {
-    switch choice {
-        0: return 'sum'
-        1: return 'product'
-        _: return 'scaled'
+    if choice == 0 {
+        return 'sum'
+    } else if choice == 1 {
+        return 'product'
+    } else {
+        return 'scaled'
     }
 }
 

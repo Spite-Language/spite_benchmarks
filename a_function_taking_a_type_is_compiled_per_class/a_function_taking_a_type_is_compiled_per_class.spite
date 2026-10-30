@@ -41,6 +41,6 @@ func measure_all(steps: Integer): Double {
 }
 
 func doubled(value: Measured): Double {
-    var measure = value.to_double()
+    var measure: Double = value
     return measure + measure
 }

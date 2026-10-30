@@ -18,8 +18,9 @@ func run(system: Mover, entity_count: Integer) {
     }
 }
 
-func find_attribute(attribute: Spite.AttributeDeclaration, _row: $row_type, entity: Integer) {
+func find_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, entity: Integer) {
     if attribute.class == Entity {
+        row.attributes[attribute] = Entity(entity)
         note(entity)
     } else {
         var column = Column<attribute.class>()

@@ -21,20 +21,27 @@ Spite program.
 
 ## Running
 
+The runner is a Spite program, `runner/runner.spite`. Build it with the compiler, then run it from this folder:
+
 ```
-python run.py                                  every case, with the master compiler
-python run.py --compiler=path/to/spite.exe a_case another_case
-python run.py --runs=7 --budget=30             the defaults
+../spite_compiler/.spite/spite.exe runner --build
+runner/.spite/build/runner.exe                                    every case, with the master compiler
+runner/.spite/build/runner.exe --compiler=path/to/spite.exe --cases=a_case,another_case
+runner/.spite/build/runner.exe --runs=7 --budget=30               the defaults
 ```
 
-For every case named (all of them when none is), `run.py` builds the Spite program with the compiler given (by
+Every value is a named setting of the runner's `Environment` (`runner/environment.spite`), given on the command line or
+as an environment variable (`CASES=a_case`); `--python=` names the Python to run `naive.py` with (`python` by default).
+For every case named (all of them when none is), the runner builds the Spite program with the compiler given (by
 default `../spite_compiler/.spite/spite.exe`, the compiler `bash scripts/bootstrap.sh --install` leaves in the
 repository beside this one) and both C programs with clang `-O2` (from `CC`, the `PATH`,
 Visual Studio's LLVM, or `zig cc`), runs the four forms interleaved in the case's folder, keeps the best of seven
 runs of each, checks that every form prints exactly what `naive.c` prints, and rewrites the rows of the cases it
 timed in the table below (the others are kept, from `results.json`). A form whose runs pass `--budget` seconds in
-all stops repeating, so a slow form (most often the Python one) is timed fewer than seven times. A row timed with
-another compiler than master says so in its last column, so an optimisation can be timed on its own cases first.
+all stops repeating, so a slow form (most often the Python one) is timed fewer than seven times, and a run that
+takes more than 300 seconds is stopped and noted. A row timed with another compiler than master says so in its
+last column, so an optimisation can be timed on its own cases first. `naive.py` is the one file here in another
+language than Spite: it is what Spite is measured against (D1764).
 
 The ratios are Spite's time divided by the other form's: below 1.00 Spite is faster, above it slower. The table is
 ordered by Spite's time over expert C's, worst first; the cases that do not build or answer differently come last,

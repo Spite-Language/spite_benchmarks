@@ -1,0 +1,5 @@
+var compiler = ""
+var runs = 7
+var budget = 30
+var cases = ""
+var python = "python"

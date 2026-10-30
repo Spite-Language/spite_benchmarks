@@ -1,0 +1,7 @@
+var text = ""
+var order = 0
+
+func Row(starting_text: String, starting_order: Integer) {
+    text = starting_text
+    order = starting_order
+}

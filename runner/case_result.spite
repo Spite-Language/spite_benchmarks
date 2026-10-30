@@ -1,0 +1,3 @@
+var best = Dictionary<String, Long>()
+var problems = Dictionary<String, String>()
+var compiler = ""

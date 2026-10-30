@@ -1,0 +1,9 @@
+var name = ""
+var command = ""
+var spent: Long = 0
+var answer: String? = null
+
+func Form(starting_name: String, starting_command: String) {
+    name = starting_name
+    command = starting_command
+}

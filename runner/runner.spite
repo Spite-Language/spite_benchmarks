@@ -1,0 +1,661 @@
+union Entry {
+    Directory
+    File
+}
+
+var console = Console()
+var program = Program()
+var environment = Environment()
+var clock = Clock()
+var zones = TimeZones()
+var here = ""
+var master_compiler = ""
+var compiler = ""
+var c_compiler = ""
+var results = Dictionary<String, CaseResult>()
+var every_case = List<String>()
+var forms = List<Form>()
+var problems = Dictionary<String, String>()
+var best = Dictionary<String, Long>()
+var run_limit: Long = 300
+var results_path = "results.json"
+var readme_path = "README.md"
+var outputs_folder = ".spite/runner"
+
+func Runner() {
+    load "../../spite_standard_library/windows"
+    var working = program.working_directory()
+    crash working
+    here = working
+    master_compiler = absolute("..\\spite_compiler\\.spite\\spite.exe")
+    compiler = master_compiler
+    if not environment.compiler.is_empty() {
+        compiler = absolute(environment.compiler)
+    }
+    make_a_folder(".spite")
+    make_a_folder(outputs_folder)
+    find_every_case()
+    var cases = chosen_cases()
+    c_compiler = found_c_compiler()
+    read_the_results()
+    cases.each(time_a_case)
+    write_the_table()
+}
+
+func absolute(written: String): String {
+    var forward = written.replace("\\", "/")
+    var has_a_drive = forward.length() >= 2 and forward.byte_at(1) == 58
+    var whole = forward
+    if not has_a_drive and not forward.starts_with("/") {
+        whole = "{here}/{forward}"
+    }
+    var normal: Path = whole
+    var shown = normal.to_string()
+    return shown.replace("/", "\\")
+}
+
+func make_a_folder(path: String) {
+    var folder = Directory(path)
+    if not folder.exists() {
+        crash folder.create()
+    }
+}
+
+func find_every_case() {
+    var directory = Directory(".")
+    var entries = directory.entries()
+    crash entries
+    entries.each(keep_a_case)
+}
+
+func keep_a_case(entry: Entry) {
+    fallback entry.class == Directory
+    var name = entry.folder_name
+    var program_file = File("{name}/{name}.spite")
+    var naive_file = File("{name}/naive.c")
+    if program_file.exists() and naive_file.exists() {
+        every_case.append(name)
+    }
+}
+
+func chosen_cases(): List<String> {
+    if environment.cases.is_empty() {
+        return every_case
+    }
+    var chosen = List<String>()
+    var named = environment.cases.split(",")
+    var index = 0
+    while index < named.count() {
+        var written = named[index]
+        var forward = written.replace("\\", "/")
+        var pieces = forward.split("/")
+        var kept = List<String>()
+        pieces.each(kept.append)
+        var name = kept.first()
+        crash name
+        if not every_case.contains(name) {
+            stop("there is no case named {name}")
+        }
+        chosen.append(name)
+        index = index + 1
+    }
+    return chosen
+}
+
+func stop(text: String) {
+    console.error("error: {text}")
+    program.exit(1)
+}
+
+func found_c_compiler(): String {
+    var given = program.environment("CC")
+    if given {
+        return given
+    }
+    var clang = command_answer("where clang")
+    if clang {
+        return "clang"
+    }
+    var studio = studio_clang()
+    if studio {
+        return "\"{studio}\""
+    }
+    var zig = command_answer("where zig")
+    if zig {
+        return "zig cc"
+    }
+    stop("no C compiler found: set CC, or install clang or zig")
+    return ""
+}
+
+func studio_clang(): String? {
+    var root = "C:/Program Files/Microsoft Visual Studio"
+    var versions = folders_in(root)
+    var version_index = 0
+    while version_index < versions.count() {
+        var version = versions[version_index]
+        var editions = folders_in("{root}/{version}")
+        var edition_index = 0
+        while edition_index < editions.count() {
+            var edition = editions[edition_index]
+            var path = "{root}/{version}/{edition}/VC/Tools/Llvm/x64/bin/clang.exe"
+            var file = File(path)
+            if file.exists() {
+                return path.replace("/", "\\")
+            }
+            edition_index = edition_index + 1
+        }
+        version_index = version_index + 1
+    }
+    return null
+}
+
+func folders_in(path: String): List<String> {
+    var names = List<String>()
+    var directory = Directory(path)
+    var entries = directory.entries()
+    if not entries {
+        return names
+    }
+    var index = 0
+    while index < entries.count() {
+        var entry = entries[index]
+        if entry.class == Directory {
+            names.append(entry.folder_name)
+        }
+        index = index + 1
+    }
+    return names
+}
+
+func command_answer(line: String): String? {
+    var no_arguments = List<String>()
+    var process = Process("{line} 2>nul", no_arguments)
+    var code = process.run()
+    fallback code == 0
+    var output = process.read_output_as_string()
+    fallback output
+    var lines = output.lines()
+    var first = lines.first()
+    fallback first
+    var trimmed = first.trim()
+    fallback not trimmed.is_empty()
+    return trimmed
+}
+
+func read_the_results() {
+    var file = File(results_path)
+    fallback file.exists()
+    var text = file.read_as_string()
+    crash text
+    var reader = JsonReader<Dictionary<String, CaseResult>>()
+    var read = reader.read(text)
+    if not read {
+        stop("{results_path} is not the results this runner writes")
+    }
+    crash read
+    var index = 0
+    while index < every_case.count() {
+        var name = every_case[index]
+        var kept = read[name]
+        if kept {
+            results[name] = kept
+        }
+        index = index + 1
+    }
+}
+
+func save_the_results() {
+    var writer = JsonWriter<Dictionary<String, CaseResult>>()
+    var text = writer.write(results)
+    var file = File(results_path)
+    crash file.write_string("{text}\n")
+}
+
+func time_a_case(name: String) {
+    var result = CaseResult()
+    var problem = built(name)
+    if problem {
+        result.problems["build"] = problem
+    } else {
+        time_the_forms(name)
+        result.best = best
+        result.problems = problems
+    }
+    result.compiler = compiler
+    results[name] = result
+    var row = row_of(name, result)
+    console.print(row)
+    save_the_results()
+}
+
+func built(name: String): String? {
+    var build_folder = "{here}\\{name}\\.spite\\build"
+    var spite_executable = "{build_folder}\\{name}.exe"
+    var old = File(spite_executable)
+    if old.exists() {
+        crash old.remove()
+    }
+    var compiled = ran_in(here, "\"{compiler}\" {name} --build")
+    if compiled {
+        var reason = one_line(compiled, 200)
+        return "does not compile: {reason}"
+    }
+    if not old.exists() {
+        return "does not compile: it wrote no {name}.exe"
+    }
+    forms = List<Form>()
+    var spite_form = Form("spite", "\"{spite_executable}\"")
+    forms.append(spite_form)
+    var naive_problem = built_c(name, "naive", build_folder)
+    if naive_problem {
+        return naive_problem
+    }
+    var expert_problem = built_c(name, "expert", build_folder)
+    if expert_problem {
+        return expert_problem
+    }
+    var python_form = Form("python", "{environment.python} naive.py")
+    forms.append(python_form)
+    return null
+}
+
+func built_c(name: String, form_name: String, build_folder: String): String? {
+    var executable = "{build_folder}\\{form_name}_c.exe"
+    var folder = "{here}\\{name}"
+    var made = ran_in(folder, "{c_compiler} -O2 -w {form_name}.c -o \"{executable}\"")
+    if made {
+        var reason = one_line(made, 200)
+        return "{form_name}.c does not build: {reason}"
+    }
+    var form = Form(form_name, "\"{executable}\"")
+    forms.append(form)
+    return null
+}
+
+func ran_in(folder: String, line: String): String? {
+    var no_arguments = List<String>()
+    var process = Process("cd /d \"{folder}\" && {line} 2>&1", no_arguments)
+    var code = process.run()
+    fallback code != 0
+    var output = process.read_output_as_string()
+    if output {
+        return output
+    }
+    return ""
+}
+
+func time_the_forms(name: String) {
+    best = Dictionary<String, Long>()
+    problems = Dictionary<String, String>()
+    var folder = "{here}\\{name}"
+    make_a_folder("{name}/.spite")
+    var budget: Long = environment.budget
+    var budget_microseconds = budget * 1000000
+    var attempt = 0
+    while attempt < environment.runs {
+        var index = 0
+        while index < forms.count() {
+            var form = forms[index]
+            var is_left = not problems.contains(form.name) and form.spent <= budget_microseconds
+            if is_left {
+                run_once(folder, form)
+            }
+            index = index + 1
+        }
+        attempt = attempt + 1
+    }
+    compare_the_answers()
+}
+
+func run_once(folder: String, form: Form) {
+    var answer_path = "{here}\\{outputs_folder}\\answer.txt"
+    var errors_path = "{here}\\{outputs_folder}\\errors.txt"
+    answer_path = answer_path.replace("/", "\\")
+    errors_path = errors_path.replace("/", "\\")
+    var command = "cmd /d /s /c \"cd /d \"{folder}\" && {form.command} >\"{answer_path}\" 2>\"{errors_path}\"\""
+    var child = Child(form.name)
+    if not child.start(command) {
+        problems[form.name] = "could not be started: {command}"
+        return
+    }
+    var waited = wait_for(child)
+    if not waited {
+        child.stop()
+        child.close()
+        problems[form.name] = "ran longer than {run_limit} s"
+        return
+    }
+    var code = child.exit_code()
+    child.close()
+    var answer = text_of(answer_path)
+    var errors = text_of(errors_path)
+    if code != 0 {
+        var reason = one_line("{answer}{errors}", 200)
+        problems[form.name] = "exit code {code}: {reason}"
+        return
+    }
+    var took = microseconds_in(errors)
+    if not took {
+        problems[form.name] = "printed no \"microseconds <n>\" line"
+        return
+    }
+    keep_a_run(form, answer, took)
+}
+
+func wait_for(child: Child): Boolean {
+    var ten_milliseconds = Duration(10, 'milliseconds')
+    while not child.has_finished() {
+        fallback child.seconds_running() < run_limit
+        program.sleep(ten_milliseconds)
+    }
+    return true
+}
+
+func keep_a_run(form: Form, answer: String, took: Long) {
+    if not form.answer {
+        form.answer = answer
+    } else if form.answer != answer {
+        problems[form.name] = "answers differently from one run to the next"
+        return
+    }
+    form.spent = form.spent + took
+    var kept = best[form.name]
+    if not kept or took < kept {
+        best[form.name] = took
+    }
+}
+
+func text_of(path: String): String {
+    var file = File(path)
+    var text = file.read_as_string()
+    fallback text
+    return text.replace("\r", "")
+}
+
+func microseconds_in(errors: String): Long? {
+    var lines = errors.lines()
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var trimmed = line.trim()
+        if trimmed.starts_with("microseconds ") {
+            var length = trimmed.length()
+            var digits = trimmed.slice(13, length)
+            crash digits
+            var number: Long? = digits
+            if number {
+                return number
+            }
+        }
+        index = index + 1
+    }
+    return null
+}
+
+func compare_the_answers() {
+    var reference = answer_of("naive")
+    fallback reference
+    var index = 0
+    while index < forms.count() {
+        var form = forms[index]
+        judge_an_answer(form, reference)
+        index = index + 1
+    }
+}
+
+func judge_an_answer(form: Form, reference: String) {
+    fallback form.name != "naive" and not problems.contains(form.name)
+    var shown = ""
+    if form.answer {
+        fallback form.answer != reference
+        shown = one_line(form.answer, 120)
+    }
+    var expected = one_line(reference, 120)
+    problems[form.name] = "answers {shown} where naive.c answers {expected}"
+}
+
+func answer_of(form_name: String): String? {
+    var index = 0
+    while index < forms.count() {
+        var form = forms[index]
+        if form.name == form_name {
+            return form.answer
+        }
+        index = index + 1
+    }
+    return null
+}
+
+func one_line(text: String, limit: Integer): String {
+    var spaced = text.replace("\r", " ")
+    spaced = spaced.replace("\n", " ")
+    spaced = spaced.replace("\t", " ")
+    var pieces = spaced.split(" ")
+    var kept = List<String>()
+    var index = 0
+    while index < pieces.count() {
+        var piece = pieces[index]
+        if not piece.is_empty() {
+            kept.append(piece)
+        }
+        index = index + 1
+    }
+    var joined = kept.join(" ")
+    if joined.length() <= limit {
+        return joined
+    }
+    var cut = joined.slice(0, limit)
+    crash cut
+    return "{cut}..."
+}
+
+func grouped_digits(number: Long): String {
+    var digits = number.to_string()
+    var grouped = ""
+    var length = digits.length()
+    var index = 0
+    while index < length {
+        var left = length - index
+        if index > 0 and left % 3 == 0 {
+            grouped = "{grouped} "
+        }
+        var digit = digits[index]
+        crash digit
+        grouped = "{grouped}{digit}"
+        index = index + 1
+    }
+    return grouped
+}
+
+func hundredths(top: Long?, bottom: Long?): Long? {
+    fallback top and bottom
+    var divisor = bottom
+    if divisor < 1 {
+        divisor = 1
+    }
+    return (top * 100 + divisor / 2) / divisor
+}
+
+func shown_ratio(ratio: Long?): String {
+    fallback ratio
+    var whole = ratio / 100
+    var part = ratio % 100
+    if part < 10 {
+        return "{whole}.0{part}"
+    }
+    return "{whole}.{part}"
+}
+
+func row_of(name: String, result: CaseResult): String {
+    var cells = List<String>()
+    var names = ["spite", "naive", "expert", "python"]
+    var index = 0
+    while index < names.count() {
+        var form_name = names[index]
+        var took = result.best[form_name]
+        if took {
+            var shown = grouped_digits(took)
+            cells.append(shown)
+        } else {
+            cells.append("")
+        }
+        index = index + 1
+    }
+    var spite_time = result.best["spite"]
+    var expert_time = result.best["expert"]
+    var python_time = result.best["python"]
+    var expert_ratio = hundredths(spite_time, expert_time)
+    var python_ratio = hundredths(spite_time, python_time)
+    var shown_expert = shown_ratio(expert_ratio)
+    var shown_python = shown_ratio(python_ratio)
+    cells.append(shown_expert)
+    cells.append(shown_python)
+    var notes = notes_of(result)
+    var joined = cells.join(" | ")
+    return "| [{name}]({name}/) | {joined} | {notes} |"
+}
+
+func notes_of(result: CaseResult): String {
+    var noted = List<String>()
+    var problem_names = result.problems.keys()
+    var index = 0
+    while index < problem_names.count() {
+        var form_name = problem_names[index]
+        var problem = result.problems[form_name]
+        crash problem
+        noted.append("{form_name}: {problem}")
+        index = index + 1
+    }
+    var notes = noted.join("; ")
+    if not result.compiler.is_empty() and result.compiler != master_compiler {
+        if notes.is_empty() {
+            notes = "timed with {result.compiler}"
+        } else {
+            notes = "{notes}; timed with {result.compiler}"
+        }
+    }
+    return notes.replace("|", "/")
+}
+
+func order_of(result: CaseResult, position: Integer): Integer {
+    var spite_time = result.best["spite"]
+    var expert_time = result.best["expert"]
+    var has_problems = not result.problems.is_empty()
+    if not spite_time or not expert_time or has_problems {
+        return 1000000000 + position
+    }
+    var divisor = expert_time
+    if divisor < 1 {
+        divisor = 1
+    }
+    var scaled = spite_time * 100000 / divisor
+    return 0 - scaled
+}
+
+func row_order(row: Row): Integer {
+    return row.order
+}
+
+func write_the_table() {
+    var rows = List<Row>()
+    var index = 0
+    while index < every_case.count() {
+        var name = every_case[index]
+        var result = results[name]
+        if result {
+            var text = row_of(name, result)
+            var order = order_of(result, index)
+            var row = Row(text, order)
+            rows.append(row)
+        }
+        index = index + 1
+    }
+    var sorted = rows.sort_by(row_order)
+    var lines = List<String>()
+    lines.append("| case | Spite µs | naive C µs | expert C µs | Python µs | Spite / expert C | Spite / Python | problem |")
+    lines.append("|---|---|---|---|---|---|---|---|")
+    var row_index = 0
+    while row_index < sorted.count() {
+        var row = sorted[row_index]
+        lines.append(row.text)
+        row_index = row_index + 1
+    }
+    lines.append("")
+    var note = machine_note()
+    lines.append(note)
+    var table = lines.join("\n")
+    replace_the_table(table)
+}
+
+func replace_the_table(table: String) {
+    var file = File(readme_path)
+    var text = file.read_as_string()
+    crash text
+    var opening = "<!-- results -->\n"
+    var closing = "<!-- /results -->"
+    var start = text.index_of(opening)
+    var finish = text.index_of(closing)
+    crash start and finish
+    var opening_length = opening.length()
+    var length = text.length()
+    var before = text.slice(0, start + opening_length)
+    var after = text.slice(finish, length)
+    crash before and after
+    crash file.write_string("{before}{table}\n{after}")
+}
+
+func machine_note(): String {
+    var processor = processor_name()
+    var counted = program.environment("NUMBER_OF_PROCESSORS")
+    var processors = text_or(counted, "an unknown number of")
+    var c_name = c_compiler_name()
+    var python_answer = command_answer("{environment.python} --version")
+    var python_name = text_or(python_answer, "Python")
+    var today = today_text()
+    var runs = environment.runs
+    var budget = environment.budget
+    return "Last measured {today}: best of {runs} interleaved runs (a form stops repeating once its runs pass {budget} s), on {processor}, {processors} logical processors; C with {c_name} -O2, {python_name}, Spite with `{compiler}`."
+}
+
+func text_or(given: String?, otherwise: String): String {
+    if given {
+        return given
+    }
+    return otherwise
+}
+
+func processor_name(): String {
+    var named = command_answer("powershell -NoProfile -Command \"(Get-CimInstance Win32_Processor).Name\"")
+    if named {
+        return named
+    }
+    var identifier = program.environment("PROCESSOR_IDENTIFIER")
+    if identifier {
+        return identifier
+    }
+    return "unknown processor"
+}
+
+func c_compiler_name(): String {
+    var version = command_answer("{c_compiler} --version")
+    if not version {
+        return "unknown C compiler"
+    }
+    var opening = version.index_of(" (")
+    if not opening {
+        return version
+    }
+    var cut = version.slice(0, opening)
+    crash cut
+    return cut
+}
+
+func today_text(): String {
+    var now = clock.now()
+    var utc = zones.utc()
+    var written = now.to_string_in(utc)
+    var day = written.slice(0, 10)
+    crash day
+    return day
+}

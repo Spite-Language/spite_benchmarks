@@ -17,18 +17,18 @@ func ThreadSafetyForSingletonsTheRestOfThePlan() {
 }
 
 func log_and_count() {
-    logged = log_on_four(_event_count)
+    logged = log_four_times(_event_count)
     count = log.count()
 }
 
-func log_on_four(rounds: Integer): Integer {
+func log_four_times(rounds: Integer): Integer {
     var first = Logger(rounds, 1)
-    var first_run = Parallel(first.log_all)
+    var first_run = first.log_all()
     var second = Logger(rounds, 2)
-    var second_run = Parallel(second.log_all)
+    var second_run = second.log_all()
     var third = Logger(rounds, 3)
-    var third_run = Parallel(third.log_all)
+    var third_run = third.log_all()
     var fourth = Logger(rounds, 4)
-    var fourth_run = Parallel(fourth.log_all)
+    var fourth_run = fourth.log_all()
     return first_run + second_run + third_run + fourth_run
 }

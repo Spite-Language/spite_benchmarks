@@ -14,12 +14,12 @@ func TheThreadPoolOnlyWhereAParallelIsMade() {
 }
 
 func sum_all(): Long {
-    return sum_on_two(_summing_limit)
+    return sum_evens_and_odds(_summing_limit)
 }
 
-func sum_on_two(limit: Integer): Long {
+func sum_evens_and_odds(limit: Integer): Long {
     var evens = Summer(limit, 0)
-    var even_sum = Parallel(evens.total)
+    var even_sum = evens.total()
     var odds = Summer(limit, 1)
     var odd_sum = odds.total()
     return even_sum + odd_sum

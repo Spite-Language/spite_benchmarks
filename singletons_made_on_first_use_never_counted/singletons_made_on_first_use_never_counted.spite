@@ -13,13 +13,13 @@ func SingletonsMadeOnFirstUseNeverCounted() {
 }
 
 func fetch_all(): Long {
-    return fetch_on_two(10000000)
+    return fetch_twice(10000000)
 }
 
-func fetch_on_two(rounds: Integer): Long {
+func fetch_twice(rounds: Integer): Long {
     var first = Fetcher(rounds)
-    var first_run = Parallel(first.fetch_many)
+    var first_run = first.fetch_many()
     var second = Fetcher(rounds)
-    var second_run = Parallel(second.fetch_many)
+    var second_run = second.fetch_many()
     return first_run + second_run
 }

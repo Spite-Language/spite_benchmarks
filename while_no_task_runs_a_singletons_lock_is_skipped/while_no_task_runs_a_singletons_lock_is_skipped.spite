@@ -18,15 +18,15 @@ func WhileNoTaskRunsASingletonsLockIsSkipped() {
 }
 
 func add_all() {
-    first = add_on_the_pool()
+    first = add_with_worker()
     reached = add_many(10000000)
     total = tally.sum()
     calls = tally.call_count()
 }
 
-func add_on_the_pool(): Integer {
+func add_with_worker(): Integer {
     var worker = Worker()
-    return Parallel(worker.run)
+    return worker.run()
 }
 
 func add_many(count: Integer): Integer {

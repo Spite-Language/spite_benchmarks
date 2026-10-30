@@ -8,7 +8,7 @@ func PlainReferenceCountsWhereNoThreadReachesAClass() {
     load "../../spite_standard_library/windows"
     var start = clock.elapsed()
     var summer = Summer(_summing_limit)
-    var sum = Parallel(summer.total)
+    var sum = summer.total()
     var points = make_points(_point_count)
     var near = count_near(points)
     var finished: Long = sum

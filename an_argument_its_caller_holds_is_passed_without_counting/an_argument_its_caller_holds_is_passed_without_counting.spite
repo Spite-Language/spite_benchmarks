@@ -14,10 +14,10 @@ func AnArgumentItsCallerHoldsIsPassedWithoutCounting() {
 }
 
 func stream_all(): Integer {
-    return stream_on_the_pool(_entity_count)
+    return stream_entities(_entity_count)
 }
 
-func stream_on_the_pool(entity_count: Integer): Integer {
+func stream_entities(entity_count: Integer): Integer {
     var stream = Stream(entity_count)
-    return Parallel(stream.run)
+    return stream.run()
 }

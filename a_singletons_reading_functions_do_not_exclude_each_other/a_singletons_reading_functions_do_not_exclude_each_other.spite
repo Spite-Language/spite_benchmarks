@@ -33,21 +33,21 @@ func ticks(count: Integer): Long {
 
 func one_tick(): Long {
     var first = System(row_total)
-    var first_run = Parallel(first.run)
+    var first_run = first.run()
     var second = System(row_total)
-    var second_run = Parallel(second.run)
+    var second_run = second.run()
     var third = System(row_total)
-    var third_run = Parallel(third.run)
+    var third_run = third.run()
     var fourth = System(row_total)
-    var fourth_run = Parallel(fourth.run)
+    var fourth_run = fourth.run()
     var fifth = System(row_total)
-    var fifth_run = Parallel(fifth.run)
+    var fifth_run = fifth.run()
     var sixth = System(row_total)
-    var sixth_run = Parallel(sixth.run)
+    var sixth_run = sixth.run()
     var seventh = System(row_total)
-    var seventh_run = Parallel(seventh.run)
+    var seventh_run = seventh.run()
     var eighth = System(row_total)
-    var eighth_run = Parallel(eighth.run)
+    var eighth_run = eighth.run()
     var early: Long = first_run + second_run + third_run + fourth_run
     var late: Long = fifth_run + sixth_run + seventh_run + eighth_run
     return early + late

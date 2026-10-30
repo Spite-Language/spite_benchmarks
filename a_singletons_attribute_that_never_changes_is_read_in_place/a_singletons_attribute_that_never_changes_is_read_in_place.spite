@@ -6,7 +6,7 @@ func ASingletonsAttributeThatNeverChangesIsReadInPlace() {
     load "../../spite_standard_library/windows"
     var start = clock.elapsed()
     fill_shelf(1000000)
-    var total = read_on_the_pool()
+    var total = read_shelf()
     var taken = clock.elapsed() - start
     var microseconds = taken.total('microseconds')
     console.print("total", total)
@@ -22,7 +22,7 @@ func fill_shelf(count: Integer) {
     }
 }
 
-func read_on_the_pool(): Long {
+func read_shelf(): Long {
     var reader = Reader(4)
-    return Parallel(reader.run)
+    return reader.run()
 }

@@ -1,6 +1,8 @@
 var clock = Clock()
 var console = Console()
 var records = Buffer(0)
+var _negative_offset = 50000
+var _round_count = 300
 
 func ANumberReadFromBytesIsOneLoad() {
     load "../../spite_standard_library/windows"
@@ -18,7 +20,7 @@ func fill(count: Integer) {
     var index = 0
     while index < count {
         records.append_integer_big_endian(index)
-        records.append_integer_big_endian(index * 7 - 50000)
+        records.append_integer_big_endian(index * 7 - _negative_offset)
         records.append_integer_big_endian(index % 1000)
         var kind: Short = index % 5
         records.append_short_big_endian(kind)
@@ -35,7 +37,7 @@ func all_rounds(): Long {
 func rounds(records: Buffer): Long {
     var total: Long = 0
     var round = 0
-    while round < 300 {
+    while round < _round_count {
         var decoded = decode(records)
         total = total + decoded + round
         round = round + 1

@@ -3,6 +3,7 @@ var console = Console()
 var ended_at = Vector3<Float>(0.0, 0.0, 0.0)
 var combined = 0.0
 var transformed = 0.0
+var _step_count = 200000
 
 func GameMaths() {
     load "../../spite_standard_library/windows"
@@ -45,7 +46,7 @@ func matrix_pass(): Float {
     var step_matrix = turn.to_matrix()
     var accumulated = Matrix4<Float>()
     var step = 0
-    while step < 200000 {
+    while step < _step_count {
         accumulated = accumulated * step_matrix
         step = step + 1
     }

@@ -2,6 +2,7 @@ var clock = Clock()
 var console = Console()
 var first_file = File(".spite/reads_in_a_row_first.txt")
 var second_file = File(".spite/reads_in_a_row_second.txt")
+var _words_per_file = 4000
 
 func ReadsInARowOverlap() {
     load "../../spite_standard_library/windows"
@@ -18,8 +19,8 @@ func ReadsInARowOverlap() {
 }
 
 func make_files() {
-    var first_text = make_text("first", 4000)
-    var second_text = make_text("second", 4000)
+    var first_text = make_text("first", _words_per_file)
+    var second_text = make_text("second", _words_per_file)
     crash first_file.write_string(first_text)
     crash second_file.write_string(second_text)
 }

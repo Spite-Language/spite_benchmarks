@@ -4,6 +4,7 @@ type Measured {
 
 var clock = Clock()
 var console = Console()
+var _step_count = 20000000
 
 func AFunctionTakingATypeIsCompiledPerClass() {
     load "../../spite_standard_library/windows"
@@ -18,7 +19,7 @@ func AFunctionTakingATypeIsCompiledPerClass() {
 }
 
 func every_measure(): Double {
-    return measure_all(20000000)
+    return measure_all(_step_count)
 }
 
 func measure_all(steps: Integer): Double {

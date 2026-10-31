@@ -1,12 +1,15 @@
 var console = Console()
 var clock = Clock()
+var _summing_limit = 20000000
+var _point_count = 200000
+var _second_coordinate_range = 700
 
 func PlainReferenceCountsWhereNoThreadReachesAClass() {
     load "../../spite_standard_library/windows"
     var start = clock.elapsed()
-    var summer = Summer(20000000)
+    var summer = Summer(_summing_limit)
     var sum = Parallel(summer.total)
-    var points = make_points(200000)
+    var points = make_points(_point_count)
     var near = count_near(points)
     var finished: Long = sum
     var taken = clock.elapsed() - start
@@ -19,7 +22,7 @@ func make_points(count: Integer): List<Point> {
     var points = List<Point>()
     var index = 0
     while index < count {
-        var point = Point(index % 1000, index % 700)
+        var point = Point(index % 1000, index % _second_coordinate_range)
         points.append(point)
         index = index + 1
     }

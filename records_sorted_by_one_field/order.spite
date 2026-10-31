@@ -6,14 +6,17 @@ var quantity = 0
 var price = 0
 var region = 0
 var status = 0
+var _customer_count: Long = 50000
+var _product_count: Long = 2000
+var _price_range: Long = 500
 
 func Order(made_id: Integer, seed: Long) {
     id = made_id
     placed_at = seed
-    customer = seed / 3 % 50000
-    product = seed / 7 % 2000
+    customer = seed / 3 % _customer_count
+    product = seed / 7 % _product_count
     quantity = seed % 9 + 1
-    price = seed / 11 % 500 + 100
+    price = seed / 11 % _price_range + 100
     region = seed % 16
     status = seed / 13 % 4
 }

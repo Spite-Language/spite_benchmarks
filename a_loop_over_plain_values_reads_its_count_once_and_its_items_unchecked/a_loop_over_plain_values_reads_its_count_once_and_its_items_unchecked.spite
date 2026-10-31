@@ -2,6 +2,7 @@ var clock = Clock()
 var console = Console()
 var from = List<Float>()
 var into = List<Float>()
+var _round_count = 2000
 
 func ALoopOverPlainValuesReadsItsCountOnceAndItsItemsUnchecked() {
     load "../../spite_standard_library/windows"
@@ -32,7 +33,7 @@ func all_rounds(): Long {
 func rounds(from: List<Float>, into: List<Float>): Long {
     var total: Long = 0
     var round = 0
-    while round < 2000 {
+    while round < _round_count {
         var offset: Float = round % 4
         offset = offset * 0.25
         scale_list(from, into, offset)

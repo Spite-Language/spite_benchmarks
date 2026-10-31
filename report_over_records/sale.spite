@@ -6,17 +6,23 @@ var cost = 0
 var discount = 0
 var day = 0
 var customer = 0
+var _quantity_divisor: Long = 16000
+var _price_divisor: Long = 320000
+var _price_range: Long = 500
+var _discount_range: Long = 101
+var _days_in_year: Long = 365
+var _customer_divisor: Long = 2555
 
 func Sale(seed: Long) {
     region = seed % 16
     product = seed / 16 % 1000
-    quantity = seed / 16000 % 20 + 1
-    price = seed / 320000 % 500 + 100
+    quantity = seed / _quantity_divisor % 20 + 1
+    price = seed / _price_divisor % _price_range + 100
     var saving: Integer = seed % 37
     cost = price * 3 / 4 - saving
-    discount = seed % 101
-    day = seed / 7 % 365
-    customer = seed / 2555 % 100000
+    discount = seed % _discount_range
+    day = seed / 7 % _days_in_year
+    customer = seed / _customer_divisor % 100000
 }
 
 func fingerprint(): Long {

@@ -1,5 +1,6 @@
 var clock = Clock()
 var console = Console()
+var _summing_limit = 20000000
 
 func TheThreadPoolOnlyWhereAParallelIsMade() {
     load "../../spite_standard_library/windows"
@@ -13,7 +14,7 @@ func TheThreadPoolOnlyWhereAParallelIsMade() {
 }
 
 func sum_all(): Long {
-    return sum_on_two(20000000)
+    return sum_on_two(_summing_limit)
 }
 
 func sum_on_two(limit: Integer): Long {

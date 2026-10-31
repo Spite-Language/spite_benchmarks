@@ -1,5 +1,6 @@
 var clock = Clock()
 var console = Console()
+var _round_count = 2000
 
 func AllocationIsTheCLibrarysCountedOnlyWhereRead() {
     load "../../spite_standard_library/windows"
@@ -13,7 +14,7 @@ func AllocationIsTheCLibrarysCountedOnlyWhereRead() {
 }
 
 func every_round(): Long {
-    return all_rounds(2000)
+    return all_rounds(_round_count)
 }
 
 func all_rounds(rounds: Integer): Long {

@@ -4,6 +4,7 @@ var points = List<Point>()
 var notes = List<Note>()
 var total: Long = 0
 var noted = 0
+var _object_count = 300000
 
 func ObjectsOfOneClassSitTogether() {
     load "../../spite_standard_library/windows"
@@ -17,7 +18,7 @@ func ObjectsOfOneClassSitTogether() {
 }
 
 func make_and_sum() {
-    make_both(300000)
+    make_both(_object_count)
     total = sum_points()
     noted = notes.count()
     var first_note = notes.first()

@@ -3,6 +3,7 @@ var console = Console()
 var ended_x = 0.0
 var ended_y = 0.0
 var ended_z = 0.0
+var _step_count = 20000000
 
 func ObjectsThatNeverLeaveTheirFunctionLiveInTheFrame() {
     load "../../spite_standard_library/windows"
@@ -19,7 +20,7 @@ func ObjectsThatNeverLeaveTheirFunctionLiveInTheFrame() {
 }
 
 func simulate_all() {
-    var ended = simulate(20000000)
+    var ended = simulate(_step_count)
     ended_x = ended.x
     ended_y = ended.y
     ended_z = ended.z

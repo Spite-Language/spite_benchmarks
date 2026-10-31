@@ -2,6 +2,7 @@ var clock = Clock()
 var console = Console()
 var total: Long = 0
 var numbers = 0
+var _body_count = 200000
 
 func AListsTemplatesReadItsElementsWithoutCountingThem() {
     load "../../spite_standard_library/windows"
@@ -18,7 +19,7 @@ func fill_and_simulate() {
     var bodies = List<Body>()
     var labels = List<Label>()
     var index = 0
-    while index < 200000 {
+    while index < _body_count {
         var body = Body(index % 5 + 1)
         bodies.append(body)
         var label = Label(index % 10)

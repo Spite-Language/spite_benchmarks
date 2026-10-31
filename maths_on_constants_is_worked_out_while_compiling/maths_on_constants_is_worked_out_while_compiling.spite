@@ -1,5 +1,6 @@
 var clock = Clock()
 var console = Console()
+var _round_count = 200
 
 func MathsOnConstantsIsWorkedOutWhileCompiling() {
     load "../../spite_standard_library/windows"
@@ -15,7 +16,7 @@ func MathsOnConstantsIsWorkedOutWhileCompiling() {
 func turn_all(): Integer {
     var points = make_points(100000)
     var round = 0
-    while round < 200 {
+    while round < _round_count {
         points.each(turn)
         round = round + 1
     }

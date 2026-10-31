@@ -5,6 +5,7 @@ var counted = 0
 var total: Long = 0
 var calls = 0
 var largest = 0
+var _call_count = 5000000
 
 func ACountedLoopOfCallsToOneSingletonTakesItsLockOnce() {
     load "../../spite_standard_library/windows"
@@ -18,7 +19,7 @@ func ACountedLoopOfCallsToOneSingletonTakesItsLockOnce() {
 }
 
 func count_and_read() {
-    counted = count_on_four(5000000)
+    counted = count_on_four(_call_count)
     total = tally.sum()
     calls = tally.call_count()
     largest = tally.largest_amount()

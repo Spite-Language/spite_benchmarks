@@ -1,9 +1,10 @@
 var level: Long = 0
 var phase = 0
+var _sample_count = 30000000
 
 func render() {
     var sample = 0
-    while sample < 30000000 {
+    while sample < _sample_count {
         phase = (phase + 13) % 1000
         level = level + phase % 97
         sample = sample + 1

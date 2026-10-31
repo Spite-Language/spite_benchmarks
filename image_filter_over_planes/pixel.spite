@@ -2,6 +2,8 @@ var red = 0
 var green = 0
 var blue = 0
 var alpha = 0
+var _largest_channel = 255
+var _green_luminance_weight = 150
 
 func Pixel(seed: Long) {
     red = seed % 256
@@ -18,7 +20,7 @@ func brighten() {
 
 func brightened(channel: Integer): Integer {
     var lifted = channel + 16
-    return lifted.minimum(255)
+    return lifted.minimum(_largest_channel)
 }
 
 func contrast() {
@@ -29,11 +31,11 @@ func contrast() {
 
 func contrasted(channel: Integer): Integer {
     var spread = (channel - 128) * 5 / 4 + 128
-    return spread.clamp(0, 255)
+    return spread.clamp(0, _largest_channel)
 }
 
 func luminance(): Integer {
-    return (red * 77 + green * 150 + blue * 29) / 256
+    return (red * 77 + green * _green_luminance_weight + blue * 29) / 256
 }
 
 func is_bright(): Boolean {

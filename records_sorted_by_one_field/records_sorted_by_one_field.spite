@@ -5,6 +5,9 @@ var running: Long = 0
 var audits: Long = 0
 var first_id = 0
 var last_id = 0
+var _random_multiplier: Long = 48271
+var _random_modulus: Long = 2147483647
+var _checksum_modulus: Long = 1000000007
 
 func RecordsSortedByOneField() {
     load "../../spite_standard_library/windows"
@@ -22,7 +25,7 @@ func sort_and_total() {
     var seed: Long = 3
     var index = 0
     while index < environment.orders {
-        seed = seed * 48271 % 2147483647
+        seed = seed * _random_multiplier % _random_modulus
         var order = Order(index, seed)
         orders.append(order)
         index = index + 1
@@ -43,7 +46,7 @@ func running_total(orders: List<Order>): Long {
     var index = 0
     while index < orders.count() {
         var order = orders[index]
-        running = (running * 31 + order.quantity * order.price) % 1000000007
+        running = (running * 31 + order.quantity * order.price) % _checksum_modulus
         index = index + 1
     }
     return running

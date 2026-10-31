@@ -1,6 +1,8 @@
 var clock = Clock()
 var console = Console()
 var values = List<Integer>()
+var _value_range = 101
+var _round_count = 300
 
 func AProvenReadTestsOnlyItsBounds() {
     load "../../spite_standard_library/windows"
@@ -17,7 +19,7 @@ func AProvenReadTestsOnlyItsBounds() {
 func fill(count: Integer) {
     var index = 0
     while index < count {
-        values.append(index * 37 % 101)
+        values.append(index * 37 % _value_range)
         index = index + 1
     }
 }
@@ -29,7 +31,7 @@ func all_rounds(): Long {
 func rounds(values: List<Integer>): Long {
     var total: Long = 0
     var round = 0
-    while round < 300 {
+    while round < _round_count {
         var weight = round % 3 + 1
         var windows = window_total(values, weight)
         var threshold = round % 50

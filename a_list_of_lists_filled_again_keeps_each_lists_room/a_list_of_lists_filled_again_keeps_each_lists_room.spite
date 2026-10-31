@@ -4,10 +4,13 @@ var orders = List<Order>()
 var buckets = List<List<Order>>()
 var total: Long = 0
 var seed: Long = 777
+var _order_count = 200000
+var _random_multiplier: Long = 1103515245
+var _random_increment: Long = 12345
 
 func AListOfListsFilledAgainKeepsEachListsRoom() {
     load "../../spite_standard_library/windows"
-    make_orders(200000)
+    make_orders(_order_count)
     var started = clock.elapsed()
     regroup()
     var finished = clock.elapsed()
@@ -20,7 +23,7 @@ func AListOfListsFilledAgainKeepsEachListsRoom() {
 func make_orders(count: Integer) {
     var index = 0
     while index < count {
-        seed = (seed * 1103515245 + 12345) % 2147483648
+        seed = (seed * _random_multiplier + _random_increment) % 2147483648
         var customer: Integer = seed % 32768
         var order = Order(customer)
         orders.append(order)

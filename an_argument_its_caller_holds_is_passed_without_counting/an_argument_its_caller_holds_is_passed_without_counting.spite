@@ -1,5 +1,6 @@
 var clock = Clock()
 var console = Console()
+var _entity_count = 3000000
 
 func AnArgumentItsCallerHoldsIsPassedWithoutCounting() {
     load "../../spite_standard_library/windows"
@@ -13,7 +14,7 @@ func AnArgumentItsCallerHoldsIsPassedWithoutCounting() {
 }
 
 func stream_all(): Integer {
-    return stream_on_the_pool(3000000)
+    return stream_on_the_pool(_entity_count)
 }
 
 func stream_on_the_pool(entity_count: Integer): Integer {

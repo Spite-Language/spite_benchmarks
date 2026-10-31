@@ -13,6 +13,7 @@ var value: Long = 0
 var row = 0
 var column = 0
 var style = 0
+var _value_modulus: Long = 1000003
 
 func Cell(index: Integer, seed: Long) {
     row = index / 64
@@ -51,8 +52,8 @@ func placement(): Long {
 func computed(left: Long, right: Long): Long {
     switch formula {
         'constant': return constant
-        'sum': return (left + right) % 1000003
-        'product': return left * right % 1000003
-        'scaled': return left * constant % 1000003
+        'sum': return (left + right) % _value_modulus
+        'product': return left * right % _value_modulus
+        'scaled': return left * constant % _value_modulus
     }
 }

@@ -1,9 +1,11 @@
 var paintings = List<Painting>()
 var hung_total = 0
+var _painting_count = 2000
+var _round_count = 2000
 
 func Gallery() {
     var index = 0
-    while index < 2000 {
+    while index < _painting_count {
         var painting = Painting(index)
         paintings.append(painting)
         index = index + 1
@@ -12,7 +14,7 @@ func Gallery() {
 
 func sort() {
     var round = 0
-    while round < 2000 {
+    while round < _round_count {
         var hung = List<Painting>()
         var index = 0
         while index < paintings.count() {

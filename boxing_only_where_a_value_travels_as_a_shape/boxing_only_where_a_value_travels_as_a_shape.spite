@@ -4,6 +4,7 @@ type Printable {
 
 var clock = Clock()
 var console = Console()
+var _value_count = 90000
 
 func BoxingOnlyWhereAValueTravelsAsAShape() {
     load "../../spite_standard_library/windows"
@@ -17,7 +18,7 @@ func BoxingOnlyWhereAValueTravelsAsAShape() {
 }
 
 func make_and_measure(): Long {
-    var values = make_values(90000)
+    var values = make_values(_value_count)
     return measure_rounds(values)
 }
 

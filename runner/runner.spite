@@ -21,6 +21,8 @@ var run_limit: Long = 300
 var results_path = "results.json"
 var readme_path = "README.md"
 var outputs_folder = ".spite/runner"
+var _longest_reason = 200
+var _longest_shown_answer = 120
 
 func Runner() {
     load "../../spite_standard_library/windows"
@@ -238,7 +240,7 @@ func built(name: String): String? {
     }
     var compiled = ran_in(here, "\"{compiler}\" {name} --build")
     if compiled {
-        var reason = one_line(compiled, 200)
+        var reason = one_line(compiled, _longest_reason)
         return "does not compile: {reason}"
     }
     if not old.exists() {
@@ -265,7 +267,7 @@ func built_c(name: String, form_name: String, build_folder: String): String? {
     var folder = "{here}\\{name}"
     var made = ran_in(folder, "{c_compiler} -O2 -w {form_name}.c -o \"{executable}\"")
     if made {
-        var reason = one_line(made, 200)
+        var reason = one_line(made, _longest_reason)
         return "{form_name}.c does not build: {reason}"
     }
     var form = Form(form_name, "\"{executable}\"")
@@ -331,7 +333,7 @@ func run_once(folder: String, form: Form) {
     var answer = text_of(answer_path)
     var errors = text_of(errors_path)
     if code != 0 {
-        var reason = one_line("{answer}{errors}", 200)
+        var reason = one_line("{answer}{errors}", _longest_reason)
         problems[form.name] = "exit code {code}: {reason}"
         return
     }
@@ -409,9 +411,9 @@ func judge_an_answer(form: Form, reference: String) {
     var shown = ""
     if form.answer {
         fallback form.answer != reference
-        shown = one_line(form.answer, 120)
+        shown = one_line(form.answer, _longest_shown_answer)
     }
-    var expected = one_line(reference, 120)
+    var expected = one_line(reference, _longest_shown_answer)
     problems[form.name] = "answers {shown} where naive.c answers {expected}"
 }
 

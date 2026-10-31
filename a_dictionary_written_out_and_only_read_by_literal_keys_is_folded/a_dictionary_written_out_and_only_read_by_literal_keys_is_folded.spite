@@ -1,5 +1,6 @@
 var clock = Clock()
 var console = Console()
+var _result_count = 200000
 
 func ADictionaryWrittenOutAndOnlyReadByLiteralKeysIsFolded() {
     load "../../spite_standard_library/windows"
@@ -15,7 +16,7 @@ func ADictionaryWrittenOutAndOnlyReadByLiteralKeysIsFolded() {
 func fill_and_total(): Long {
     var results = List<Result>()
     var index = 0
-    while index < 200000 {
+    while index < _result_count {
         var result = Result(index % 4, index % 7, index % 11)
         results.append(result)
         index = index + 1

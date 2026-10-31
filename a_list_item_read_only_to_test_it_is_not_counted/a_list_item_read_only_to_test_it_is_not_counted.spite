@@ -3,6 +3,10 @@ var console = Console()
 var entries = List<Entry>()
 var found = 0
 var keys = 0
+var _entry_count = 200000
+var _probe_count = 20000000
+var _probe_stride = 7919
+var _probe_range = 400000
 
 func AListItemReadOnlyToTestItIsNotCounted() {
     load "../../spite_standard_library/windows"
@@ -17,12 +21,12 @@ func AListItemReadOnlyToTestItIsNotCounted() {
 
 func fill_and_probe() {
     var index = 0
-    while index < 200000 {
+    while index < _entry_count {
         var made = Entry(index % 1000)
         entries.append(made)
         index = index + 1
     }
-    found = probe(20000000)
+    found = probe(_probe_count)
     keys = entries.sum_key()
 }
 
@@ -32,7 +36,7 @@ func probe(probes: Integer): Integer {
     var at = 0
     var index = 0
     while index < probes {
-        at = (at + 7919) % 400000
+        at = (at + _probe_stride) % _probe_range
         if entries[at] {
             found = found + 1
         } else {

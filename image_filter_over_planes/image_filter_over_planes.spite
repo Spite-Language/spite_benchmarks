@@ -4,6 +4,8 @@ var environment = Environment()
 var spread: Long = 0
 var bright = 0
 var weights: Long = 0
+var _random_multiplier: Long = 48271
+var _random_modulus: Long = 2147483647
 
 func ImageFilterOverPlanes() {
     load "../../spite_standard_library/windows"
@@ -21,7 +23,7 @@ func filter_image() {
     var seed: Long = 11
     var index = 0
     while index < environment.pixels {
-        seed = seed * 48271 % 2147483647
+        seed = seed * _random_multiplier % _random_modulus
         var pixel = Pixel(seed)
         pixels.append(pixel)
         index = index + 1

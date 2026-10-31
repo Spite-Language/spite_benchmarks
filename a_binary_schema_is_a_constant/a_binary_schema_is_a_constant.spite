@@ -2,6 +2,7 @@ var clock = Clock()
 var console = Console()
 var writer = BinaryWriter<Reading>()
 var reader = BinaryReader<Reading>()
+var _header_count = 200000
 
 func ABinarySchemaIsAConstant() {
     load "../../spite_standard_library/windows"
@@ -18,7 +19,7 @@ func ABinarySchemaIsAConstant() {
 }
 
 func accepted_headers(): Integer {
-    var headers = received_headers(200000)
+    var headers = received_headers(_header_count)
     var accepted = 0
     var round = 0
     while round < 10 {

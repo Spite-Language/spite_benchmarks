@@ -2,6 +2,9 @@ var clock = Clock()
 var console = Console()
 var sorted_in_order = false
 var weighted_sum: Long = 0
+var _number_count = 2000000
+var _random_multiplier: Long = 48271
+var _random_modulus: Long = 2147483647
 
 func Sorting() {
     load "../../spite_standard_library/windows"
@@ -18,8 +21,8 @@ func sort_and_check() {
     var numbers = List<Integer>()
     var seed: Long = 42
     var index = 0
-    while index < 2000000 {
-        seed = seed * 48271 % 2147483647
+    while index < _number_count {
+        seed = seed * _random_multiplier % _random_modulus
         var number: Integer = seed % 1000000
         numbers.append(number)
         index = index + 1

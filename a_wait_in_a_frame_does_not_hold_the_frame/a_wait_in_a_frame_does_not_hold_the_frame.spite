@@ -4,6 +4,7 @@ var program = Program()
 var saver = Saver()
 var frames = 0
 var checksum: Long = 0
+var _steps_per_draw = 20000
 
 func AWaitInAFrameDoesNotHoldTheFrame() {
     load "../../spite_standard_library/windows"
@@ -34,7 +35,7 @@ func run_frames(): Integer {
 
 func draw() {
     var index = 0
-    while index < 20000 {
+    while index < _steps_per_draw {
         checksum = checksum + index * frames % 1000
         index = index + 1
     }

@@ -2,6 +2,7 @@ var clock = Clock()
 var console = Console()
 var height_checksum: Long = 0
 var spread_checksum: Long = 0
+var _tick_count = 300
 
 func Particles() {
     load "../../spite_standard_library/windows"
@@ -23,7 +24,7 @@ func simulate() {
         index = index + 1
     }
     var tick = 0
-    while tick < 300 {
+    while tick < _tick_count {
         particles.each_step()
         tick = tick + 1
     }

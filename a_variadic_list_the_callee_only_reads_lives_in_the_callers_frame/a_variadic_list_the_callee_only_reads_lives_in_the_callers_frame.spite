@@ -1,5 +1,6 @@
 var clock = Clock()
 var console = Console()
+var _round_count = 2000000
 
 func AVariadicListTheCalleeOnlyReadsLivesInTheCallersFrame() {
     load "../../spite_standard_library/windows"
@@ -13,7 +14,7 @@ func AVariadicListTheCalleeOnlyReadsLivesInTheCallersFrame() {
 }
 
 func every_round(): Long {
-    return all_rounds(2000000)
+    return all_rounds(_round_count)
 }
 
 func all_rounds(rounds: Integer): Long {

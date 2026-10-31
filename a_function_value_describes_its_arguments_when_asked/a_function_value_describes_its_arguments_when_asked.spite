@@ -1,6 +1,7 @@
 var clock = Clock()
 var console = Console()
 var scorer: Scorer? = null
+var _application_count = 2000000
 
 func AFunctionValueDescribesItsArgumentsWhenAsked() {
     load "../../spite_standard_library/windows"
@@ -20,7 +21,7 @@ func AFunctionValueDescribesItsArgumentsWhenAsked() {
 func make_and_apply(): Long {
     var made = Scorer()
     scorer = made
-    return apply_all(made, 2000000)
+    return apply_all(made, _application_count)
 }
 
 func apply_all(scorer: Scorer, count: Integer): Long {

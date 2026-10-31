@@ -1,6 +1,7 @@
 var clock = Clock()
 var console = Console()
 var running = 0
+var _party_size = 200000
 
 func ReflectionOnConstantsFoldsAndUnrolls() {
     load "../../spite_standard_library/windows"
@@ -14,7 +15,7 @@ func ReflectionOnConstantsFoldsAndUnrolls() {
 }
 
 func all_rounds(): Long {
-    var party = make_party(200000)
+    var party = make_party(_party_size)
     var total: Long = 0
     var round = 0
     while round < 40 {

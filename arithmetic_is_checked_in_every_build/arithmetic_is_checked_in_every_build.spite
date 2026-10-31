@@ -1,5 +1,6 @@
 var clock = Clock()
 var console = Console()
+var _round_count = 400
 
 func ArithmeticIsCheckedInEveryBuild() {
     load "../../spite_standard_library/windows"
@@ -25,7 +26,7 @@ func fill_and_check(): Long {
 func rounds(values: List<Integer>): Long {
     var total: Long = 0
     var round = 0
-    while round < 400 {
+    while round < _round_count {
         var sum = checksum(values, round)
         total = total + sum
         round = round + 1

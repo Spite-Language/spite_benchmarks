@@ -1,6 +1,8 @@
 var clock = Clock()
 var console = Console()
 var particles = List<Particle>()
+var _particle_count = 200000
+var _tick_count = 200
 
 func AnItemWrittenBackToItsOwnSlotIsNotWritten() {
     load "../../spite_standard_library/windows"
@@ -15,13 +17,13 @@ func AnItemWrittenBackToItsOwnSlotIsNotWritten() {
 
 func make_and_move(): Integer {
     var index = 0
-    while index < 200000 {
+    while index < _particle_count {
         var made = Particle(index % 7 + 1)
         particles.append(made)
         index = index + 1
     }
     var tick = 0
-    while tick < 200 {
+    while tick < _tick_count {
         step()
         tick = tick + 1
     }

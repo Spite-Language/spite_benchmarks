@@ -1,12 +1,14 @@
 var level: Long = 0
 var phase = 0
+var _sample_count = 30000000
+var _half_period = 500
 
 func render() {
     var sample = 0
-    while sample < 30000000 {
+    while sample < _sample_count {
         phase = (phase + 7) % 1000
         var folded = phase
-        if folded > 500 {
+        if folded > _half_period {
             folded = 1000 - folded
         }
         level = level + folded

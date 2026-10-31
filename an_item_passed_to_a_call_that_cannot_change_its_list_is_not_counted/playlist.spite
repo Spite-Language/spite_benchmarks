@@ -1,10 +1,11 @@
 var tracks = List<Track>()
+var _shortest_track_seconds = 120
 
 func Playlist() {
     var index = 0
     while index < 16 {
         var track = Track()
-        track.seconds = 120 + index
+        track.seconds = _shortest_track_seconds + index
         tracks.append(track)
         index = index + 1
     }

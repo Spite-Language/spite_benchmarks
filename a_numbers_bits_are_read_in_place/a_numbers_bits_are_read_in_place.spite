@@ -1,5 +1,8 @@
 var clock = Clock()
 var console = Console()
+var _round_trip_count = 30000000
+var _value_range = 160000
+var _negative_offset = 20000
 
 func ANumbersBitsAreReadInPlace() {
     load "../../spite_standard_library/windows"
@@ -13,14 +16,14 @@ func ANumbersBitsAreReadInPlace() {
 }
 
 func every_round_trip(): Long {
-    return round_trips(30000000)
+    return round_trips(_round_trip_count)
 }
 
 func round_trips(count: Integer): Long {
     var total: Long = 0
     var index = 0
     while index < count {
-        var value: Float = index % 160000 - 20000
+        var value: Float = index % _value_range - _negative_offset
         value = value * 0.5
         var half = value.to_half_precision()
         var back = half.half_precision_to_float()

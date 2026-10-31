@@ -1,5 +1,7 @@
 var clock = Clock()
 var console = Console()
+var _order_count = 5000
+var _customer_count = 300
 
 func ADeepCopyIsWrittenPerClassWithATableOnlyWhereAGraphNeedsOne() {
     load "../../spite_standard_library/windows"
@@ -13,7 +15,7 @@ func ADeepCopyIsWrittenPerClassWithATableOnlyWhereAGraphNeedsOne() {
 }
 
 func make_and_copy(): Long {
-    var orders = make_orders(5000)
+    var orders = make_orders(_order_count)
     return copy_rounds(orders)
 }
 
@@ -21,7 +23,7 @@ func make_orders(count: Integer): List<Order> {
     var orders = List<Order>()
     var index = 0
     while index < count {
-        var customer = Customer("customer {index % 300}", index % 5)
+        var customer = Customer("customer {index % _customer_count}", index % 5)
         var order = Order(index, customer)
         add_lines(order, index)
         orders.append(order)

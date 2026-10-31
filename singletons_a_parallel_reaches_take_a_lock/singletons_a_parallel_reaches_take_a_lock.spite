@@ -4,6 +4,7 @@ var registry = Registry()
 var counted = 0
 var recorded = 0
 var total: Long = 0
+var _record_count = 250000
 
 func SingletonsAParallelReachesTakeALock() {
     load "../../spite_standard_library/windows"
@@ -17,7 +18,7 @@ func SingletonsAParallelReachesTakeALock() {
 }
 
 func record_and_count() {
-    counted = record_on_four(250000)
+    counted = record_on_four(_record_count)
     recorded = registry.recorded()
     total = registry.sum()
 }

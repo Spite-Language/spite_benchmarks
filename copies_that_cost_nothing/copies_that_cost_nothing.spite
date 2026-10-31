@@ -1,6 +1,7 @@
 var clock = Clock()
 var console = Console()
 var origin = Point(0, 0)
+var _trial_count = 20000000
 
 func CopiesThatCostNothing() {
     load "../../spite_standard_library/windows"
@@ -15,7 +16,7 @@ func CopiesThatCostNothing() {
 
 func every_trial(): Long {
     origin = Point(3, -4)
-    return all_trials(origin, 20000000)
+    return all_trials(origin, _trial_count)
 }
 
 func all_trials(origin: Point, trials: Integer): Long {

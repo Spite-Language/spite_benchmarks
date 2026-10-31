@@ -5,6 +5,8 @@ var units: Long = 0
 var by_cell: Long = 0
 var fingerprints: Long = 0
 var first_customer = 0
+var _random_multiplier: Long = 48271
+var _random_modulus: Long = 2147483647
 
 func ReportOverRecords() {
     load "../../spite_standard_library/windows"
@@ -31,7 +33,7 @@ func report() {
     var seed: Long = 42
     var index = 0
     while index < environment.records {
-        seed = seed * 48271 % 2147483647
+        seed = seed * _random_multiplier % _random_modulus
         var sale = Sale(seed)
         sales.append(sale)
         index = index + 1

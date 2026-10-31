@@ -1,5 +1,7 @@
 var clock = Clock()
 var console = Console()
+var _value_count = 50000
+var _round_count = 4000
 
 func ADecimalLiteralBesideAFloatIsAFloat() {
     load "../../spite_standard_library/windows"
@@ -15,7 +17,7 @@ func ADecimalLiteralBesideAFloatIsAFloat() {
 func fill_and_round(): Double {
     var values = List<Float>()
     var index = 0
-    while index < 50000 {
+    while index < _value_count {
         var quarters: Float = index % 64
         values.append(quarters * 0.25)
         index = index + 1
@@ -26,7 +28,7 @@ func fill_and_round(): Double {
 func rounds(values: List<Float>): Double {
     var total: Double = 0.0
     var round = 0
-    while round < 4000 {
+    while round < _round_count {
         var shift: Float = round % 8
         var sum = scaled_sum(values, shift)
         total = total + sum

@@ -1,5 +1,7 @@
 var clock = Clock()
 var console = Console()
+var _value_count = 1300
+var _round_count = 300
 
 func ACrashsReportIsKeptOutOfTheWay() {
     load "../../spite_standard_library/windows"
@@ -15,7 +17,7 @@ func ACrashsReportIsKeptOutOfTheWay() {
 func fill_and_pick(): Long {
     var values = List<Integer>()
     var index = 0
-    while index < 1300 {
+    while index < _value_count {
         values.append(index * 7 % 1000)
         index = index + 1
     }
@@ -31,7 +33,7 @@ func fill_and_pick(): Long {
 func picked_total(values: List<Integer>, picks: List<Integer>): Long {
     var total: Long = 0
     var round = 0
-    while round < 300 {
+    while round < _round_count {
         total = total + round_total(values, picks, round)
         round = round + 1
     }

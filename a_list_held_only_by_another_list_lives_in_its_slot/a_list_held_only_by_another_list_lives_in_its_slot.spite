@@ -4,10 +4,15 @@ var orders = List<Order>()
 var buckets = List<List<Order>>()
 var total: Long = 0
 var seed: Long = 12345
+var _order_count = 400000
+var _random_multiplier: Long = 1103515245
+var _random_increment: Long = 12345
+var _query_count = 400000
+var _customer_stride = 7919
 
 func AListHeldOnlyByAnotherListLivesInItsSlot() {
     load "../../spite_standard_library/windows"
-    make_orders(400000)
+    make_orders(_order_count)
     var started = clock.elapsed()
     group_and_ask()
     var finished = clock.elapsed()
@@ -20,7 +25,7 @@ func AListHeldOnlyByAnotherListLivesInItsSlot() {
 func make_orders(count: Integer) {
     var index = 0
     while index < count {
-        seed = (seed * 1103515245 + 12345) % 2147483648
+        seed = (seed * _random_multiplier + _random_increment) % 2147483648
         var customer: Integer = seed % 65536
         var amount: Integer = seed % 1000
         var order = Order(customer, amount)
@@ -59,8 +64,8 @@ func ask(round: Integer): Long {
     var asked: Long = 0
     var customer = round
     var query = 0
-    while query < 400000 {
-        customer = (customer * 7919 + 13) % 65536
+    while query < _query_count {
+        customer = (customer * _customer_stride + 13) % 65536
         var bucket = buckets[customer]
         crash bucket
         var at = 0

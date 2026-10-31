@@ -1,5 +1,6 @@
 var clock = Clock()
 var console = Console()
+var _item_count = 50000
 
 func DefaultsTheConstructorReplacesAreNeverMade() {
     load "../../spite_standard_library/windows"
@@ -30,7 +31,7 @@ func all_rounds(rounds: Integer): Long {
 func one_round(round: Integer): Integer {
     var items = List<Item>()
     var index = 0
-    while index < 50000 {
+    while index < _item_count {
         var owner = Owner((index + round) % 90)
         var item = Item(index % 1000, owner)
         items.append(item)

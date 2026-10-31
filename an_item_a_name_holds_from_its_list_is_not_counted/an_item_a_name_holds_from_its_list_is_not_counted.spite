@@ -4,6 +4,7 @@ var columns = List<Column>()
 var weights = List<Integer>()
 var hits = 0
 var last = 0
+var _last_weight_index = 99999
 
 func AnItemANameHoldsFromItsListIsNotCounted() {
     load "../../spite_standard_library/windows"
@@ -30,8 +31,8 @@ func fill_and_visit() {
         round = round + 1
     }
     hits = columns.sum_hits()
-    crash weights[99999]
-    last = weights[99999]
+    crash weights[_last_weight_index]
+    last = weights[_last_weight_index]
 }
 
 func visit_all() {

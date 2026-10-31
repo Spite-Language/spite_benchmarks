@@ -1,6 +1,7 @@
 var clock = Clock()
 var console = Console()
 var by_name = Dictionary<String, Integer>()
+var _name_count = 5000
 
 func ADictionaryHashesAKeyOnceCheaply() {
     load "../../spite_standard_library/windows"
@@ -15,7 +16,7 @@ func ADictionaryHashesAKeyOnceCheaply() {
 }
 
 func index_and_look_up(): Long {
-    var names = make_names(5000)
+    var names = make_names(_name_count)
     by_name = index_names(names)
     return look_up(names, by_name)
 }
@@ -47,7 +48,7 @@ func look_up(names: List<String>, by_name: Dictionary<String, Integer>): Long {
     while round < 20 {
         var index = 0
         while index < 100000 {
-            var position = (index * 7 + round) % 5000
+            var position = (index * 7 + round) % _name_count
             crash names[position]
             var name = names[position]
             if by_name[name] {

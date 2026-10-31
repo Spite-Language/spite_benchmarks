@@ -4,6 +4,9 @@ var environment = Environment()
 var recalculated_total: Long = 0
 var last_value: Long = 0
 var placements: Long = 0
+var _random_multiplier: Long = 48271
+var _random_modulus: Long = 2147483647
+var _edit_stride = 7919
 
 func SpreadsheetRecalculation() {
     load "../../spite_standard_library/windows"
@@ -21,7 +24,7 @@ func recalculate_all() {
     var seed: Long = 5
     var index = 0
     while index < environment.cells {
-        seed = seed * 48271 % 2147483647
+        seed = seed * _random_multiplier % _random_modulus
         var cell = Cell(index, seed)
         cells.append(cell)
         index = index + 1
@@ -43,7 +46,7 @@ func recalculate_all() {
 }
 
 func edit(cells: List<Cell>, round: Integer) {
-    var edited = round * 7919 % cells.count() / 10 * 10
+    var edited = round * _edit_stride % cells.count() / 10 * 10
     crash cells[edited]
     cells[edited].constant = round + 1
 }

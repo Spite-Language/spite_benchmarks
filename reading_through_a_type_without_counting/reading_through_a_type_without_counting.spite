@@ -1,6 +1,7 @@
 var clock = Clock()
 var console = Console()
 var mover = Mover()
+var _tick_count = 200
 
 func ReadingThroughATypeWithoutCounting() {
     load "../../spite_standard_library/windows"
@@ -34,7 +35,7 @@ func fill(positions: List<Position>, velocities: List<Velocity>, count: Integer)
 
 func ticks(positions: List<Position>, velocities: List<Velocity>) {
     var tick = 0
-    while tick < 200 {
+    while tick < _tick_count {
         var index = 0
         while index < positions.count() {
             crash velocities[index]

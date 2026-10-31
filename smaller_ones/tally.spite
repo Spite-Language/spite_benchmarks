@@ -1,9 +1,10 @@
 var total: Long = 0
 var large = 0
+var _large_threshold = 900
 
 func count_value(value: Integer) {
     total = total + value
-    if value > 900 {
+    if value > _large_threshold {
         large = large + 1
     }
 }

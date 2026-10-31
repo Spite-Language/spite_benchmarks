@@ -1,6 +1,8 @@
 var clock = Clock()
 var console = Console()
 var by_number = Dictionary<Integer, Integer>()
+var _key_multiplier = 7919
+var _key_range = 1000003
 
 func ADictionaryKeyedByNumbersHashesTheNumbers() {
     load "../../spite_standard_library/windows"
@@ -20,7 +22,7 @@ func make_and_look_up(): Long {
 }
 
 func key_of(index: Integer): Integer {
-    return index * 7919 % 1000003
+    return index * _key_multiplier % _key_range
 }
 
 func make_table(count: Integer): Dictionary<Integer, Integer> {

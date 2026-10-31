@@ -2,6 +2,7 @@ var clock = Clock()
 var console = Console()
 var checksum: Long = 0
 var ended: Long = 0
+var _step_count = 5000000
 
 func VectorMaths() {
     load "../../spite_standard_library/windows"
@@ -20,7 +21,7 @@ func steps() {
     var axis = Vector3<Float>(0.0, 1.0, 0.0)
     var total = 0.0
     var step = 0
-    while step < 5000000 {
+    while step < _step_count {
         var moved = velocity.scaled(0.001)
         position = position + moved
         var turned = velocity.cross(axis)

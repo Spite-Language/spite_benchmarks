@@ -20,7 +20,6 @@ var best = Dictionary<String, Long>()
 var run_limit: Long = 300
 var results_path = "results.json"
 var readme_path = "README.md"
-var outputs_folder = ".spite/runner"
 var _longest_reason = 200
 var _longest_shown_answer = 120
 
@@ -35,7 +34,6 @@ func Runner() {
         compiler = absolute(environment.compiler)
     }
     make_a_folder(".spite")
-    make_a_folder(outputs_folder)
     find_every_case()
     var cases = chosen_cases()
     c_compiler = found_c_compiler()
@@ -312,27 +310,23 @@ func time_the_forms(name: String) {
 }
 
 func run_once(folder: String, form: Form) {
-    var answer_path = "{here}\\{outputs_folder}\\answer.txt"
-    var errors_path = "{here}\\{outputs_folder}\\errors.txt"
-    answer_path = answer_path.replace("/", "\\")
-    errors_path = errors_path.replace("/", "\\")
-    var command = "cmd /d /s /c \"cd /d \"{folder}\" && {form.command} >\"{answer_path}\" 2>\"{errors_path}\"\""
-    var child = Child(form.name)
-    if not child.start(command) {
-        problems[form.name] = "could not be started: {command}"
+    var no_arguments = List<String>()
+    var running = Process(form.command, no_arguments)
+    running.working_directory = folder
+    running.keeps_errors_apart = true
+    running.time_limit = Duration(run_limit, 'seconds')
+    var code = running.run()
+    if not code {
+        problems[form.name] = "could not be started: {form.command}"
+        if running.was_stopped {
+            problems[form.name] = "ran longer than {run_limit} s"
+        }
         return
     }
-    var waited = wait_for(child)
-    if not waited {
-        child.stop()
-        child.close()
-        problems[form.name] = "ran longer than {run_limit} s"
-        return
-    }
-    var code = child.exit_code()
-    child.close()
-    var answer = text_of(answer_path)
-    var errors = text_of(errors_path)
+    var answer_text = running.read_output_as_string()
+    var errors_text = running.read_errors_as_string()
+    var answer = without_returns(answer_text)
+    var errors = without_returns(errors_text)
     if code != 0 {
         var reason = one_line("{answer}{errors}", _longest_reason)
         problems[form.name] = "exit code {code}: {reason}"
@@ -346,13 +340,9 @@ func run_once(folder: String, form: Form) {
     keep_a_run(form, answer, took)
 }
 
-func wait_for(child: Child): Boolean {
-    var ten_milliseconds = Duration(10, 'milliseconds')
-    while not child.has_finished() {
-        fallback child.seconds_running() < run_limit
-        program.sleep(ten_milliseconds)
-    }
-    return true
+func without_returns(text: String?): String {
+    fallback text
+    return text.replace("\r", "")
 }
 
 func keep_a_run(form: Form, answer: String, took: Long) {
@@ -367,13 +357,6 @@ func keep_a_run(form: Form, answer: String, took: Long) {
     if not kept or took < kept {
         best[form.name] = took
     }
-}
-
-func text_of(path: String): String {
-    var file = File(path)
-    var text = file.read_as_string()
-    fallback text
-    return text.replace("\r", "")
 }
 
 func microseconds_in(errors: String): Long? {

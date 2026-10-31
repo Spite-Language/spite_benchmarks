@@ -238,7 +238,8 @@ func built(name: String): String? {
     if old.exists() {
         crash old.remove()
     }
-    var compiled = ran_in(here, "\"{compiler}\" {name} --build")
+    var case_folder = "{here}\\{name}"
+    var compiled = ran_in(case_folder, "\"{compiler}\" --build")
     if compiled {
         var reason = one_line(compiled, _longest_reason)
         return "does not compile: {reason}"

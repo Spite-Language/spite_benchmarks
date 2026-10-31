@@ -24,7 +24,7 @@ Spite program.
 The runner is a Spite program, `runner/runner.spite`. Build it with the compiler, then run it from this folder:
 
 ```
-../spite_compiler/.spite/spite.exe runner --build
+(cd runner && ../../spite_compiler/.spite/spite.exe --build)
 runner/.spite/build/runner.exe                                    every case, with the master compiler
 runner/.spite/build/runner.exe --compiler=path/to/spite.exe --cases=a_case,another_case
 runner/.spite/build/runner.exe --runs=7 --budget=30               the defaults

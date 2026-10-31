@@ -8,6 +8,6 @@ func Crate(starting_width: Float, starting_height: Float, starting_depth: Float)
     depth = starting_depth
 }
 
-func to_double(): Double {
+func measure(): Double {
     return width * height * depth
 }

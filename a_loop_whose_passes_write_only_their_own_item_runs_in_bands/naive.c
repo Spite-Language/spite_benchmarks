@@ -14,8 +14,8 @@ typedef struct Orbit {
 static void orbit_advance(Orbit* orbit) {
     for (int32_t step = 0; step < 1000; step = step + 1) {
         orbit->angle = orbit->angle + orbit->speed * 0.001f;
-        if (orbit->angle > 6.28318f) {
-            orbit->angle = orbit->angle - 6.28318f;
+        if (orbit->angle > 6.2831855f) {
+            orbit->angle = orbit->angle - 6.2831855f;
             orbit->turns = orbit->turns + 1;
         }
     }

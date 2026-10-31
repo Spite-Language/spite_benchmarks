@@ -1,0 +1,9 @@
+var value = 0
+
+func Count(starting_value: Integer) {
+    value = starting_value
+}
+
+func measure(): Double {
+    return value
+}

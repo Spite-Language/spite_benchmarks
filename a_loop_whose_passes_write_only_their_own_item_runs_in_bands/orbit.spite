@@ -10,8 +10,8 @@ func advance() {
     var step = 0
     while step < 1000 {
         angle = angle + speed * 0.001
-        if angle > 6.28318 {
-            angle = angle - 6.28318
+        if angle > Float.Tau() {
+            angle = angle - Float.Tau()
             turns = turns + 1
         }
         step = step + 1

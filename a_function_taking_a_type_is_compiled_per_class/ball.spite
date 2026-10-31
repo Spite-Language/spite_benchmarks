@@ -4,6 +4,6 @@ func Ball(starting_radius: Float) {
     radius = starting_radius
 }
 
-func to_double(): Double {
+func measure(): Double {
     return radius + radius
 }

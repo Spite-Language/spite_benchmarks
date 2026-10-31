@@ -33,8 +33,8 @@ static void run_band(Band* band) {
         for (int32_t tick = 0; tick < 10; tick++) {
             for (int32_t step = 0; step < 1000; step++) {
                 angle = angle + speed;
-                if (angle > 6.28318f) {
-                    angle = angle - 6.28318f;
+                if (angle > 6.2831855f) {
+                    angle = angle - 6.2831855f;
                     turns++;
                 }
             }

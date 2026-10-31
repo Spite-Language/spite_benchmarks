@@ -1,0 +1,9 @@
+var value: Float = 0.0
+
+func Share(starting_value: Float) {
+    value = starting_value
+}
+
+func measure(): Double {
+    return value
+}

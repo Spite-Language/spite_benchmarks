@@ -19,7 +19,7 @@ class Orbit:
 
     def advance(self):
         step_size = single(0.001)
-        full_turn = single(6.28318)
+        full_turn = single(6.2831855)
         for step in range(1000):
             self.angle = single(self.angle + single(self.speed * step_size))
             if self.angle > full_turn:

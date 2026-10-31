@@ -1,5 +1,5 @@
 type Measured {
-    to_double(): Double
+    measure(): Double
 }
 
 var clock = Clock()
@@ -24,13 +24,15 @@ func every_measure(): Double {
 
 func measure_all(steps: Integer): Double {
     var total: Double = 0.0
+    var count = Count(0)
+    var share = Share(0.0)
     var crate = Crate(1.0, 2.0, 3.0)
     var ball = Ball(1.0)
     var step = 0
     while step < steps {
-        var count = step % 10
+        count.value = step % 10
         total = total + doubled(count)
-        var share: Float = step % 4
+        share.value = step % 4
         total = total + doubled(share)
         crate.width = step % 7
         total = total + doubled(crate)
@@ -42,6 +44,6 @@ func measure_all(steps: Integer): Double {
 }
 
 func doubled(value: Measured): Double {
-    var measure: Double = value
+    var measure = value.measure()
     return measure + measure
 }

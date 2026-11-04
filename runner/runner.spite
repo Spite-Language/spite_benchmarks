@@ -559,7 +559,9 @@ func write_the_table() {
     }
     var sorted = rows.sort_by(row_order)
     var lines = List<String>()
-    lines.append("| case | Spite µs | naive C µs | expert C µs | Python µs | Spite / expert C | Spite / Python | problem |")
+    lines.append(
+        "| case | Spite µs | naive C µs | expert C µs | Python µs | Spite / expert C | Spite / Python | problem |",
+    )
     lines.append("|---|---|---|---|---|---|---|---|")
     var row_index = 0
     while row_index < sorted.count() {

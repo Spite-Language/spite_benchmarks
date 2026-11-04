@@ -16,8 +16,8 @@ func DecidingConditionsAtCompileTime() {
 
 func measure_rounds() {
     var values = make_values(1000000)
-    var plain = Meter<false>()
-    var squared = Meter<true>()
+    var plain = Meter(false)
+    var squared = Meter(true)
     var round = 0
     while round < 20 {
         measure(values, plain, squared)
@@ -37,7 +37,7 @@ func make_values(count: Integer): List<Integer> {
     return values
 }
 
-func measure(values: List<Integer>, plain: Meter<false>, squared: Meter<true>) {
+func measure(values: List<Integer>, plain: Meter, squared: Meter) {
     var index = 0
     while index < values.count() {
         var value = values[index]

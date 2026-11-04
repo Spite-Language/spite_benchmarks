@@ -1,9 +1,12 @@
-generic $is_squared
-
+var is_squared = false
 var total: Long = 0
 
+func Meter(squares: Boolean) {
+    is_squared = squares
+}
+
 func add(value: Integer) {
-    if $is_squared {
+    if is_squared {
         var square: Long = value
         total = total + square * value
     } else {

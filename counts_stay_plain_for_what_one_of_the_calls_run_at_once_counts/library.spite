@@ -1,7 +1,7 @@
 singleton
 
 type Collection {
-    sort()
+    sort: Spite.Function<Nothing>
 }
 
 var archive = Archive()

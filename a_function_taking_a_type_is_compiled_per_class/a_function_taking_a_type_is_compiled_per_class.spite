@@ -1,5 +1,5 @@
 type Measured {
-    measure(): Double
+    measure: Spite.Function<Double>
 }
 
 var clock = Clock()

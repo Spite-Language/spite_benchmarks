@@ -18,8 +18,8 @@ var forms = List<Form>()
 var problems = Dictionary<String, String>()
 var best = Dictionary<String, Long>()
 var run_limit: Long = 300
-var results_path = "results.json"
-var readme_path = "README.md"
+var results_path: Path = "results.json"
+var readme_path: Path = "README.md"
 var _longest_reason = 200
 var _longest_shown_answer = 120
 
@@ -49,13 +49,16 @@ func absolute(written: String): String {
     if not has_a_drive and not forward.starts_with("/") {
         whole = "{here}/{forward}"
     }
-    var normal: Path = whole
+    var normal: Path? = whole
+    crash normal
     var shown = normal.to_string()
     return shown.replace("/", "\\")
 }
 
 func make_a_folder(path: String) {
-    var folder = Directory(path)
+    var folder_path: Path? = path
+    crash folder_path
+    var folder = Directory(folder_path)
     if not folder.exists() {
         crash folder.create()
     }
@@ -71,8 +74,12 @@ func find_every_case() {
 func keep_a_case(entry: Entry) {
     fallback entry.class == Directory
     var name = entry.folder_name
-    var program_file = File("{name}/{name}.spite")
-    var naive_file = File("{name}/naive.c")
+    var program_path: Path? = "{name}/{name}.spite"
+    crash program_path
+    var naive_path: Path? = "{name}/naive.c"
+    crash naive_path
+    var program_file = File(program_path)
+    var naive_file = File(naive_path)
     if program_file.exists() and naive_file.exists() {
         every_case.append(name)
     }
@@ -139,7 +146,9 @@ func studio_clang(): String? {
         while edition_index < editions.count() {
             var edition = editions[edition_index]
             var path = "{root}/{version}/{edition}/VC/Tools/Llvm/x64/bin/clang.exe"
-            var file = File(path)
+            var clang_path: Path? = path
+            crash clang_path
+            var file = File(clang_path)
             if file.exists() {
                 return path.replace("/", "\\")
             }
@@ -152,7 +161,9 @@ func studio_clang(): String? {
 
 func folders_in(path: String): List<String> {
     var names = List<String>()
-    var directory = Directory(path)
+    var directory_path: Path? = path
+    crash directory_path
+    var directory = Directory(directory_path)
     var entries = directory.entries()
     if not entries {
         return names
@@ -232,7 +243,9 @@ func time_a_case(name: String) {
 func built(name: String): String? {
     var build_folder = "{here}\\{name}\\.spite\\build"
     var spite_executable = "{build_folder}\\{name}.exe"
-    var old = File(spite_executable)
+    var executable_path: Path? = spite_executable
+    crash executable_path
+    var old = File(executable_path)
     if old.exists() {
         crash old.remove()
     }

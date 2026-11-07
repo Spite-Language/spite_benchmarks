@@ -7,7 +7,9 @@ func save_part() {
     var part = next_part
     next_part = next_part + 1
     program.sleep(twenty_milliseconds)
-    var file = File(".spite/frame_save_{part}.txt")
+    var save_path: Path? = ".spite/frame_save_{part}.txt"
+    crash save_path
+    var file = File(save_path)
     crash file.write_string("part {part}")
     saved = saved + 1
 }

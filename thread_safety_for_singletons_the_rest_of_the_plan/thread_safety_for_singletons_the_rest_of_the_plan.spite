@@ -18,7 +18,7 @@ func ThreadSafetyForSingletonsTheRestOfThePlan() {
 
 func log_and_count() {
     logged = log_four_times(_event_count)
-    count = log.count()
+    count = log.entries.count()
 }
 
 func log_four_times(rounds: Integer): Integer {

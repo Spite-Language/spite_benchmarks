@@ -6,7 +6,7 @@ func Reader(new_rounds: Integer) {
 }
 
 func run(): Long {
-    var rows = shelf.count()
+    var rows = shelf.boxes.count()
     var total: Long = 0
     var round = 0
     while round < rounds {

@@ -1,4 +1,4 @@
-/* naive/ written in C the way it reads: a growable array of bytes for the List<Byte>, and base64.encode written as
+/* naive/ written in C the way it reads: a growable array of bytes for the Buffer, and base64.encode written as
  * the library writes it, each byte read and each digit written through a function of its own, the text a new
  * allocation per call. */
 #include <stdint.h>

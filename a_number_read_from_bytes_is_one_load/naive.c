@@ -1,5 +1,5 @@
-/* naive/ written in C the way it reads: a growable array of bytes for the List<Byte>, the big-endian numbers put
- * together byte by byte as a C programmer writes them, and the decode loop reading through the list's pointer and
+/* naive/ written in C the way it reads: a growable array of bytes for the Buffer, the big-endian numbers put
+ * together byte by byte as a C programmer writes them, and the decode loop reading through the buffer's pointer and
  * count, with no checks. */
 #include <stdint.h>
 #include <stdio.h>

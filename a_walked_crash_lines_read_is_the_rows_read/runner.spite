@@ -8,7 +8,7 @@ func run(system: Mover, entity_count: Integer) {
     while entity < entity_count {
         found.clear()
         missing = false
-        var row: $row_type = null
+        var row = $row_type()
         find_attributes(row, entity)
         if not missing {
             fill_attributes(row, found, entity)

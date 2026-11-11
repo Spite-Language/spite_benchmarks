@@ -8,9 +8,9 @@ enum Formula {
 var formula: Formula = 'constant'
 var first = 0
 var second = 0
-var constant: Long = 0
 var value: Long = 0
 var _value_modulus: Long = 1000003
+var constant: Long
 var row: Integer
 var column: Integer
 var style: Integer

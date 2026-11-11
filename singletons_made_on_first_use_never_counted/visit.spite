@@ -1,5 +1,5 @@
 var rules = Rules()
-var number = 0
+var number: Integer
 
 func Visit(new_number: Integer) {
     number = new_number

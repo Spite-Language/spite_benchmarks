@@ -1,6 +1,6 @@
 var log = EventLog()
-var rounds = 0
-var source = 0
+var rounds: Integer
+var source: Integer
 
 func Logger(new_rounds: Integer, new_source: Integer) {
     rounds = new_rounds

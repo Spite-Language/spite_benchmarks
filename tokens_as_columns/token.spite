@@ -4,11 +4,11 @@ enum TokenKind {
     'symbol'
 }
 
-var kind: TokenKind = 'symbol'
-var start = 0
-var length = 0
-var line = 0
-var value: Long = 0
+var kind: TokenKind
+var start: Integer
+var length: Integer
+var line: Integer
+var value: Long
 
 func Token(made_kind: TokenKind, made_start: Integer, made_length: Integer, made_line: Integer, made_value: Long) {
     kind = made_kind

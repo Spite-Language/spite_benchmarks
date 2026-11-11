@@ -1,6 +1,6 @@
 var clock = Clock()
 var console = Console()
-var playlist: Playlist = null
+var playlist: Playlist
 
 func AnItemPassedToACallThatCannotChangeItsListIsNotCounted() {
     load "../../spite_standard_library/windows"

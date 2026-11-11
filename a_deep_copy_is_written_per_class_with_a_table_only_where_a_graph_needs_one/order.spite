@@ -1,6 +1,6 @@
-var id = 0
 var customer = Customer("", 0)
 var lines = List<Line>()
+var id: Integer
 
 func Order(new_id: Integer, new_customer: Customer) {
     id = new_id

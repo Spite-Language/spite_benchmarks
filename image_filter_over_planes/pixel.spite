@@ -1,9 +1,9 @@
-var red = 0
-var green = 0
-var blue = 0
-var alpha = 0
 var _largest_channel = 255
 var _green_luminance_weight = 150
+var red: Integer
+var green: Integer
+var blue: Integer
+var alpha: Integer
 
 func Pixel(seed: Long) {
     red = seed % 256

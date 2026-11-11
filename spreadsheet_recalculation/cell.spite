@@ -10,10 +10,10 @@ var first = 0
 var second = 0
 var constant: Long = 0
 var value: Long = 0
-var row = 0
-var column = 0
-var style = 0
 var _value_modulus: Long = 1000003
+var row: Integer
+var column: Integer
+var style: Integer
 
 func Cell(index: Integer, seed: Long) {
     row = index / 64

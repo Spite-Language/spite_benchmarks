@@ -1,5 +1,5 @@
-var position = 0
-var speed = 0
+var position: Integer
+var speed: Integer
 
 func Particle(starting_position: Integer, starting_speed: Integer) {
     position = starting_position

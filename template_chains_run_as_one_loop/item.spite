@@ -1,6 +1,6 @@
-var price = 0
-var active = false
 var owner = Owner(0)
+var price: Integer
+var active: Boolean
 
 func Item(new_price: Integer, new_active: Boolean, new_owner: Owner) {
     price = new_price

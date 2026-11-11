@@ -1,4 +1,4 @@
-var value: Float = 0.0
+var value: Float
 
 func Share(starting_value: Float) {
     value = starting_value

@@ -1,6 +1,6 @@
-var width = 0.0
-var height = 0.0
-var depth = 0.0
+var width: Float
+var height: Float
+var depth: Float
 
 func Crate(starting_width: Float, starting_height: Float, starting_depth: Float) {
     width = starting_width

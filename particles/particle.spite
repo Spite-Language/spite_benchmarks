@@ -1,9 +1,9 @@
-var position_x = 0.0
-var position_y = 0.0
-var position_z = 0.0
-var velocity_x = 0.0
-var velocity_y = 0.0
-var velocity_z = 0.0
+var position_x: Float
+var position_y: Float
+var position_z: Float
+var velocity_x: Float
+var velocity_y: Float
+var velocity_z: Float
 
 func Particle(seed: Integer) {
     position_x = seed % 100

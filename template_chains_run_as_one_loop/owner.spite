@@ -1,4 +1,4 @@
-var age = 0
+var age: Integer
 
 func Owner(new_age: Integer) {
     age = new_age

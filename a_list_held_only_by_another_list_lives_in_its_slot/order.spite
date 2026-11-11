@@ -1,5 +1,5 @@
-var customer = 0
-var amount = 0
+var customer: Integer
+var amount: Integer
 
 func Order(starting_customer: Integer, starting_amount: Integer) {
     customer = starting_customer

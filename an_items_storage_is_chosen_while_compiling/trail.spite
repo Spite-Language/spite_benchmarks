@@ -1,6 +1,6 @@
-var across = 0
-var down = 0
 var marks = List<Integer>()
+var across: Integer
+var down: Integer
 
 func Trail(new_across: Integer, new_down: Integer) {
     across = new_across

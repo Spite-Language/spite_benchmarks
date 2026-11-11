@@ -1,5 +1,5 @@
-var limit = 0
-var offset = 0
+var limit: Integer
+var offset: Integer
 
 func Summer(new_limit: Integer, new_offset: Integer) {
     limit = new_limit

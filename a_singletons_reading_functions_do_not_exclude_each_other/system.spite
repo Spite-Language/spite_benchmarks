@@ -1,5 +1,5 @@
 var transforms = Transforms()
-var rows = 0
+var rows: Integer
 
 func System(new_rows: Integer) {
     rows = new_rows

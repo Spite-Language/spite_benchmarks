@@ -1,5 +1,5 @@
 var hits = 0
-var step = 1
+var step: Integer
 
 func Column(new_step: Integer) {
     step = new_step

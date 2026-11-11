@@ -1,4 +1,4 @@
-var number = 0
+var number: Integer
 
 func Label(new_number: Integer) {
     number = new_number

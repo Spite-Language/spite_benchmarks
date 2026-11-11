@@ -1,5 +1,5 @@
 var tally = Tally()
-var rounds = 0
+var rounds: Integer
 
 func Counter(new_rounds: Integer) {
     rounds = new_rounds

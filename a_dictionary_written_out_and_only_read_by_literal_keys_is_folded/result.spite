@@ -1,6 +1,6 @@
-var golds = 0
-var silvers = 0
-var bronzes = 0
+var golds: Integer
+var silvers: Integer
+var bronzes: Integer
 
 func Result(new_golds: Integer, new_silvers: Integer, new_bronzes: Integer) {
     golds = new_golds

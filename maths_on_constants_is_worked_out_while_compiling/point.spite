@@ -1,5 +1,5 @@
-var across = 0.0
-var down = 0.0
+var across: Float
+var down: Float
 
 func Point(new_across: Float, new_down: Float) {
     across = new_across

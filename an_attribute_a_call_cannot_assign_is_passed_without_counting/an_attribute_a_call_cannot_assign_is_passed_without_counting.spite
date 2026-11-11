@@ -1,6 +1,6 @@
 var clock = Clock()
 var console = Console()
-var meter: Meter = null
+var meter: Meter
 
 func AnAttributeACallCannotAssignIsPassedWithoutCounting() {
     load "../../spite_standard_library/windows"

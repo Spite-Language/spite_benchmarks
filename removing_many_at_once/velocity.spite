@@ -1,5 +1,5 @@
-var entity = 0
-var despawned = false
+var entity: Integer
+var despawned: Boolean
 
 func Velocity(new_entity: Integer, new_despawned: Boolean) {
     entity = new_entity

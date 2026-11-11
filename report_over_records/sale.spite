@@ -1,7 +1,3 @@
-var region = 0
-var product = 0
-var quantity = 0
-var price = 0
 var cost = 0
 var discount = 0
 var day = 0
@@ -12,6 +8,10 @@ var _price_range: Long = 500
 var _discount_range: Long = 101
 var _days_in_year: Long = 365
 var _customer_divisor: Long = 2555
+var region: Integer
+var product: Integer
+var quantity: Integer
+var price: Integer
 
 func Sale(seed: Long) {
     region = seed % 16

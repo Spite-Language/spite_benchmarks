@@ -1,4 +1,4 @@
-var radius = 0.0
+var radius: Float
 
 func Ball(starting_radius: Float) {
     radius = starting_radius

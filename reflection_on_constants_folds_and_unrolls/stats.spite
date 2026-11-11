@@ -1,7 +1,7 @@
-var strength = 0
-var agility = 0
-var wisdom = 0
-var stamina = 0
+var strength: Integer
+var agility: Integer
+var wisdom: Integer
+var stamina: Integer
 
 func Stats(seed: Integer) {
     strength = seed % 20

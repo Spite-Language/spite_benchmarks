@@ -1,5 +1,5 @@
-var quantity = 0
-var price = 0
+var quantity: Integer
+var price: Integer
 
 func Line(new_quantity: Integer, new_price: Integer) {
     quantity = new_quantity

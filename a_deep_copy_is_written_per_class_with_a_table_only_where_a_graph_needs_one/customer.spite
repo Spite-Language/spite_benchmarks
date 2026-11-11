@@ -1,5 +1,5 @@
-var name = ""
-var level = 0
+var name: String
+var level: Integer
 
 func Customer(new_name: String, new_level: Integer) {
     name = new_name

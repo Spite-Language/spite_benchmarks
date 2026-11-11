@@ -1,6 +1,6 @@
 var angle = 0.0
-var speed = 0.0
 var turns = 0
+var speed: Float
 
 func Orbit(seed: Integer) {
     speed = seed % 17 + 1

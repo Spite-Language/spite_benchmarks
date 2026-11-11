@@ -1,4 +1,4 @@
-var entity_count = 0
+var entity_count: Integer
 
 func Stream(new_entity_count: Integer) {
     entity_count = new_entity_count

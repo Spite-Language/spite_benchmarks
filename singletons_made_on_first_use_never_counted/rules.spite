@@ -1,6 +1,6 @@
 singleton
 
-var base = 0
+var base: Integer
 
 func Rules() {
     base = 3

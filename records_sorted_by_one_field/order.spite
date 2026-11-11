@@ -1,14 +1,14 @@
-var id = 0
-var placed_at: Long = 0
-var customer = 0
-var product = 0
-var quantity = 0
-var price = 0
-var region = 0
-var status = 0
 var _customer_count: Long = 50000
 var _product_count: Long = 2000
 var _price_range: Long = 500
+var id: Integer
+var placed_at: Long
+var customer: Integer
+var product: Integer
+var quantity: Integer
+var price: Integer
+var region: Integer
+var status: Integer
 
 func Order(made_id: Integer, seed: Long) {
     id = made_id

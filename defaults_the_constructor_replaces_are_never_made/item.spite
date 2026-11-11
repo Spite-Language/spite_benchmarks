@@ -1,5 +1,5 @@
-var price = 0
 var owner = Owner(0)
+var price: Integer
 
 func Item(new_price: Integer, new_owner: Owner) {
     price = new_price

@@ -1,4 +1,4 @@
-var rounds = 0
+var rounds: Integer
 
 func Fetcher(new_rounds: Integer) {
     rounds = new_rounds

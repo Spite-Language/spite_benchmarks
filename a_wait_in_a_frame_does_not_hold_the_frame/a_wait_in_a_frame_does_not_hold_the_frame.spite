@@ -7,7 +7,6 @@ var checksum: Long = 0
 var _steps_per_draw = 20000
 
 func AWaitInAFrameDoesNotHoldTheFrame() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = run_frames()
     var finished = clock.elapsed()

@@ -7,7 +7,6 @@ var _random_multiplier: Long = 48271
 var _random_modulus: Long = 2147483647
 
 func Sorting() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     sort_and_check()
     var finished = clock.elapsed()

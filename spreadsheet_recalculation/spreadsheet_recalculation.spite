@@ -9,7 +9,6 @@ var _random_modulus: Long = 2147483647
 var _edit_stride = 7919
 
 func SpreadsheetRecalculation() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     recalculate_all()
     var finished = clock.elapsed()

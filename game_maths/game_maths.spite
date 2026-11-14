@@ -6,7 +6,6 @@ var transformed = 0.0
 var _step_count = 200000
 
 func GameMaths() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     all_passes()
     var finished = clock.elapsed()

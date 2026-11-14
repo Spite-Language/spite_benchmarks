@@ -10,7 +10,6 @@ var saw = Saw()
 var voices = List<Voice>()
 
 func ALoopOverAListOfDifferentClassesRunsThemAtOnce() {
-    load "../../spite_standard_library/windows"
     add_voices()
     var started = clock.elapsed()
     render_all()

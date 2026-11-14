@@ -8,7 +8,6 @@ var _random_multiplier: Long = 48271
 var _random_modulus: Long = 2147483647
 
 func ImageFilterOverPlanes() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     filter_image()
     var finished = clock.elapsed()

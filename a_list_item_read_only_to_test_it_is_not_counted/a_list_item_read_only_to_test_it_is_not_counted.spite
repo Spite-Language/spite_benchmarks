@@ -9,7 +9,6 @@ var _probe_stride = 7919
 var _probe_range = 400000
 
 func AListItemReadOnlyToTestItIsNotCounted() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     fill_and_probe()
     var finished = clock.elapsed()

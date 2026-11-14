@@ -6,7 +6,6 @@ var ended_z = 0.0
 var _step_count = 20000000
 
 func ObjectsThatNeverLeaveTheirFunctionLiveInTheFrame() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     simulate_all()
     var finished = clock.elapsed()

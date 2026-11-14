@@ -9,7 +9,6 @@ var bass = Bass()
 var tracks = List<Track>()
 
 func ObjectsMadeForTheirOwnerAreToldApart() {
-    load "../../spite_standard_library/windows"
     add_tracks()
     var started = clock.elapsed()
     render_all()

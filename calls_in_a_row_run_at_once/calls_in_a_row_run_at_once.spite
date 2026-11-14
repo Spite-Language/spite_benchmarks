@@ -4,7 +4,6 @@ var evens = Evens()
 var odds = Odds()
 
 func CallsInARowRunAtOnce() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     count_both()
     var finished = clock.elapsed()

@@ -3,7 +3,6 @@ var console = Console()
 var base64 = Base64()
 
 func ReadingAnAddressIsOneMachineOperation() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = encode_all()
     var finished = clock.elapsed()

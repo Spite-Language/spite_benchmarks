@@ -3,7 +3,6 @@ var console = Console()
 var playlist: Playlist
 
 func AnItemPassedToACallThatCannotChangeItsListIsNotCounted() {
-    load "../../spite_standard_library/windows"
     playlist = Playlist()
     var started = clock.elapsed()
     var answer = listen_to_all()

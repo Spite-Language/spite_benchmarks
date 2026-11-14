@@ -7,7 +7,6 @@ var last = 0
 var _last_weight_index = 99999
 
 func AnItemANameHoldsFromItsListIsNotCounted() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     fill_and_visit()
     var finished = clock.elapsed()

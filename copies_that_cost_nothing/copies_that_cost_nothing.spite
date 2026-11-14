@@ -4,7 +4,6 @@ var origin = Point(0, 0)
 var _trial_count = 20000000
 
 func CopiesThatCostNothing() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = every_trial()
     var finished = clock.elapsed()

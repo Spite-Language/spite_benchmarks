@@ -24,7 +24,6 @@ var _longest_reason = 200
 var _longest_shown_answer = 120
 
 func Runner() {
-    load "../../spite_standard_library/windows"
     var working = program.working_directory()
     crash working
     here = working

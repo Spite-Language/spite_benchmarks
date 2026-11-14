@@ -5,7 +5,6 @@ var _negative_offset = 50000
 var _round_count = 300
 
 func ANumberReadFromBytesIsOneLoad() {
-    load "../../spite_standard_library/windows"
     fill(100000)
     var started = clock.elapsed()
     var answer = all_rounds()

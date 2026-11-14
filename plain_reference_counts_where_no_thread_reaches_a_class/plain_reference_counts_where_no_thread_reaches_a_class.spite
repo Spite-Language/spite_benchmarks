@@ -5,7 +5,6 @@ var _point_count = 200000
 var _second_coordinate_range = 700
 
 func PlainReferenceCountsWhereNoThreadReachesAClass() {
-    load "../../spite_standard_library/windows"
     var start = clock.elapsed()
     var summer = Summer(_summing_limit)
     var sum = summer.total()

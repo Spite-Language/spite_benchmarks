@@ -2,7 +2,6 @@ var clock = Clock()
 var console = Console()
 
 func TemplateChainsRunAsOneLoop() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = build_and_total()
     var finished = clock.elapsed()

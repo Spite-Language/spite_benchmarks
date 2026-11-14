@@ -5,7 +5,6 @@ var _particle_count = 200000
 var _tick_count = 200
 
 func AnItemWrittenBackToItsOwnSlotIsNotWritten() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = make_and_move()
     var finished = clock.elapsed()

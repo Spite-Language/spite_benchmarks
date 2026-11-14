@@ -4,7 +4,6 @@ var running = 0
 var _party_size = 200000
 
 func ReflectionOnConstantsFoldsAndUnrolls() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = all_rounds()
     var finished = clock.elapsed()

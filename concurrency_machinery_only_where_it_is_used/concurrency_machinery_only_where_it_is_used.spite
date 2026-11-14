@@ -4,7 +4,6 @@ var characters_read = 0
 var removed = false
 
 func ConcurrencyMachineryOnlyWhereItIsUsed() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     write_read_and_remove()
     var finished = clock.elapsed()

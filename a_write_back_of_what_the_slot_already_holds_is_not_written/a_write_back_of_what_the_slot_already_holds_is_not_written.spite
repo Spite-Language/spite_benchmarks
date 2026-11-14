@@ -4,7 +4,6 @@ var desk = Desk()
 var total = 0
 
 func AWriteBackOfWhatTheSlotAlreadyHoldsIsNotWritten() {
-    load "../../spite_standard_library/windows"
     desk.stock(100000)
     var started = clock.elapsed()
     edit_every_page()

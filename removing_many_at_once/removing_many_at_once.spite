@@ -6,7 +6,6 @@ var velocities = List<Velocity>()
 var entities = List<Integer>()
 
 func RemovingManyAtOnce() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = all_rounds()
     var finished = clock.elapsed()

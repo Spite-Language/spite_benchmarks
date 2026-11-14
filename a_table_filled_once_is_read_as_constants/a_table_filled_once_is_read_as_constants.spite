@@ -2,7 +2,6 @@ var clock = Clock()
 var console = Console()
 
 func ATableFilledOnceIsReadAsConstants() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = price_all()
     var finished = clock.elapsed()

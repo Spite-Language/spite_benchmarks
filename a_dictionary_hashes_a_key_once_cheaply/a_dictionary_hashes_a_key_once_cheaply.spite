@@ -4,7 +4,6 @@ var by_name = Dictionary<String, Integer>()
 var _name_count = 5000
 
 func ADictionaryHashesAKeyOnceCheaply() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = index_and_look_up()
     var finished = clock.elapsed()

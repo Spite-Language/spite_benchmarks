@@ -5,7 +5,6 @@ var into = List<Float>()
 var _round_count = 2000
 
 func ALoopOverPlainValuesReadsItsCountOnceAndItsItemsUnchecked() {
-    load "../../spite_standard_library/windows"
     fill(100000)
     var started = clock.elapsed()
     var answer = all_rounds()

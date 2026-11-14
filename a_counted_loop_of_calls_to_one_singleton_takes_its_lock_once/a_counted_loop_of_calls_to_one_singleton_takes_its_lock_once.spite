@@ -8,7 +8,6 @@ var largest = 0
 var _call_count = 5000000
 
 func ACountedLoopOfCallsToOneSingletonTakesItsLockOnce() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     count_and_read()
     var finished = clock.elapsed()

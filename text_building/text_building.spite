@@ -5,7 +5,6 @@ var joined_length = 0
 var _item_count = 3000000
 
 func TextBuilding() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     build_texts()
     var finished = clock.elapsed()

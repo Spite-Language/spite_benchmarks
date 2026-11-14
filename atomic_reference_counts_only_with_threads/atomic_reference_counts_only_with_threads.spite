@@ -4,7 +4,6 @@ var _point_count = 200000
 var _second_coordinate_range = 700
 
 func AtomicReferenceCountsOnlyWithThreads() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = make_and_count()
     var finished = clock.elapsed()

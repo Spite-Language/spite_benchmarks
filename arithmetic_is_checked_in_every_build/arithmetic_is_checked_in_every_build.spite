@@ -3,7 +3,6 @@ var console = Console()
 var _round_count = 400
 
 func ArithmeticIsCheckedInEveryBuild() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = fill_and_check()
     var finished = clock.elapsed()

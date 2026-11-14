@@ -7,7 +7,6 @@ var console = Console()
 var _value_count = 90000
 
 func BoxingOnlyWhereAValueTravelsAsAShape() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = make_and_measure()
     var finished = clock.elapsed()

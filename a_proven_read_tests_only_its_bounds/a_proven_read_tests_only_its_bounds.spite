@@ -5,7 +5,6 @@ var _value_range = 101
 var _round_count = 300
 
 func AProvenReadTestsOnlyItsBounds() {
-    load "../../spite_standard_library/windows"
     fill(100000)
     var started = clock.elapsed()
     var answer = all_rounds()

@@ -9,7 +9,6 @@ var _random_multiplier: Long = 1103515245
 var _random_increment: Long = 12345
 
 func AListOfListsFilledAgainKeepsEachListsRoom() {
-    load "../../spite_standard_library/windows"
     make_orders(_order_count)
     var started = clock.elapsed()
     regroup()

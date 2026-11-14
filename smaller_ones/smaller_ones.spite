@@ -4,7 +4,6 @@ var total: Long = 0
 var large = 0
 
 func SmallerOnes() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     count_all()
     var finished = clock.elapsed()

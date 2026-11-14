@@ -5,7 +5,6 @@ var second_file = File(".spite/reads_in_a_row_second.txt")
 var _words_per_file = 4000
 
 func ReadsInARowOverlap() {
-    load "../../spite_standard_library/windows"
     make_files()
     var started = clock.elapsed()
     var answer = all_reads()

@@ -4,7 +4,6 @@ var _value_count = 50000
 var _round_count = 4000
 
 func ADecimalLiteralBesideAFloatIsAFloat() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = fill_and_round()
     var finished = clock.elapsed()

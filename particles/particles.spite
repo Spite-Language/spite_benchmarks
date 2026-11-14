@@ -5,7 +5,6 @@ var spread_checksum: Long = 0
 var _tick_count = 300
 
 func Particles() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     simulate()
     var finished = clock.elapsed()

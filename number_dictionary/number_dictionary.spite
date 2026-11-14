@@ -7,7 +7,6 @@ var _entry_count = 500000
 var _lookups_per_round = 500000
 
 func NumberDictionary() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     fill_and_look_up()
     var finished = clock.elapsed()

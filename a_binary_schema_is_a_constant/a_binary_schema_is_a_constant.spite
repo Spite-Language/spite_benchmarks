@@ -5,7 +5,6 @@ var reader = BinaryReader<Reading>()
 var _header_count = 200000
 
 func ABinarySchemaIsAConstant() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = accepted_headers()
     var finished = clock.elapsed()

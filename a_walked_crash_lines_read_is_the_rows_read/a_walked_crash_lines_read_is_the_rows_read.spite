@@ -13,7 +13,6 @@ var velocities = Column<Velocity>()
 var entity_count = 100000
 
 func AWalkedCrashLinesReadIsTheRowsRead() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = spawn_and_move()
     var finished = clock.elapsed()

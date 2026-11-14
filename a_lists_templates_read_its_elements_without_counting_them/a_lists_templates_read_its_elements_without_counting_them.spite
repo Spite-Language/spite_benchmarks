@@ -5,7 +5,6 @@ var numbers = 0
 var _body_count = 200000
 
 func AListsTemplatesReadItsElementsWithoutCountingThem() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     fill_and_simulate()
     var finished = clock.elapsed()

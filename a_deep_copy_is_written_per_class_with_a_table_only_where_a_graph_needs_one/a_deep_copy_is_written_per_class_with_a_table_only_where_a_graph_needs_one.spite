@@ -4,7 +4,6 @@ var _order_count = 5000
 var _customer_count = 300
 
 func ADeepCopyIsWrittenPerClassWithATableOnlyWhereAGraphNeedsOne() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = make_and_copy()
     var finished = clock.elapsed()

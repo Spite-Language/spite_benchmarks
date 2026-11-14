@@ -5,7 +5,6 @@ var changed = 0
 var total = 0
 
 func StoringAnObjectIntoAListCountsItOnlyWhenItChangesTheSlot() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     restock_and_total()
     var finished = clock.elapsed()

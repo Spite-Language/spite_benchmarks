@@ -14,7 +14,6 @@ var _lowercase_z_code = 122
 var _hash_modulus: Long = 1000000007
 
 func TokensAsColumns() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     tokenize_and_count()
     var finished = clock.elapsed()

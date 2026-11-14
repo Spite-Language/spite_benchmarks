@@ -50,7 +50,7 @@ with the reason.
 ## Where the cases come from
 
 The cases are the benchmarks the language repository kept beside its C backend, with the Spite rewritten for the
-current compiler, which writes machine code: each program loads the library itself, its entry function is named
+current compiler, which writes machine code: each program has the standard library with no load, its entry function is named
 after its folder, and it reads the clock around its work. Two use what the language now leaves to the compiler:
 `an_allocator_set_after_construction_is_where_the_object_is_made` no longer sets an arena (a program cannot name
 one), and `the_compiler_places_memory` fills a `List<Long>` where it allocated memory by hand. The C programs are

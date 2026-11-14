@@ -3,7 +3,6 @@ var console = Console()
 var _amount_range = 9973
 
 func AProvenDivisorIsNotChecked() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = fill_and_share()
     var finished = clock.elapsed()

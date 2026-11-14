@@ -4,7 +4,6 @@ var library = Library()
 var sorter = Sorter()
 
 func CountsStayPlainForWhatOneOfTheCallsRunAtOnceCounts() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     sorter.sort_all()
     var finished = clock.elapsed()

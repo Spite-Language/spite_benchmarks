@@ -5,7 +5,6 @@ var _key_multiplier = 7919
 var _key_range = 1000003
 
 func ADictionaryKeyedByNumbersHashesTheNumbers() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = make_and_look_up()
     var finished = clock.elapsed()

@@ -4,7 +4,6 @@ var sum: Long = 0
 var squares: Long = 0
 
 func DecidingConditionsAtCompileTime() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     measure_rounds()
     var finished = clock.elapsed()

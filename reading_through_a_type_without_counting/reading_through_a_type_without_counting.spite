@@ -4,7 +4,6 @@ var mover = Mover()
 var _tick_count = 200
 
 func ReadingThroughATypeWithoutCounting() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = move_all()
     var finished = clock.elapsed()

@@ -10,7 +10,6 @@ var _random_modulus: Long = 2147483647
 var _checksum_modulus: Long = 1000000007
 
 func RecordsSortedByOneField() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     sort_and_total()
     var finished = clock.elapsed()

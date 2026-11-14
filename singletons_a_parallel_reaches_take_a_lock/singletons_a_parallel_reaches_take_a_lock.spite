@@ -7,7 +7,6 @@ var total: Long = 0
 var _record_count = 250000
 
 func SingletonsAParallelReachesTakeALock() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     record_and_count()
     var finished = clock.elapsed()

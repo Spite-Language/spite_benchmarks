@@ -2,7 +2,6 @@ var clock = Clock()
 var console = Console()
 
 func ShortTextLivesInsideTheString() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = all_rounds()
     var finished = clock.elapsed()

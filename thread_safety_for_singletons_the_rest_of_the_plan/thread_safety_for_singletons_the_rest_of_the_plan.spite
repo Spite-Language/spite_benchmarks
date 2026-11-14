@@ -6,7 +6,6 @@ var count = 0
 var _event_count = 250000
 
 func ThreadSafetyForSingletonsTheRestOfThePlan() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     log_and_count()
     var finished = clock.elapsed()

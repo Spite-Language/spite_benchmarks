@@ -5,7 +5,6 @@ var ended: Long = 0
 var _step_count = 5000000
 
 func VectorMaths() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     steps()
     var finished = clock.elapsed()

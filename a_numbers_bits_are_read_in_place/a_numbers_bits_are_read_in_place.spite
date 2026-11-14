@@ -5,7 +5,6 @@ var _value_range = 160000
 var _negative_offset = 20000
 
 func ANumbersBitsAreReadInPlace() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     var answer = every_round_trip()
     var finished = clock.elapsed()

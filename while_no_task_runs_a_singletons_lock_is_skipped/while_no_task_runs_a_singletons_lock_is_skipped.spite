@@ -7,7 +7,6 @@ var total: Long = 0
 var calls = 0
 
 func WhileNoTaskRunsASingletonsLockIsSkipped() {
-    load "../../spite_standard_library/windows"
     var started = clock.elapsed()
     add_all()
     var finished = clock.elapsed()

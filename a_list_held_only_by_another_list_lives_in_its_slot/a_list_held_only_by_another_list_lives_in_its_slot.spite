@@ -11,7 +11,6 @@ var _query_count = 400000
 var _customer_stride = 7919
 
 func AListHeldOnlyByAnotherListLivesInItsSlot() {
-    load "../../spite_standard_library/windows"
     make_orders(_order_count)
     var started = clock.elapsed()
     group_and_ask()

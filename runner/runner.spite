@@ -548,7 +548,9 @@ func order_of(result: CaseResult, position: Integer): Integer {
         divisor = 1
     }
     var scaled = spite_time * 100000 / divisor
-    return 0 - scaled
+    var fitted: Integer? = 0 - scaled
+    crash fitted
+    return fitted
 }
 
 func row_order(row: Row): Integer {

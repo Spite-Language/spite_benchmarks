@@ -10,7 +10,8 @@ func AFunctionTakingATypeIsCompiledPerClass() {
     var started = clock.elapsed()
     var answer = every_measure()
     var finished = clock.elapsed()
-    var whole: Long = answer
+    var whole: Long? = answer
+    crash whole
     console.print("total", whole)
     var taken = finished - started
     var microseconds = taken.total('microseconds')

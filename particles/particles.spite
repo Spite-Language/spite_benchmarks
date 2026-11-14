@@ -36,6 +36,10 @@ func simulate() {
         spread = spread + particle.position_x + particle.position_z
         index = index + 1
     }
-    height_checksum = height
-    spread_checksum = spread
+    var fitted: Long? = height
+    crash fitted
+    height_checksum = fitted
+    var fitted: Long? = spread
+    crash fitted
+    spread_checksum = fitted
 }

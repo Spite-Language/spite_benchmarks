@@ -9,9 +9,12 @@ func ObjectsThatNeverLeaveTheirFunctionLiveInTheFrame() {
     var started = clock.elapsed()
     simulate_all()
     var finished = clock.elapsed()
-    var across: Long = ended_x * 1000.0
-    var up: Long = ended_y * 1000.0
-    var ahead: Long = ended_z * 1000.0
+    var across: Long? = ended_x * 1000.0
+    crash across
+    var up: Long? = ended_y * 1000.0
+    crash up
+    var ahead: Long? = ended_z * 1000.0
+    crash ahead
     console.print("ended at", across, up, ahead)
     var taken = finished - started
     var microseconds = taken.total('microseconds')

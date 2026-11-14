@@ -20,7 +20,9 @@ func turn_all(): Integer {
         round = round + 1
     }
     var total = points.sum_across()
-    return total.round()
+    var fitted: Integer? = total.round()
+    crash fitted
+    return fitted
 }
 
 func make_points(count: Integer): List<Point> {

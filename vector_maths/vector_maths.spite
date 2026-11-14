@@ -29,6 +29,10 @@ func steps() {
         total = total + position.dot(velocity)
         step = step + 1
     }
-    checksum = total
-    ended = position.length() * 1000.0
+    var fitted: Long? = total
+    crash fitted
+    checksum = fitted
+    var fitted: Long? = position.length() * 1000.0
+    crash fitted
+    ended = fitted
 }

@@ -37,7 +37,8 @@ func rounds(from: List<Float>, into: List<Float>): Long {
         offset = offset * 0.25
         scale_list(from, into, offset)
         var sum = add_up(into)
-        var quarters: Long = sum * 4.0
+        var quarters: Long? = sum * 4.0
+        crash quarters
         total = total + quarters
         round = round + 1
     }

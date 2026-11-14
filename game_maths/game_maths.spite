@@ -9,11 +9,16 @@ func GameMaths() {
     var started = clock.elapsed()
     all_passes()
     var finished = clock.elapsed()
-    var ended_x: Long = ended_at.x * 1000.0
-    var ended_y: Long = ended_at.y * 1000.0
-    var ended_z: Long = ended_at.z * 1000.0
-    var diagonal: Long = combined * 1000000.0
-    var total: Long = transformed
+    var ended_x: Long? = ended_at.x * 1000.0
+    crash ended_x
+    var ended_y: Long? = ended_at.y * 1000.0
+    crash ended_y
+    var ended_z: Long? = ended_at.z * 1000.0
+    crash ended_z
+    var diagonal: Long? = combined * 1000000.0
+    crash diagonal
+    var total: Long? = transformed
+    crash total
     console.print("ended at", ended_x, ended_y, ended_z, "diagonal", diagonal, "total", total)
     var taken = finished - started
     var microseconds = taken.total('microseconds')

@@ -9,7 +9,9 @@ func Pixel(seed: Long) {
     red = seed % 256
     green = seed / 256 % 256
     blue = seed / 65536 % 256
-    alpha = seed / 16777216 * 2
+    var fitted: Integer? = seed / 16777216 * 2
+    crash fitted
+    alpha = fitted
 }
 
 func brighten() {

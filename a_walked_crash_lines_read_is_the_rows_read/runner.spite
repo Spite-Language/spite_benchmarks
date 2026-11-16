@@ -20,7 +20,7 @@ func run(system: Mover, entity_count: Integer) {
 
 func find_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, entity: Integer) {
     if attribute.class == Entity {
-        row.attributes[attribute] = Entity(entity)
+        row.attributes[attribute].value = Entity(entity)
         note(entity)
     } else {
         var column = Column<attribute.class>()
@@ -38,11 +38,11 @@ func note(dense: Integer) {
 
 func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, rows: List<Integer>, entity: Integer) {
     if attribute.class == Entity {
-        row.attributes[attribute] = Entity(entity)
+        row.attributes[attribute].value = Entity(entity)
     } else {
         crash rows[attribute.index]
         var stored_row = rows[attribute.index]
         crash Column<attribute.class>().values[stored_row]
-        row.attributes[attribute] = Column<attribute.class>().values[stored_row]
+        row.attributes[attribute].value = Column<attribute.class>().values[stored_row]
     }
 }

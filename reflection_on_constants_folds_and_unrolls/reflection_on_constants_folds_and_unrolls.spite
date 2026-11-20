@@ -53,8 +53,6 @@ func total_of(stats: Stats): Integer {
     return running
 }
 
-func add_attribute(attribute: Spite.Attribute) {
-    if attribute.class == Integer {
-        running = running + attribute.value
-    }
+func add_attribute(attribute: Spite.Attribute<Integer>) {
+    running = running + attribute.value
 }

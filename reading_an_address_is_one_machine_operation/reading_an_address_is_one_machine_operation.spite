@@ -13,7 +13,7 @@ func ReadingAnAddressIsOneMachineOperation() {
 }
 
 func encode_all(): Long {
-    var bytes = Buffer(0)
+    var bytes = Buffer()
     var index = 0
     while index < 100000 {
         var value: Byte = index * 7 % 256

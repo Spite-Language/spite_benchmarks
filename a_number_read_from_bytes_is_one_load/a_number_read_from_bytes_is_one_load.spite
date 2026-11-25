@@ -1,6 +1,6 @@
 var clock = Clock()
 var console = Console()
-var records = Buffer(0)
+var records = Buffer()
 var _negative_offset = 50000
 var _round_count = 300
 
